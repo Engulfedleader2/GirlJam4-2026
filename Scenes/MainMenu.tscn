@@ -21,7 +21,7 @@ custom_constants/separation = 14
 [node name="TitleLabel" type="Label" parent="UI/CenterContainer/VBoxContainer"]
 margin_right = 220.0
 margin_bottom = 14.0
-text = "LAYERS"
+text = "LAYERS - GirlyJam4-2026"
 align = 1
 
 [node name="Spacer" type="Control" parent="UI/CenterContainer/VBoxContainer"]
