@@ -1,0 +1,17 @@
+[gd_scene format=2]
+
+[node name="MainGame" type="Node2D"]
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="PlaceholderLabel" type="Label" parent="UI/CenterContainer"]
+margin_right = 73.0
+margin_bottom = 14.0
+text = "Main Game"
+align = 1
