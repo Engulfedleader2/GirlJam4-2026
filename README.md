@@ -14,10 +14,10 @@ our scripts
 - [ ] SceneManager
   - [ ] load/unload scenes
   - [ ] transitions
-- [ ] AudioManager
-  - [ ] music
-  - [ ] sfx
-  - [ ] volume settings
+- [x] AudioManager
+  - [x] music
+  - [x] sfx
+  - [x] volume settings
 - [ ] InventoryManager
   - [ ] materials
   - [ ] add/remove items
