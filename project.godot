@@ -11,7 +11,14 @@ config_version=4
 [application]
 
 config/name="GirlJam4-2026"
+run/main_scene="res://Scenes/MainMenu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+SceneManager="*res://Scripts/Managers/SceneManager.cs"
+GameManager="*res://Scripts/Managers/GameManager.cs"
+AudioManager="*res://Scripts/Managers/AudioManager.cs"
 
 [gui]
 
