@@ -5,9 +5,9 @@ Is posing for battle girl pop?
 
 our scripts
 
-- [ ] GameManager
-  - [ ] game state
-  - [ ] score
+- [x] GameManager
+  - [x] game state
+  - [x] score
 - [ ] PlayerController
   - [ ] movement
   - [ ] input handling
