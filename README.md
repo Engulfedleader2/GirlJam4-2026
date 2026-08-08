@@ -54,4 +54,9 @@ our scripts
   - [ ] sell items
   - [ ] buy items
   - [ ] idk what else
+- [ ] UI Scenes
+  - [x] Main Menu + Script
+  - [x] Pause Menu + Script
+  - [x] Credits Menu + Script
+  - [ ] Main Game + Script
       
