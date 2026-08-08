@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class AudioManager : Node
+public class CreditsMenu : Node
 {
     public static AudioManager Instance { get; private set; }
 
