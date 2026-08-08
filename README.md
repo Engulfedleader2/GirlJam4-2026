@@ -11,9 +11,10 @@ our scripts
 - [ ] PlayerController
   - [ ] movement
   - [ ] input handling
-- [ ] SceneManager
-  - [ ] load/unload scenes
-  - [ ] transitions
+- [x] SceneManager
+  - [x] load/unload scenes
+  - [x] transitions
+  - [ ] Add other scenes once game is more made
 - [x] AudioManager
   - [x] music
   - [x] sfx
