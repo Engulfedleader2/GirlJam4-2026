@@ -5,19 +5,20 @@ Is posing for battle girl pop?
 
 our scripts
 
-- [ ] GameManager
-  - [ ] game state
-  - [ ] score
+- [x] GameManager
+  - [x] game state
+  - [x] score
 - [ ] PlayerController
   - [ ] movement
   - [ ] input handling
-- [ ] SceneManager
-  - [ ] load/unload scenes
-  - [ ] transitions
-- [ ] AudioManager
-  - [ ] music
-  - [ ] sfx
-  - [ ] volume settings
+- [x] SceneManager
+  - [x] load/unload scenes
+  - [x] transitions
+  - [ ] Add other scenes once game is more made
+- [x] AudioManager
+  - [x] music
+  - [x] sfx
+  - [x] volume settings
 - [ ] InventoryManager
   - [ ] materials
   - [ ] add/remove items
