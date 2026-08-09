@@ -20,6 +20,8 @@ SceneManager="*res://Scripts/Managers/SceneManager.cs"
 GameManager="*res://Scripts/Managers/GameManager.cs"
 AudioManager="*res://Scripts/Managers/AudioManager.cs"
 OutfitManager="*res://Scripts/Managers/OutfitManager.cs"
+AdventurerManager="*res://Scripts/Managers/AdventurerManager.cs"
+DungeonManager="*res://Scripts/Managers/DungeonManager.cs"
 
 [gui]
 
