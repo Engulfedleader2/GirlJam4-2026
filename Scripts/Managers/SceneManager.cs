@@ -4,12 +4,14 @@ using System;
 public class SceneManager : Node
 {
 
-	private const string MainMenuScenePath = "res://Scenes/MainMenu.tscn";
-	private const string MainGameScenePath = "res://Scenes/MainGame.tscn";
-	private const string SettingsMenuScenePath = "res://Scenes/SettingsMenu.tscn";
-	private const string PauseMenuScenePath = "res://Scenes/PauseMenu.tscn";
-	private const string LeaderboardScenePath = "res://Scenes/Leaderboard.tscn";
-	private const string CreditsMenuScenePath = "res://Scenes/CreditsMenu.tscn";
+	private const string MainMenuScenePath = "res://Scenes/Screens/MainMenu.tscn";
+	private const string MainGameScenePath = "res://Scenes/Screens/MainGame.tscn";
+	private const string SettingsMenuScenePath = "res://Scenes/Screens/SettingsMenu.tscn";
+	private const string PauseMenuScenePath = "res://Scenes/Screens/PauseMenu.tscn";
+	private const string LeaderboardScenePath = "res://Scenes/Screens/Leaderboard.tscn";
+	private const string CreditsMenuScenePath = "res://Scenes/Screens/CreditsMenu.tscn";
+	private const string GraveyardScenePath = "res://Scenes/Screens/Graveyard.tscn";
+	private const string ClosetScenePath = "res://Scenes/Screens/Closet.tscn";
 
 
 	public void ChangeScene(string scenePath)
@@ -51,6 +53,16 @@ public class SceneManager : Node
 	{
 		//TODO: This might need a DB hook up if we decide to go this route
 		ChangeScene(LeaderboardScenePath);
+	}
+
+	public void GoToGraveyard()
+	{
+		ChangeScene(GraveyardScenePath);
+	}
+
+	public void GoToCloset()
+	{
+		ChangeScene(ClosetScenePath);
 	}
 
 	public void QuitGame()

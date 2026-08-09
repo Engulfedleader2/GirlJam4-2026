@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/UI/ClothingIcon.cs" type="Script" id=1]
+
+[node name="ClothingIcon" type="TextureButton"]
+rect_min_size = Vector2( 96, 96 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand = true
+stretch_mode = 5
+script = ExtResource( 1 )
