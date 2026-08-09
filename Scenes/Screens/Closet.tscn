@@ -21,102 +21,108 @@ size_flags_vertical = 3
 
 [node name="Categories" type="VBoxContainer" parent="HBox/OutfitOptions"]
 margin_right = 338.0
-margin_bottom = 128.0
+margin_bottom = 140.0
 size_flags_horizontal = 3
 
 [node name="HeadRow" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
 margin_right = 338.0
-margin_bottom = 18.0
+margin_bottom = 20.0
 
-[node name="HeadLabel" type="Label" parent="HBox/OutfitOptions/Categories/HeadRow"]
+[node name="Header" type="Button" parent="HBox/OutfitOptions/Categories/HeadRow"]
 margin_right = 338.0
-margin_bottom = 14.0
+margin_bottom = 20.0
 text = "Head"
 
 [node name="Items" type="GridContainer" parent="HBox/OutfitOptions/Categories/HeadRow"]
-margin_top = 18.0
+visible = false
+margin_top = 22.0
 margin_right = 338.0
-margin_bottom = 18.0
+margin_bottom = 22.0
 columns = 3
 
 [node name="BodyRow" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
-margin_top = 22.0
+margin_top = 24.0
 margin_right = 338.0
-margin_bottom = 40.0
+margin_bottom = 44.0
 
-[node name="BodyLabel" type="Label" parent="HBox/OutfitOptions/Categories/BodyRow"]
+[node name="Header" type="Button" parent="HBox/OutfitOptions/Categories/BodyRow"]
 margin_right = 338.0
-margin_bottom = 14.0
+margin_bottom = 20.0
 text = "Body"
 
 [node name="Items" type="GridContainer" parent="HBox/OutfitOptions/Categories/BodyRow"]
-margin_top = 18.0
+visible = false
+margin_top = 22.0
 margin_right = 338.0
-margin_bottom = 18.0
+margin_bottom = 22.0
 columns = 3
 
 [node name="LegsRow" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
-margin_top = 44.0
+margin_top = 48.0
 margin_right = 338.0
-margin_bottom = 62.0
+margin_bottom = 68.0
 
-[node name="LegsLabel" type="Label" parent="HBox/OutfitOptions/Categories/LegsRow"]
+[node name="Header" type="Button" parent="HBox/OutfitOptions/Categories/LegsRow"]
 margin_right = 338.0
-margin_bottom = 14.0
+margin_bottom = 20.0
 text = "Legs"
 
 [node name="Items" type="GridContainer" parent="HBox/OutfitOptions/Categories/LegsRow"]
-margin_top = 18.0
+visible = false
+margin_top = 22.0
 margin_right = 338.0
-margin_bottom = 18.0
+margin_bottom = 22.0
 columns = 3
 
 [node name="FeetRow" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
-margin_top = 66.0
+margin_top = 72.0
 margin_right = 338.0
-margin_bottom = 84.0
+margin_bottom = 92.0
 
-[node name="FeetLabel" type="Label" parent="HBox/OutfitOptions/Categories/FeetRow"]
+[node name="Header" type="Button" parent="HBox/OutfitOptions/Categories/FeetRow"]
 margin_right = 338.0
-margin_bottom = 14.0
+margin_bottom = 20.0
 text = "Feet"
 
 [node name="Items" type="GridContainer" parent="HBox/OutfitOptions/Categories/FeetRow"]
-margin_top = 18.0
+visible = false
+margin_top = 22.0
 margin_right = 338.0
-margin_bottom = 18.0
+margin_bottom = 22.0
 columns = 3
 
 [node name="HairRow" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
-margin_top = 88.0
+margin_top = 96.0
 margin_right = 338.0
-margin_bottom = 106.0
+margin_bottom = 116.0
 
-[node name="HairLabel" type="Label" parent="HBox/OutfitOptions/Categories/HairRow"]
+[node name="Header" type="Button" parent="HBox/OutfitOptions/Categories/HairRow"]
 margin_right = 338.0
-margin_bottom = 14.0
+margin_bottom = 20.0
 text = "Hair"
 
 [node name="Items" type="GridContainer" parent="HBox/OutfitOptions/Categories/HairRow"]
-margin_top = 18.0
+visible = false
+margin_top = 22.0
 margin_right = 338.0
-margin_bottom = 18.0
+margin_bottom = 22.0
 columns = 3
 
 [node name="AccessoryRow" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
-margin_top = 110.0
+margin_top = 120.0
 margin_right = 338.0
-margin_bottom = 128.0
+margin_bottom = 140.0
 
-[node name="AccessoryLabel" type="Label" parent="HBox/OutfitOptions/Categories/AccessoryRow"]
+[node name="Header" type="Button" parent="HBox/OutfitOptions/Categories/AccessoryRow"]
 margin_right = 338.0
-margin_bottom = 14.0
+margin_bottom = 20.0
 text = "Accessory"
 
 [node name="Items" type="GridContainer" parent="HBox/OutfitOptions/Categories/AccessoryRow"]
-margin_top = 18.0
+visible = false
+margin_top = 22.0
 margin_right = 338.0
-margin_bottom = 18.0
+margin_bottom = 22.0
 columns = 3
 
 [node name="StatsPanel" type="VBoxContainer" parent="HBox"]
