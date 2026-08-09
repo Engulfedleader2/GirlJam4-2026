@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Character/ClothingLayerController.cs" type="Script" id=1]
+[ext_resource path="res://Assets/Characters/PaperDoll/paperDollBase.png" type="Texture" id=2]
+
+[node name="PaperDoll" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Base" type="Sprite" parent="."]
+centered = false
+texture = ExtResource( 2 )
+
+[node name="Legs" type="Sprite" parent="."]
+centered = false
+
+[node name="Feet" type="Sprite" parent="."]
+centered = false
+
+[node name="Body" type="Sprite" parent="."]
+centered = false
+
+[node name="Head" type="Sprite" parent="."]
+centered = false
+
+[node name="Hair" type="Sprite" parent="."]
+centered = false
+
+[node name="Accessory" type="Sprite" parent="."]
+centered = false
