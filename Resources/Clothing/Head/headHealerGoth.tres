@@ -1,14 +1,14 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/Clothing/ClothingData.cs" type="Script" id=1]
-[ext_resource path="res://Assets/Characters/PaperDoll/Accessory/accessoryTankHammer.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Characters/PaperDoll/Head/headHealerGoth.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
-Id = "accessory_tank_hammer"
-ItemName = "Tank Hammer Accessory"
-Slot = 5
-Class = 1
+Id = "head_healer_goth"
+ItemName = "Goth Head"
+Slot = 1
+Class = 3
 Sprite = ExtResource( 2 )
 StatBonus = 1
 Rarity = 0

@@ -1,13 +1,13 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/Clothing/ClothingData.cs" type="Script" id=1]
-[ext_resource path="res://Assets/Characters/PaperDoll/Head/headDPSPirate.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Characters/PaperDoll/Legs/legsDPSPunk.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
-Id = "head_dps_pirate"
-ItemName = "Pirate Head"
-Slot = 1
+Id = "legs_dps_punk"
+ItemName = "Punk Legs"
+Slot = 2
 Class = 2
 Sprite = ExtResource( 2 )
 StatBonus = 1
