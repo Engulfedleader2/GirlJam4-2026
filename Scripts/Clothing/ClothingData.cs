@@ -29,4 +29,7 @@ public class ClothingData : Resource
 	[Export] public Texture Sprite;
 	[Export] public int StatBonus;
 	[Export] public int Rarity;
+
+	// Cost to unlock this item's design in the shop.
+	[Export] public int Price = 15;
 }
