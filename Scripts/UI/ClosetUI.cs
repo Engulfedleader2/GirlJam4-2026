@@ -7,8 +7,7 @@ public class ClosetUI : Node
 {
 	private const string ClothingDataRoot = "res://Resources/Clothing";
 
-	private static readonly PackedScene IconScene =
-		GD.Load<PackedScene>("res://Scenes/UI/ClothingIcon.tscn");
+	private PackedScene iconScene;
 
 	private ClothingLayerController paperDoll;
 	private Label statsLabel;
@@ -16,6 +15,8 @@ public class ClosetUI : Node
 
 	public override void _Ready()
 	{
+		iconScene = GD.Load<PackedScene>("res://Scenes/UI/ClothingIcon.tscn");
+
 		GetNode<Button>("BackButton").Connect(
 			"pressed",
 			GetNode<SceneManager>("/root/SceneManager"),
@@ -193,7 +194,7 @@ public class ClosetUI : Node
 				// Only unlocked (purchased) items show up in the closet.
 				if (DesignManager.Instance.IsUnlocked(item))
 				{
-					var icon = (ClothingIcon)IconScene.Instance();
+					var icon = (ClothingIcon)iconScene.Instance();
 
 					container.AddChild(icon);
 					icon.SetItem(item);

@@ -9,8 +9,7 @@ public class MainGameUI : Control
 	private const int HireCost = 10;
 	private const string ClothingDataRoot = "res://Resources/Clothing";
 
-	private static readonly DungeonData TestDungeon =
-		GD.Load<DungeonData>("res://Resources/Dungeons/BaseDungeon.tres");
+	private DungeonData testDungeon;
 
 	private SceneManager sceneManager;
 
@@ -22,6 +21,8 @@ public class MainGameUI : Control
 
 	public override void _Ready()
 	{
+		testDungeon = GD.Load<DungeonData>("res://Resources/Dungeons/BaseDungeon.tres");
+
 		sceneManager = GetNode<SceneManager>("/root/SceneManager");
 
 		headerLabel = GetNode<Label>("VBox/HeaderLabel");
@@ -179,7 +180,7 @@ public class MainGameUI : Control
 			return;
 		}
 
-		DungeonManager.Instance.StartRun(TestDungeon, activeParty);
+		DungeonManager.Instance.StartRun(testDungeon, activeParty);
 
 		while (DungeonManager.Instance.IsRunActive)
 		{
@@ -195,7 +196,7 @@ public class MainGameUI : Control
 	{
 		var lines = new List<string>
 		{
-			$"{TestDungeon.DungeonName} - reached floor {DungeonManager.Instance.CurrentFloor}"
+			$"{testDungeon.DungeonName} - reached floor {DungeonManager.Instance.CurrentFloor}"
 		};
 
 		foreach (Adventurer adventurer in DungeonManager.Instance.Party)
