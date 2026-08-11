@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Enemy/EnemyData.cs" type="Script" id=1]
+[ext_resource path="res://Assets/Enemies/monsterSlime.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+EnemyName = "Slime"
+MaxHP = 6
+Attack = 2
+Sprite = ExtResource( 2 )
