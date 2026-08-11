@@ -1,14 +1,14 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/Clothing/ClothingData.cs" type="Script" id=1]
-[ext_resource path="res://Assets/Characters/PaperDoll/Body/bodyTankuwu.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Characters/PaperDoll/Body/bodyDPSPunk.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
-Id = "body_tank_uwu"
-ItemName = "Tank Body"
+Id = "body_dps_punk"
+ItemName = "Punk Body"
 Slot = 0
-Class = 1
+Class = 2
 Sprite = ExtResource( 2 )
 StatBonus = 1
 Rarity = 0

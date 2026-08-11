@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class Adventurer
 {
 	public string Name;
@@ -5,6 +7,13 @@ public class Adventurer
 	public string Hair;
 	public string Face;
 	public string Dream;
+
+	// Stats before any outfit is applied
+	public int BaseMaxHP;
+	public int BaseAttack;
+
+	// What they're currently wearing
+	public Dictionary<ClothingSlot, ClothingData> EquippedItems = new Dictionary<ClothingSlot, ClothingData>();
 
 	public ClothingClass Class;
 	public int MaxHP;

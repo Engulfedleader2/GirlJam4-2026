@@ -35,6 +35,15 @@ public class OutfitManager : Node
 		}
 
 		activeDoll.EquipItem(item);
+
+		Adventurer adventurer = AdventurerManager.Instance.Selected;
+
+		if (adventurer != null)
+		{
+			adventurer.EquippedItems[item.Slot] = item;
+			ApplyOutfitToAdventurer(adventurer);
+		}
+
 		EmitSignal(nameof(OutfitChanged));
 	}
 
@@ -46,7 +55,53 @@ public class OutfitManager : Node
 		}
 
 		activeDoll.UnequipSlot(slot);
+
+		Adventurer adventurer = AdventurerManager.Instance.Selected;
+
+		if (adventurer != null)
+		{
+			adventurer.EquippedItems.Remove(slot);
+			ApplyOutfitToAdventurer(adventurer);
+		}
+
 		EmitSignal(nameof(OutfitChanged));
+	}
+
+	// Resets the doll to show exactly what this adventurer has equipped -
+	// call this whenever the selected adventurer changes.
+	public void LoadAdventurerOutfit(Adventurer adventurer)
+	{
+		if (activeDoll == null)
+		{
+			return;
+		}
+
+		foreach (ClothingSlot slot in System.Enum.GetValues(typeof(ClothingSlot)))
+		{
+			if (adventurer.EquippedItems.TryGetValue(slot, out ClothingData item))
+			{
+				activeDoll.EquipItem(item);
+			}
+			else
+			{
+				activeDoll.UnequipSlot(slot);
+			}
+		}
+
+		EmitSignal(nameof(OutfitChanged));
+	}
+
+	// Recomputes an adventurer's real stats from their base stats + equipped items.
+	private void ApplyOutfitToAdventurer(Adventurer adventurer)
+	{
+		int bonus = adventurer.EquippedItems.Values
+			.Where(item => item != null)
+			.Sum(item => item.StatBonus);
+
+		adventurer.Class = ClassResolver.Resolve(adventurer.EquippedItems.Values);
+		adventurer.MaxHP = adventurer.BaseMaxHP + bonus;
+		adventurer.CurrentHP = adventurer.MaxHP;
+		adventurer.Attack = adventurer.BaseAttack + bonus;
 	}
 
 	public int GetTotalStatBonus()
