@@ -16,6 +16,9 @@ public class GameManager : Node
 	// Placeholder - enough to hire one adventurer and buy one design on day 1.
 	private const int StartingTreasure = 30;
 
+	// Cursor was too big so we scaled it down a bit
+	private const int CursorSize = 48;
+
 	public GamePhase CurrentPhase { get; private set; }
 	public int CurrentDay { get; private set; }
 	public int Treasure { get; private set; }
@@ -24,6 +27,16 @@ public class GameManager : Node
 	{
 		Instance = this;
 
+		Texture cursorSource = GD.Load<Texture>("res://Assets/UI/Cursor.png");
+		Image cursorImage = cursorSource.GetData();
+		cursorImage.Resize(CursorSize, CursorSize, Image.Interpolation.Lanczos);
+
+		var cursor = new ImageTexture();
+		cursor.CreateFromImage(cursorImage);
+
+		// Potating source
+		Vector2 hotspot = new Vector2(78, 65) * CursorSize / cursorSource.GetWidth();
+		Input.SetCustomMouseCursor(cursor, Input.CursorShape.Arrow, hotspot);
 	}
 
 	public void StartGame()
