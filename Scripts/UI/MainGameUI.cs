@@ -7,7 +7,6 @@ using System.Collections.Generic;
 public class MainGameUI : Control
 {
 	private const int HireCost = 10;
-	private const string ClothingDataRoot = "res://Resources/Clothing";
 
 	private DungeonData testDungeon;
 
@@ -16,7 +15,6 @@ public class MainGameUI : Control
 	private Label headerLabel;
 	private VBoxContainer catalogList;
 	private VBoxContainer rosterList;
-	private VBoxContainer designsList;
 	private Label resultLabel;
 
 	public override void _Ready()
@@ -28,7 +26,6 @@ public class MainGameUI : Control
 		headerLabel = GetNode<Label>("VBox/HeaderLabel");
 		catalogList = GetNode<VBoxContainer>("VBox/HBox/CatalogPanel/CatalogList");
 		rosterList = GetNode<VBoxContainer>("VBox/HBox/RosterPanel/RosterList");
-		designsList = GetNode<VBoxContainer>("VBox/HBox/DesignsPanel/DesignsList");
 		resultLabel = GetNode<Label>("VBox/ResultLabel");
 
 		GetNode<Button>("VBox/ButtonRow/DressPartyButton").Connect(
@@ -37,6 +34,14 @@ public class MainGameUI : Control
 
 		GetNode<Button>("VBox/ButtonRow/VentureForthButton").Connect(
 			"pressed", this, nameof(OnVentureForthPressed)
+		);
+
+		GetNode<Button>("VBox/ButtonRow/DesignsButton").Connect(
+			"pressed", this, nameof(OnDesignsPressed)
+		);
+
+		GetNode<Button>("CurtainButton").Connect(
+			"pressed", this, nameof(OnDressPartyPressed)
 		);
 
 		Refresh();
@@ -48,53 +53,6 @@ public class MainGameUI : Control
 
 		RefreshCatalog();
 		RefreshRoster();
-		RefreshDesigns();
-	}
-
-	// Lists every locked clothing item across all slots with a buy button.
-	private void RefreshDesigns()
-	{
-		foreach (Node child in designsList.GetChildren())
-		{
-			child.QueueFree();
-		}
-
-		foreach (ClothingSlot slot in System.Enum.GetValues(typeof(ClothingSlot)))
-		{
-			string folder = $"{ClothingDataRoot}/{slot}";
-			var dir = new Directory();
-
-			if (dir.Open(folder) != Error.Ok)
-			{
-				continue;
-			}
-
-			dir.ListDirBegin(true, true);
-			string fileName = dir.GetNext();
-
-			while (!string.IsNullOrEmpty(fileName))
-			{
-				if (fileName.EndsWith(".tres"))
-				{
-					ClothingData item = GD.Load<ClothingData>($"{folder}/{fileName}");
-
-					if (!DesignManager.Instance.IsUnlocked(item))
-					{
-						var button = new Button { Text = $"{item.ItemName} - {item.Price}g" };
-						button.Connect("pressed", this, nameof(OnBuyDesignPressed), new Godot.Collections.Array { item });
-						designsList.AddChild(button);
-					}
-				}
-
-				fileName = dir.GetNext();
-			}
-		}
-	}
-
-	private void OnBuyDesignPressed(ClothingData item)
-	{
-		DesignManager.Instance.BuyDesign(item);
-		Refresh();
 	}
 
 	private void RefreshCatalog()
@@ -168,6 +126,11 @@ public class MainGameUI : Control
 	private void OnDressPartyPressed()
 	{
 		sceneManager.GoToCloset();
+	}
+
+	private void OnDesignsPressed()
+	{
+		sceneManager.GoToDesignShop();
 	}
 
 	private void OnVentureForthPressed()
