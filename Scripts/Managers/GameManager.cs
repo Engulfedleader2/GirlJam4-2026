@@ -13,6 +13,9 @@ public class GameManager : Node
 		Results
 	}
 
+	// Placeholder - enough to hire one adventurer and buy one design on day 1.
+	private const int StartingTreasure = 30;
+
 	public GamePhase CurrentPhase { get; private set; }
 	public int CurrentDay { get; private set; }
 	public int Treasure { get; private set; }
@@ -27,7 +30,7 @@ public class GameManager : Node
 	{
 		CurrentDay = 1;
 		CurrentPhase = GamePhase.Dressing;
-		Treasure = 0;
+		Treasure = StartingTreasure;
 	}
 
 	public void AdvanceDay()

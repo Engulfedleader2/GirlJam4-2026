@@ -27,6 +27,9 @@ public class AdventurerManager : Node
 	// Current party going into the dungeon
 	public List<Adventurer> ActiveParty { get; private set; } = new List<Adventurer>();
 
+	// Who's currently being dressed in the Closet.
+	public Adventurer Selected { get; private set; }
+
 	public override void _Ready()
 	{
 		Instance = this;
@@ -45,7 +48,8 @@ public class AdventurerManager : Node
 
 	public Adventurer GenerateAdventurer()
 	{
-		int maxHp = random.Next(MinBaseHP, MaxBaseHP + 1);
+		int baseMaxHp = random.Next(MinBaseHP, MaxBaseHP + 1);
+		int baseAttack = random.Next(MinBaseAttack, MaxBaseAttack + 1);
 
 		// Name will probably be picked when hiring
 		// Need to add the skin tone and face stuff later
@@ -53,10 +57,21 @@ public class AdventurerManager : Node
 		{
 			Dream = Dreams.All[random.Next(Dreams.All.Length)],
 			Class = ClothingClass.None,
-			MaxHP = maxHp,
-			CurrentHP = maxHp,
-			Attack = random.Next(MinBaseAttack, MaxBaseAttack + 1)
+			BaseMaxHP = baseMaxHp,
+			BaseAttack = baseAttack,
+			MaxHP = baseMaxHp,
+			CurrentHP = baseMaxHp,
+			Attack = baseAttack
 		};
+	}
+
+	// Who's being dressed in the Closet right now.
+	public void SelectAdventurer(Adventurer adventurer)
+	{
+		if (Roster.Contains(adventurer))
+		{
+			Selected = adventurer;
+		}
 	}
 
 	public bool HireAdventurer(Adventurer candidate)
@@ -111,5 +126,10 @@ public class AdventurerManager : Node
 	{
 		Roster.Remove(adventurer);
 		ActiveParty.Remove(adventurer);
+
+		if (Selected == adventurer)
+		{
+			Selected = null;
+		}
 	}
 }

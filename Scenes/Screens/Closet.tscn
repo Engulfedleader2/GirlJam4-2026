@@ -133,10 +133,34 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="StatsLabel" type="Label" parent="HBox/StatsPanel"]
-margin_top = 293.0
+[node name="PartyRow" type="HBoxContainer" parent="HBox/StatsPanel"]
+margin_top = 281.0
 margin_right = 339.0
-margin_bottom = 307.0
+margin_bottom = 301.0
+alignment = 1
+
+[node name="Member0" type="Button" parent="HBox/StatsPanel/PartyRow"]
+margin_left = 140.0
+margin_right = 157.0
+margin_bottom = 20.0
+text = "-"
+
+[node name="Member1" type="Button" parent="HBox/StatsPanel/PartyRow"]
+margin_left = 161.0
+margin_right = 178.0
+margin_bottom = 20.0
+text = "-"
+
+[node name="Member2" type="Button" parent="HBox/StatsPanel/PartyRow"]
+margin_left = 182.0
+margin_right = 199.0
+margin_bottom = 20.0
+text = "-"
+
+[node name="StatsLabel" type="Label" parent="HBox/StatsPanel"]
+margin_top = 305.0
+margin_right = 339.0
+margin_bottom = 319.0
 text = "Stats"
 align = 1
 
@@ -151,3 +175,8 @@ script = ExtResource( 3 )
 [node name="PaperDoll" parent="HBox/CharacterPreview" instance=ExtResource( 2 )]
 position = Vector2( 40, 20 )
 scale = Vector2( 0.15, 0.15 )
+
+[node name="BackButton" type="Button" parent="."]
+margin_right = 60.0
+margin_bottom = 20.0
+text = "Back"

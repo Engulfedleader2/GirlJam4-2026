@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Dungeon/DungeonData.cs" type="Script" id=1]
+[ext_resource path="res://Resources/Enemies/Slime.tres" type="Resource" id=2]
+
+[resource]
+script = ExtResource( 1 )
+DungeonName = "Base Dungeon"
+Floors = 3
+Enemy = ExtResource( 2 )
