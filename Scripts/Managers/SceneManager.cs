@@ -12,6 +12,7 @@ public class SceneManager : Node
 	private const string CreditsMenuScenePath = "res://Scenes/Screens/CreditsMenu.tscn";
 	private const string GraveyardScenePath = "res://Scenes/Screens/Graveyard.tscn";
 	private const string ClosetScenePath = "res://Scenes/Screens/Closet.tscn";
+	private const string DesignShopScenePath = "res://Scenes/Screens/DesignShop.tscn";
 
 
 	public void ChangeScene(string scenePath)
@@ -63,6 +64,11 @@ public class SceneManager : Node
 	public void GoToCloset()
 	{
 		ChangeScene(ClosetScenePath);
+	}
+
+	public void GoToDesignShop()
+	{
+		ChangeScene(DesignShopScenePath);
 	}
 
 	public void QuitGame()
