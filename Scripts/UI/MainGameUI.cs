@@ -155,24 +155,6 @@ public class MainGameUI : Control
 			DungeonManager.Instance.AdvanceFloor();
 		}
 
-		ShowReceipt();
-		GameManager.Instance.AdvanceDay();
-		Refresh();
-	}
-
-	private void ShowReceipt()
-	{
-		var lines = new List<string>
-		{
-			$"{testDungeon.DungeonName} - reached floor {DungeonManager.Instance.CurrentFloor}"
-		};
-
-		foreach (Adventurer adventurer in DungeonManager.Instance.Party)
-		{
-			string name = string.IsNullOrEmpty(adventurer.Name) ? "Adventurer" : adventurer.Name;
-			lines.Add(adventurer.IsAlive ? $"{name} returned." : $"{name} did not return.");
-		}
-
-		resultLabel.Text = string.Join("\n", lines);
+		sceneManager.GoToReceipt();
 	}
 }
