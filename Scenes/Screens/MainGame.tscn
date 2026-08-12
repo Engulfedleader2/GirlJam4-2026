@@ -1,7 +1,36 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/UI/MainGameUI.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Environment/MainSceneBG.png" type="Texture" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 line_color : hint_color = vec4(1.0);
+uniform float line_thickness : hint_range(0, 10) = 1.0;
+
+const vec2 OFFSETS[8] = {
+	vec2(-1, -1), vec2(-1, 0), vec2(-1, 1), vec2(0, -1), vec2(0, 1), 
+	vec2(1, -1), vec2(1, 0), vec2(1, 1)
+};
+
+void fragment() {
+	vec2 size = TEXTURE_PIXEL_SIZE * line_thickness;
+	float outline = 0.0;
+	
+	for (int i = 0; i < OFFSETS.length(); i++) {
+		outline += texture(TEXTURE, UV + size * OFFSETS[i]).a;
+	}
+	outline = min(outline, 1.0);
+	
+	vec4 color = texture(TEXTURE, UV);
+	COLOR = mix(color, line_color, outline - color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/line_color = Color( 1, 1, 1, 1 )
+shader_param/line_thickness = 1.0
 
 [node name="MainGame" type="Control"]
 anchor_right = 1.0
@@ -89,9 +118,14 @@ margin_right = 1024.0
 margin_bottom = 600.0
 
 [node name="CurtainButton" type="Button" parent="."]
+material = SubResource( 2 )
 anchor_left = 0.599
 anchor_top = 0.074
 anchor_right = 0.844
 anchor_bottom = 0.676
+margin_left = -1.37598
+margin_top = -0.400002
+margin_right = -1.37598
+margin_bottom = -0.399994
 mouse_default_cursor_shape = 2
 flat = true

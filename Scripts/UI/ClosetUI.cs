@@ -158,7 +158,10 @@ public class ClosetUI : Node
 			new Godot.Collections.Array { items }
 		);
 
-		PopulateSlot(items, slot);
+		int count = PopulateSlot(items, slot);
+		bool hasItems = count > 0;
+		items.Visible = hasItems;
+		header.Disabled = !hasItems;
 	}
 
 	// Show or hide the clothing options for a category.
@@ -168,7 +171,7 @@ public class ClosetUI : Node
 	}
 
 	// Load all clothing resources for the given slot.
-	private void PopulateSlot(
+	private int PopulateSlot(
 		GridContainer container,
 		ClothingSlot slot
 	)
@@ -179,9 +182,9 @@ public class ClosetUI : Node
 
 		if (dir.Open(folder) != Error.Ok)
 		{
-			return;
+			return 0;
 		}
-
+		int count = 0;
 		dir.ListDirBegin(true, true);
 		string fileName = dir.GetNext();
 
@@ -205,11 +208,14 @@ public class ClosetUI : Node
 						nameof(OnItemPressed),
 						new Godot.Collections.Array { icon }
 					);
+					
+					count++;
 				}
 			}
 
 			fileName = dir.GetNext();
 		}
+		return count;
 	}
 
 	// Equip clothing when its icon is clicked.
@@ -229,5 +235,28 @@ public class ClosetUI : Node
 
 		statsLabel.Text =
 			$"Total Bonus: {totalBonus}\nClass: {resolvedClass}";
+	}
+	
+	private void OnVentureHover(bool hovering)
+	{
+		var mat = (ShaderMaterial)GetNode<TextureButton>("VentureForthButton").Material;
+		mat.SetShaderParam("line_thickness", hovering ? 3.0f : 0.0f);
+	}
+	
+	private void _on_VentureForthButton_mouse_entered()
+	{
+		this.OnVentureHover(true);
+	}
+	
+	private void _on_VentureForthButton_mouse_exited()
+	{
+		this.OnVentureHover(false);
+	}
+	
+	//currently just copied this over from maingameui, could figure out a better way to just call the same method so its not copy and pasted.
+	private void _on_VentureForthButton_pressed()
+	{
+		GameManager.Instance.PendingVentureForth = true;
+		GetNode<SceneManager>("/root/SceneManager").GoToMainGame();
 	}
 }

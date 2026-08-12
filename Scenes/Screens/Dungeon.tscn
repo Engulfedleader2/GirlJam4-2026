@@ -1,0 +1,114 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://AssetDump/Dungeon bg/BG1.png" type="Texture" id=1]
+[ext_resource path="res://AssetDump/Dungeon bg/Broken wall1.png" type="Texture" id=2]
+[ext_resource path="res://AssetDump/Dungeon bg/Lanterns1.png" type="Texture" id=3]
+[ext_resource path="res://AssetDump/Dungeon bg/Column1.png" type="Texture" id=4]
+[ext_resource path="res://AssetDump/Dungeon bg/Lanterns5.png" type="Texture" id=5]
+[ext_resource path="res://AssetDump/Dungeon bg/Lanterns6.png" type="Texture" id=6]
+[ext_resource path="res://AssetDump/Dungeon bg/Lanterns4.png" type="Texture" id=7]
+[ext_resource path="res://AssetDump/Dungeon bg/Lanterns2.png" type="Texture" id=8]
+[ext_resource path="res://AssetDump/Dungeon bg/Lanterns3.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/Dungeon/DungeonView.cs" type="Script" id=10]
+[ext_resource path="res://AssetDump/Dungeon bg/web1.png" type="Texture" id=11]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 10 )
+
+[node name="Background" type="ParallaxBackground" parent="."]
+
+[node name="FarBackground" type="ParallaxLayer" parent="Background"]
+motion_mirroring = Vector2( 512, 0 )
+
+[node name="BGSprite" type="Sprite" parent="Background/FarBackground"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Lanterns" type="AnimatedSprite" parent="Background/FarBackground"]
+position = Vector2( 0, 1 )
+frames = SubResource( 1 )
+playing = true
+centered = false
+
+[node name="WallLayer" type="ParallaxLayer" parent="Background"]
+motion_mirroring = Vector2( 1024, 0 )
+
+[node name="BrokenWall" type="Sprite" parent="Background/WallLayer"]
+position = Vector2( -143, 0 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Column" type="Sprite" parent="Background/WallLayer"]
+position = Vector2( 296, 112 )
+texture = ExtResource( 4 )
+
+[node name="BrokenWall2" type="Sprite" parent="Background/WallLayer"]
+position = Vector2( 118, 0 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="SpiderWeb" type="Sprite" parent="Background/WallLayer"]
+position = Vector2( 385, 112 )
+texture = ExtResource( 11 )
+
+[node name="BrokenWall3" type="Sprite" parent="Background/WallLayer"]
+position = Vector2( 372, 0 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="BrokenWall4" type="Sprite" parent="Background/WallLayer"]
+position = Vector2( 629, 0 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="SpiderWeb2" type="Sprite" parent="Background/WallLayer"]
+position = Vector2( 768, 112 )
+texture = ExtResource( 11 )
+
+[node name="Column2" type="Sprite" parent="Background/WallLayer"]
+position = Vector2( 528, 112 )
+texture = ExtResource( 4 )
+
+[node name="SpiderWeb3" type="Sprite" parent="Background/WallLayer"]
+position = Vector2( 0, 111 )
+texture = ExtResource( 11 )
+
+[node name="Environment" type="Node2D" parent="."]
+visible = false
+
+[node name="YSort" type="YSort" parent="."]
+visible = false
+
+[node name="Adventurers" type="Node2D" parent="YSort"]
+
+[node name="Adven1" type="Position2D" parent="YSort/Adventurers"]
+position = Vector2( -85, 75 )
+
+[node name="Adven2" type="Position2D" parent="YSort/Adventurers"]
+position = Vector2( -60, 75 )
+
+[node name="Adven3" type="Position2D" parent="YSort/Adventurers"]
+position = Vector2( -35, 75 )
+
+[node name="Enemies" type="Node2D" parent="YSort"]
+
+[node name="Enemy1" type="Position2D" parent="YSort/Enemies"]
+position = Vector2( 65, 75 )
+
+[node name="Enemy2" type="Position2D" parent="YSort/Enemies"]
+position = Vector2( 65, 50 )
+
+[node name="Enemy3" type="Position2D" parent="YSort/Enemies"]
+position = Vector2( 65, 25 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
