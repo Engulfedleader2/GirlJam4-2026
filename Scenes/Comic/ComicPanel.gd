@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 		whatScene()
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_pressed("ui_accept"):
+	if Input.is_action_pressed("next"):
 		index += 1
 		_play()
 
