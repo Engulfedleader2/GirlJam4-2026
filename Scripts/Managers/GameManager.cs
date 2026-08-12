@@ -22,7 +22,7 @@ public class GameManager : Node
 	public GamePhase CurrentPhase { get; private set; }
 	public int CurrentDay { get; private set; }
 	public int Treasure { get; private set; }
-
+	public bool PendingVentureForth { get; set;}
 	public override void _Ready()
 	{
 		Instance = this;

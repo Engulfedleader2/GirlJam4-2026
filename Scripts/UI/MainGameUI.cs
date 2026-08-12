@@ -43,7 +43,12 @@ public class MainGameUI : Control
 		GetNode<Button>("CurtainButton").Connect(
 			"pressed", this, nameof(OnDressPartyPressed)
 		);
-
+		
+		if (GameManager.Instance.PendingVentureForth) 
+		{
+			GameManager.Instance.PendingVentureForth = false;
+			OnVentureForthPressed();
+		}
 		Refresh();
 	}
 

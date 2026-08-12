@@ -1,0 +1,31 @@
+[gd_scene format=2]
+
+[node name="SpriteDoll" type="Node2D"]
+
+[node name="BackArm" type="Sprite" parent="."]
+
+[node name="BackSleeve" type="Sprite" parent="BackArm"]
+
+[node name="BackLeg" type="Sprite" parent="."]
+
+[node name="BackPant" type="Sprite" parent="BackLeg"]
+
+[node name="Body" type="Sprite" parent="."]
+
+[node name="BodyOutfit" type="Sprite" parent="Body"]
+
+[node name="Head" type="Sprite" parent="."]
+
+[node name="HeadOutfit" type="Sprite" parent="Head"]
+
+[node name="Accessories" type="Sprite" parent="Head"]
+
+[node name="Hair" type="Sprite" parent="Head"]
+
+[node name="FrontLeg" type="Sprite" parent="."]
+
+[node name="FrontPant" type="Sprite" parent="FrontLeg"]
+
+[node name="FrontArm" type="Sprite" parent="."]
+
+[node name="FrontSleeve" type="Sprite" parent="FrontArm"]
