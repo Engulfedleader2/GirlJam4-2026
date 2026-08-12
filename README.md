@@ -8,9 +8,6 @@ our scripts
 - [x] GameManager
   - [x] game state
   - [x] score
-- [ ] PlayerController
-  - [ ] movement
-  - [ ] input handling
 - [x] SceneManager
   - [x] load/unload scenes
   - [x] transitions
@@ -19,13 +16,14 @@ our scripts
   - [x] music
   - [x] sfx
   - [x] volume settings
-- [ ] InventoryManager
-  - [ ] materials
-  - [ ] add/remove items
-- [ ] OutfitManager
-  - [ ] equip/remove
-  - [ ] outfit stats
-- [ ] DungeonManager
+- [x] InventoryManager
+  - [x] materials
+  - [x] add/remove items
+  - [ ] Add more items
+- [x] OutfitManager
+  - [x] equip/remove
+  - [x] outfit stats
+- [x] DungeonManager
   - [ ] start/end run
   - [ ] progression
   - [ ] rewards
@@ -50,9 +48,9 @@ our scripts
   - [ ] tank / dps / healer 
   - [ ] class abilities
   - [ ] stats     
-- [ ] Shop Manger
-  - [ ] sell items
-  - [ ] buy items
+- [x] Shop Manger
+  - [x] sell items
+  - [x] buy items
   - [ ] idk what else
 - [ ] UI Scenes
   - [x] Main Menu + Script
