@@ -1,21 +1,51 @@
 using Godot;
-using System;
+using System.Collections.Generic;
 
-public class ReceiptUI : Node
+public class ReceiptUI : Control
 {
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
+	private SceneManager sceneManager;
+	private Label recapLabel;
 
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
-    {
-        
-    }
+	public override void _Ready()
+	{
+		sceneManager = GetNode<SceneManager>("/root/SceneManager");
+		recapLabel = GetNode<Label>("RecapLabel");
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+		GetNode<Button>("ContinueButton").Connect(
+			"pressed", this, nameof(OnContinuePressed)
+		);
+
+		recapLabel.Text = BuildRecapText();
+	}
+
+	private string BuildRecapText()
+	{
+		DungeonManager dungeonManager = DungeonManager.Instance;
+
+		// A guard for testing
+		if (dungeonManager.CurrentDungeon == null)
+		{
+			return "No run to report yet.";
+		}
+
+		var lines = new List<string>
+		{
+			$"{dungeonManager.CurrentDungeon.DungeonName} - Floor {dungeonManager.CurrentFloor}",
+			$"Recovered: {dungeonManager.GoldEarned}g"
+		};
+
+		foreach (Adventurer adventurer in dungeonManager.Party)
+		{
+			string name = string.IsNullOrEmpty(adventurer.Name) ? "Adventurer" : adventurer.Name;
+			lines.Add(adventurer.IsAlive ? $"{name} returned." : $"{name} did not return.");
+		}
+
+		return string.Join("\n", lines);
+	}
+
+	private void OnContinuePressed()
+	{
+		GameManager.Instance.AdvanceDay();
+		sceneManager.GoToMainGame();
+	}
 }

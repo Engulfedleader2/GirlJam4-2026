@@ -15,6 +15,7 @@ public class DungeonManager : Node
 	public List<Adventurer> Party { get; private set; } = new List<Adventurer>();
 
 	public int CurrentFloor { get; private set; }
+	public int GoldEarned { get; private set; }
 	public bool IsRunActive { get; private set; }
 
 	public override void _Ready()
@@ -28,6 +29,7 @@ public class DungeonManager : Node
 		Party = new List<Adventurer>(party);
 
 		CurrentFloor = 1;
+		GoldEarned = 0;
 		IsRunActive = true;
 	}
 
@@ -96,6 +98,7 @@ public class DungeonManager : Node
 	private void GiveFloorReward()
 	{
 		GameManager.Instance.AddTreasure(GoldPerFloor);
+		GoldEarned += GoldPerFloor;
 	}
 
 	public void EndRun()
