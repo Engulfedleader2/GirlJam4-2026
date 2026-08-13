@@ -1,0 +1,940 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Scenes/Comic/ComicPanel.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Comic/Comic001.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.797, 0.797 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2, -98 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control/ColorRect:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -793, -58 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Control/ColorRect2:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1094, 39 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Control/ColorRect3:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 228, -401 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Control/ColorRect4:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 175, 526 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Circle:material:shader_param/circle_size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Circle:material:shader_param/screen_width")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 893.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Circle:material:shader_param/screen_height")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 494.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Circle2:material:shader_param/circle_size")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.05 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Circle2:material:shader_param/screen_width")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1955.0 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Circle2:material:shader_param/screen_height")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1158.0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Circle:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Circle2:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Transistion_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Circle2:material:shader_param/circle_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.05, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Circle2:material:shader_param/screen_width")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1955.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Circle2:material:shader_param/screen_height")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1158.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Circle:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Circle2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Transistion_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Circle:material:shader_param/circle_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.05 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_start"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Circle:material:shader_param/screen_width")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 843.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Circle:material:shader_param/screen_height")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 494.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Circle:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Circle2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "cam_1"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.797, 0.797 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2, -98 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control/ColorRect:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -790, 51 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Control/ColorRect2:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1094, 39 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Control/ColorRect3:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 228, -401 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Control/ColorRect4:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 175, 526 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "cam_2"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.797, 0.797 ), Vector2( 0.444, 0.444 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, -98 ), Vector2( 4, 306 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_pause"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Control/ColorRect:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -796, -64 ), Vector2( -788, 395 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Control/ColorRect2:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1094, 39 ), Vector2( 741, 297 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Control/ColorRect3:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 228, -401 ), Vector2( 135, -98 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Control/ColorRect4:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 175, 526 ), Vector2( 168, 710 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "cam_3"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.444, 0.444 ), Vector2( 0.444, 0.444 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 4, 306 ), Vector2( 382, 304 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_pause"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Control/ColorRect:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -795, 295 ), Vector2( -424, 250 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Control/ColorRect2:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 741, 297 ), Vector2( 1119, 320 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Control/ColorRect3:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 135, -98 ), Vector2( 135, -98 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Control/ColorRect4:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 168, 710 ), Vector2( 168, 710 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "cam_4"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.444, 0.444 ), Vector2( 0.883, 0.883 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 382, 304 ), Vector2( -23, 555 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_pause"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Control/ColorRect:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -424, 350 ), Vector2( -790, 611 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Control/ColorRect2:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1119, 320 ), Vector2( 1254, 683 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Control/ColorRect3:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 135, -98 ), Vector2( 169, 121 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Control/ColorRect4:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 168, 710 ), Vector2( 159, 1217 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "cam_5"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.883, 0.883 ), Vector2( 1.821, 1.821 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -23, 555 ), Vector2( 481, 4 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_pause"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Control/ColorRect:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -796, 628 ), Vector2( 5, 73 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Control/ColorRect2:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1254, 683 ), Vector2( 2193, -21 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Control/ColorRect3:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 169, 121 ), Vector2( 1063, -392 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Control/ColorRect4:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 159, 1217 ), Vector2( 756, 1217 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "cam_6"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.821, 1.821 ), Vector2( 1.918, 1.918 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 481, 4 ), Vector2( -25, -42 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_pause"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Control/ColorRect:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 73 ), Vector2( -785, 84 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Control/ColorRect2:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2193, -21 ), Vector2( 2193, -21 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Control/ColorRect3:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1063, -392 ), Vector2( 218, -392 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Control/ColorRect4:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 756, 1217 ), Vector2( 254, 1219 ) ]
+}
+
+[sub_resource type="Shader" id=9]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform float circle_size : hint_range(0.0, 1.05);
+uniform float screen_width;
+uniform float screen_height;
+
+void fragment() {
+	float ratio = screen_width / screen_height;
+	float dist = distance(vec2(0.5, 0.5), vec2(mix(0.5, UV.x, ratio), UV.y));
+	COLOR.a = step(circle_size, dist);
+}"
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = SubResource( 9 )
+shader_param/circle_size = 1.05
+shader_param/screen_width = 1955.0
+shader_param/screen_height = 1158.0
+
+[node name="ComicPanel" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Control" type="Control" parent="."]
+margin_left = -275.0
+margin_top = -138.0
+margin_right = -235.0
+margin_bottom = -98.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+margin_left = -793.0
+margin_top = -58.0
+margin_right = 271.0
+margin_bottom = 1093.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="Control"]
+margin_left = 1094.0
+margin_top = 39.0
+margin_right = 1587.0
+margin_bottom = 1357.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect3" type="ColorRect" parent="Control"]
+margin_left = 228.0
+margin_top = -401.0
+margin_right = 2226.0
+margin_bottom = 138.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="Control"]
+margin_left = 175.0
+margin_top = 526.0
+margin_right = 2457.0
+margin_bottom = 1065.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 2, -98 )
+anchor_mode = 0
+current = true
+zoom = Vector2( 0.797, 0.797 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/Transistion_in = SubResource( 11 )
+anims/Transistion_out = SubResource( 8 )
+anims/cam_1 = SubResource( 2 )
+anims/cam_2 = SubResource( 3 )
+anims/cam_3 = SubResource( 4 )
+anims/cam_4 = SubResource( 5 )
+anims/cam_5 = SubResource( 6 )
+anims/cam_6 = SubResource( 7 )
+
+[node name="Circle" type="ColorRect" parent="."]
+material = SubResource( 10 )
+margin_left = -20.0
+margin_top = -111.0
+margin_right = 830.0
+margin_bottom = 394.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Circle2" type="ColorRect" parent="."]
+visible = false
+material = SubResource( 10 )
+margin_left = -7.0
+margin_top = -44.0
+margin_right = 1948.0
+margin_bottom = 1114.0
+color = Color( 0, 0, 0, 1 )
