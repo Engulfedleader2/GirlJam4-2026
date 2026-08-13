@@ -5,7 +5,10 @@ var can_play = false
 
 var index = 1
 
+var start = false
 
+func _ready() -> void:
+	$AnimationPlayer.play("Transistion_out")
 
 func _process(delta: float) -> void:
 	if can_play == true:
@@ -13,7 +16,7 @@ func _process(delta: float) -> void:
 		whatScene()
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_pressed("next"):
+	if Input.is_action_pressed("next") and start == true:
 		index += 1
 		_play()
 
@@ -29,6 +32,10 @@ func whatScene():
 		$AnimationPlayer.play("cam_5")
 	if index == 6:
 		$AnimationPlayer.play("cam_6")
+	if index == 7:
+		$Circle.hide()
+		$AnimationPlayer.play("Transistion_in")
+		start = false
 
 
 func _play():
@@ -36,3 +43,6 @@ func _play():
 
 func _pause():
 	can_play = false
+
+func _start():
+	start = true
