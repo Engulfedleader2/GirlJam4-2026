@@ -17,6 +17,7 @@ public class MainGameUI : Control
 	private VBoxContainer catalogList;
 	private VBoxContainer rosterList;
 	private Label resultLabel;
+	private Control floorChoice;
 
 	public override void _Ready()
 	{
@@ -66,7 +67,11 @@ public class MainGameUI : Control
 		texture.Flags = 0;
 		GetNode<TextureRect>("Control/TVScreen").Texture = texture;
 		
-		_dungeonView.Connect(nameof(DungeonView.PlaybackFinished), this, nameof(OnRunFinished));
+		floorChoice = GetNode<Control>("FloorChoice");
+		floorChoice.Visible = false;
+		GetNode<Button>("FloorChoice/VBoxContainer/ReturnButton").Connect("pressed", this, nameof(OnReturnPressed));
+		GetNode<Button>("FloorChoice/VBoxContainer/DelveButton").Connect("pressed", this, nameof(OnDelvePressed));
+		_dungeonView.Connect(nameof(DungeonView.PlaybackFinished), this, nameof(OnFloorFinished));
 	}
 
 	private void Refresh()
@@ -157,7 +162,7 @@ public class MainGameUI : Control
 
 	private void OnVentureForthPressed()
 	{
-		List<Adventurer> activeParty = AdventurerManager.Instance.ActiveParty;
+		var activeParty = AdventurerManager.Instance.ActiveParty;
 
 		if (activeParty.Count == 0)
 		{
@@ -173,15 +178,36 @@ public class MainGameUI : Control
 		}
 	*/
 	
-		Queue<DungeonEvent> tape = DungeonManager.Instance.BuildRun(activeParty);
-		_dungeonView.StartPlayback(activeParty, tape);
+		DungeonManager.Instance.BeginRun();
+		_dungeonView.StartPlayback(activeParty, DungeonManager.Instance.BuildCurrentFloor(activeParty));
 		//sceneManager.GoToReceipt();
 	}
 	
-	private void OnRunFinished() {
-		resultLabel.Text = DungeonManager.Instance.EndRun();
+	private void OnFloorFinished() 
+	{
+		var dm = DungeonManager.Instance;
+		if (dm.PartyWiped || !dm.HasNextFloor) 
+			FinishRun();
+		else
+			floorChoice.Visible = true;
+	}
+	
+	private void OnDelvePressed()
+	{
+		floorChoice.Visible = false;
+		DungeonManager.Instance.AdvanceToNextFloor();
+		var activeParty = AdventurerManager.Instance.ActiveParty;
+		_dungeonView.PlayTape(DungeonManager.Instance.BuildCurrentFloor(activeParty));
+	}
+	
+	private void OnReturnPressed()
+	{
+		floorChoice.Visible = false;
+		FinishRun();
+	}
+	
+	private void FinishRun() {
+		DungeonManager.Instance.EndRun();
 		sceneManager.GoToReceipt();
-		GameManager.Instance.AdvanceDay();
-		Refresh();
 	}
 }

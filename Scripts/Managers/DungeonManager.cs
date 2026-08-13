@@ -18,33 +18,67 @@ public class DungeonManager : Node
 	public int GoldEarned { get; private set; }
 	public bool IsRunActive { get; private set; }
 
-
+	
 	private int _runGold;
 	public int GoldEarned => _runGold;
+	public RunResult LastRun { get; private set; }
+	
+	private const int MaxFloors = 2;
+	public bool PartyWiped {get; private set;}
+	public bool HasNextFloor => CurrentFloor < MaxFloors;
 	public override void _Ready()
 	{
 		Instance = this;
 	}
-	public Queue<DungeonEvent> BuildRun(List<Adventurer> party, int maxFloors = 2)
+	
+	public void BeginRun()
 	{
 		_runGold = 0;
+		CurrentFloor = 1;
+		PartyWiped = false;
+	}
+	
+	public void AdvanceToNextFloor() => CurrentFloor++;
+	
+	public Queue<DungeonEvent> BuildCurrentFloor(List<Adventurer> party)
+	{
 		var tape = new Queue<DungeonEvent>();
 		var rng = new System.Random();
 		
-		for (int floor = 1; floor <= maxFloors; floor++)
+		tape.Enqueue(new DungeonEvent {Type = DungeonEventType.EnterFloor});
+		
+		int commons = rng.Next(2,5);
+		for (int i = 0; i < commons; i++) 
 		{
-			EnemyData data = EnemyLibrary.Instance.RandomForLevel(floor);
+			EnemyData data = EnemyLibrary.Instance.RandomForLevel(CurrentFloor);
 			if (data == null) continue;
-			
-			bool wiped = ResolveEncounter(party, data, rng);
+			if  (ResolveEncounter(party, data, rng))
+			{
+				return Wipe(tape, party, data, false);
+			}
 			tape.Enqueue(MakeFightEvent(party, data, false));
-			if (wiped) {tape.Enqueue(new DungeonEvent {Type = DungeonEventType.RunEnded}); return tape; }
 		}
 		
-		tape.Enqueue(new DungeonEvent {Type = DungeonEventType.RunEnded});
+		EnemyData boss = EnemyLibrary.Instance.BossForLevel(CurrentFloor);
+		if (boss != null)
+		{
+			if(ResolveEncounter(party, boss, rng)) {
+				return Wipe(tape, party, boss, true);
+			}
+			tape.Enqueue(MakeFightEvent(party, boss, true));
+		}
+		
+		tape.Enqueue(new DungeonEvent {Type = DungeonEventType.FloorCleared});
 		return tape;
 	}
 	
+	private Queue<DungeonEvent> Wipe(Queue<DungeonEvent> tape, List<Adventurer> party, EnemyData data, bool boss)
+	{
+		PartyWiped = true;
+		tape.Enqueue(MakeFightEvent(party, data, boss));
+		tape.Enqueue(new DungeonEvent { Type = DungeonEventType.RunEnded});
+		return tape;
+	}
 	private bool ResolveEncounter(List<Adventurer> party, EnemyData data, System.Random rng)
 	{
 		var enemy = new Enemy
@@ -194,20 +228,32 @@ public class DungeonManager : Node
 		bool wiped = !party.Exists(a => a.IsAlive);
 		int survivors = 0, fallen = 0;
 		
+		var result = new RunResult
+		{
+			FloorReached = CurrentFloor,
+			GoldEarned = _runGold,
+			Wiped = wiped,
+		};
+		
 		foreach (Adventurer a in party)
 		{
+			
+			string name = string.IsNullOrEmpty(a.Name) ? "Adventurer" : a.Name;
 			if (a.IsAlive)
 			{
+				result.AdventurerOutcomes.Add($"{name} returned.");
 				AdventurerManager.Instance.HandleReturningAdventurer(a);
 				survivors ++;
 			}
 			else {
+				result.AdventurerOutcomes.Add($"{name} did not return.");
 				AdventurerManager.Instance.HandleDeadAdventurer(a);
 				fallen++;
 			}
 		}
 		
 		GameManager.Instance.AddTreasure(_runGold);
+		LastRun = result;
 		return wiped
 			? $"The party fell. Earned {_runGold}g."
 			: $"Returned! {survivors} survived, {fallen} lost. Earned {_runGold}g.";

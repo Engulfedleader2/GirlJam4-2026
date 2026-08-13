@@ -51,9 +51,25 @@ public class DungeonView : Node2D
 			_parallax.ScrollOffset += new Vector2(-_scrollSpeed * delta, 0);
 	}
 	
+	private void ClearParty()
+	{
+		foreach (SpriteDoll doll in _party)
+			doll.QueueFree();
+		
+		_party.Clear();
+		_enemy?.QueueFree();
+		_enemy = null;
+		_state = DungeonState.Idle;
+	}
 	public void StartPlayback(List<Adventurer> party, Queue<DungeonEvent> events)
 	{
+		ClearParty();
 		SpawnParty(party);
+		PlayTape(events);
+	}
+	
+	public void PlayTape(Queue<DungeonEvent> events) 
+	{
 		_events = events;
 		_ = ProcessEvents();
 	}
