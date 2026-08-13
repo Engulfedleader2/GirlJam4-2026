@@ -1,6 +1,8 @@
 # GirlyJam4-2026
 Is posing for battle girl pop?
 
+Godot version: 3.6.2
+
 ## To-Do
 
 our scripts
