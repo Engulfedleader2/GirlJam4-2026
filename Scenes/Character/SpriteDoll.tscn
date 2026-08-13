@@ -1,31 +1,18 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Character/SpriteDoll.cs" type="Script" id=1]
+[ext_resource path="res://Assets/Characters/SpriteDoll/Body.png" type="Texture" id=2]
 
 [node name="SpriteDoll" type="Node2D"]
-
-[node name="BackArm" type="Sprite" parent="."]
-
-[node name="BackSleeve" type="Sprite" parent="BackArm"]
-
-[node name="BackLeg" type="Sprite" parent="."]
-
-[node name="BackPant" type="Sprite" parent="BackLeg"]
+script = ExtResource( 1 )
 
 [node name="Body" type="Sprite" parent="."]
+texture = ExtResource( 2 )
 
-[node name="BodyOutfit" type="Sprite" parent="Body"]
+[node name="LegsOutfit" type="Sprite" parent="."]
 
-[node name="Head" type="Sprite" parent="."]
+[node name="FeetOutfit" type="Sprite" parent="."]
 
-[node name="HeadOutfit" type="Sprite" parent="Head"]
+[node name="BodyOutfit" type="Sprite" parent="."]
 
-[node name="Accessories" type="Sprite" parent="Head"]
-
-[node name="Hair" type="Sprite" parent="Head"]
-
-[node name="FrontLeg" type="Sprite" parent="."]
-
-[node name="FrontPant" type="Sprite" parent="FrontLeg"]
-
-[node name="FrontArm" type="Sprite" parent="."]
-
-[node name="FrontSleeve" type="Sprite" parent="FrontArm"]
+[node name="HeadOutfit" type="Sprite" parent="."]

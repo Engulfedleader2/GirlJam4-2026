@@ -29,6 +29,10 @@ public class ClothingData : Resource
 	[Export] public Texture Sprite;
 	[Export] public int StatBonus;
 	[Export] public int Rarity;
+	
+	//SpriteDoll stuff
+	[Export] public Texture PixelFront;
+	[Export] public Texture PixelBack;
 
 	// Cost to unlock this item's design in the shop.
 	[Export] public int Price = 15;

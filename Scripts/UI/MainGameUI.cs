@@ -11,7 +11,8 @@ public class MainGameUI : Control
 	private DungeonData testDungeon;
 
 	private SceneManager sceneManager;
-
+	private DungeonView _dungeonView;
+	
 	private Label headerLabel;
 	private VBoxContainer catalogList;
 	private VBoxContainer rosterList;
@@ -27,7 +28,8 @@ public class MainGameUI : Control
 		catalogList = GetNode<VBoxContainer>("VBox/HBox/CatalogPanel/CatalogList");
 		rosterList = GetNode<VBoxContainer>("VBox/HBox/RosterPanel/RosterList");
 		resultLabel = GetNode<Label>("VBox/ResultLabel");
-
+		SetupDungeonViewport();
+		
 		GetNode<Button>("VBox/ButtonRow/DressPartyButton").Connect(
 			"pressed", this, nameof(OnDressPartyPressed)
 		);
@@ -50,6 +52,21 @@ public class MainGameUI : Control
 			OnVentureForthPressed();
 		}
 		Refresh();
+	}
+	
+	private void SetupDungeonViewport()
+	{
+		var viewport = GetNode<Viewport>("Control/Viewport");
+		_dungeonView = GetNode<DungeonView>("Control/Viewport/DungeonView");
+		
+		viewport.RenderTargetVFlip = true;
+		viewport.RenderTargetUpdateMode = Viewport.UpdateMode.Always;
+		
+		var texture = viewport.GetTexture();
+		texture.Flags = 0;
+		GetNode<TextureRect>("Control/TVScreen").Texture = texture;
+		
+		_dungeonView.Connect(nameof(DungeonView.PlaybackFinished), this, nameof(OnRunFinished));
 	}
 
 	private void Refresh()
@@ -147,14 +164,24 @@ public class MainGameUI : Control
 			resultLabel.Text = "Send at least one adventurer into the dungeon first.";
 			return;
 		}
-
+	/*
 		DungeonManager.Instance.StartRun(testDungeon, activeParty);
 
 		while (DungeonManager.Instance.IsRunActive)
 		{
 			DungeonManager.Instance.AdvanceFloor();
 		}
-
+	*/
+	
+		Queue<DungeonEvent> tape = DungeonManager.Instance.BuildRun(activeParty);
+		_dungeonView.StartPlayback(activeParty, tape);
+		//sceneManager.GoToReceipt();
+	}
+	
+	private void OnRunFinished() {
+		resultLabel.Text = DungeonManager.Instance.EndRun();
 		sceneManager.GoToReceipt();
+		GameManager.Instance.AdvanceDay();
+		Refresh();
 	}
 }

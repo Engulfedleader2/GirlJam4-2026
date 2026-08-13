@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Enemies/nuckelavee.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Enemy/EnemyData.cs" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+EnemyName = "Nuckelavee"
+MaxHP = 20
+Attack = 5
+Sprite = ExtResource( 1 )
+Level = 2
+Gold = 10
+IsBoss = true
