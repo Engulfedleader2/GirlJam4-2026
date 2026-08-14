@@ -26,19 +26,19 @@ our scripts
   - [x] equip/remove
   - [x] outfit stats
 - [x] DungeonManager
-  - [ ] start/end run
-  - [ ] progression
-  - [ ] rewards
+  - [x] start/end run
+  - [x] progression
+  - [x] rewards
 - [ ] GraveyardManager
   - [ ] store deaths
   - [ ] load graves
   - [ ] last pose
   - [ ] Dream??
-- [ ] DungeonController
-  - [ ] room transitions
-  - [ ] combat trigger
+- [x] DungeonController
+  - [x] room transitions
+  - [x] combat trigger
 - [ ] ClothingLayerController
-  - [ ] sprite layering
+  - [x] sprite layering
   - [ ] outfit stuff
 - [ ] Enemy
   - [ ] health/attack
