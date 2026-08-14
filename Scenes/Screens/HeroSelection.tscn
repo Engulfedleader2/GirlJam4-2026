@@ -28,6 +28,8 @@ anchor_left = 0.6
 anchor_top = 0.34
 anchor_right = 0.85
 anchor_bottom = 0.4
+margin_left = 9.59998
+margin_right = -7.40002
 custom_colors/font_color = Color( 0.1, 0.1, 0.1, 1 )
 text = "-"
 
@@ -36,6 +38,8 @@ anchor_left = 0.6
 anchor_top = 0.42
 anchor_right = 0.85
 anchor_bottom = 0.48
+margin_left = 8.59998
+margin_right = -10.4
 custom_colors/font_color = Color( 0.1, 0.1, 0.1, 1 )
 text = "-"
 
@@ -44,6 +48,8 @@ anchor_left = 0.6
 anchor_top = 0.5
 anchor_right = 0.85
 anchor_bottom = 0.56
+margin_left = 6.59998
+margin_right = -11.4
 custom_colors/font_color = Color( 0.1, 0.1, 0.1, 1 )
 text = "-"
 
