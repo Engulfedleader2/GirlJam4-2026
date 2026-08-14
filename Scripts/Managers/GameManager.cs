@@ -3,6 +3,8 @@ using System;
 
 public class GameManager : Node
 {
+	private const string ConfigPath = "res://Resources/Config/GameConfig.cfg";
+
 	public static GameManager Instance {get; private set; }
 
 	public enum GamePhase
@@ -13,11 +15,11 @@ public class GameManager : Node
 		Results
 	}
 
-	// Placeholder - enough to hire one adventurer and buy one design on day 1.
-	private const int StartingTreasure = 30;
-
 	// Cursor was too big so we scaled it down a bit
 	private const int CursorSize = 48;
+
+	// This is in the game config now
+	private int startingTreasure;
 
 	public GamePhase CurrentPhase { get; private set; }
 	public int CurrentDay { get; private set; }
@@ -26,6 +28,10 @@ public class GameManager : Node
 	public override void _Ready()
 	{
 		Instance = this;
+
+		var config = new ConfigFile();
+		config.Load(ConfigPath);
+		startingTreasure = (int)config.GetValue("Game", "starting_treasure", 30);
 
 		Texture cursorSource = GD.Load<Texture>("res://Assets/UI/Cursor.png");
 		Image cursorImage = cursorSource.GetData();
@@ -43,7 +49,7 @@ public class GameManager : Node
 	{
 		CurrentDay = 1;
 		CurrentPhase = GamePhase.Dressing;
-		Treasure = StartingTreasure;
+		Treasure = startingTreasure;
 	}
 
 	public void AdvanceDay()
