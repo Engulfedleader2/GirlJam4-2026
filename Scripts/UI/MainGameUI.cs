@@ -37,17 +37,21 @@ public class MainGameUI : Control
 			"pressed", this, nameof(OnDesignsPressed)
 		);
 
-		GetNode<Button>("CurtainButton").Connect(
+		GetNode<TextureButton>("CurtainButton").Connect(
 			"pressed", this, nameof(OnDressPartyPressed)
 		);
 
-		GetNode<Button>("ClipboardButton").Connect(
+		GetNode<TextureButton>("ClipboardButton").Connect(
 			"pressed", this, nameof(OnHeroSelectionPressed)
 		);
 
-		GetNode<Button>("TagButton").Connect(
+		GetNode<TextureButton>("TagButton").Connect(
 			"pressed", this, nameof(OnHireShopPressed)
 		);
+		
+		WireOutlineHover(GetNode<TextureButton>("TagButton"));
+		WireOutlineHover(GetNode<TextureButton>("CurtainButton"));
+		WireOutlineHover(GetNode<TextureButton>("ClipboardButton"));
 
 		if (GameManager.Instance.PendingVentureForth)
 		{
@@ -158,5 +162,27 @@ public class MainGameUI : Control
 		AudioManager.Instance.PlayMusic(shopMusic);
 		DungeonManager.Instance.EndRun();
 		sceneManager.GoToReceipt();
+	}
+	
+	private void WireOutlineHover(BaseButton button) 
+	{
+		if (button.Material is ShaderMaterial whiteOutline)	
+		{
+			var temp = (ShaderMaterial)whiteOutline.Duplicate();
+			temp.SetShaderParam("line_thickness", 0f);
+			button.Material =  temp;
+		}
+		
+		button.Connect("mouse_entered", this, nameof(OnOutlineHover),
+			new Godot.Collections.Array {button, true});
+		button.Connect("mouse_exited", this, nameof(OnOutlineHover),
+			new Godot.Collections.Array {button, false});
+	}
+	
+	private void OnOutlineHover(Godot.Object obj, bool hovering)
+	{
+		var item = (CanvasItem)obj;
+		if (item.Material is ShaderMaterial mat)
+			mat.SetShaderParam("line_thickness", hovering ? 4f : 0f);
 	}
 }
