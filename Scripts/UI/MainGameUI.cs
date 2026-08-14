@@ -3,6 +3,8 @@ using Godot;
 public class MainGameUI : Control
 {
 	private DungeonData testDungeon;
+	private AudioStream shopMusic;
+	private AudioStream dungeonMusic;
 
 	private SceneManager sceneManager;
 	private DungeonView _dungeonView;
@@ -14,6 +16,8 @@ public class MainGameUI : Control
 	public override void _Ready()
 	{
 		testDungeon = GD.Load<DungeonData>("res://Resources/Dungeons/BaseDungeon.tres");
+		shopMusic = GD.Load<AudioStream>("res://Assets/Audio/Music/jauntyShop.mp3");
+		dungeonMusic = GD.Load<AudioStream>("res://Assets/Audio/Music/dungeonSynth.mp3");
 
 		sceneManager = GetNode<SceneManager>("/root/SceneManager");
 
@@ -50,6 +54,11 @@ public class MainGameUI : Control
 			GameManager.Instance.PendingVentureForth = false;
 			OnVentureForthPressed();
 		}
+		else
+		{
+			AudioManager.Instance.PlayMusic(shopMusic);
+		}
+
 		Refresh();
 	}
 	
@@ -106,6 +115,8 @@ public class MainGameUI : Control
 			resultLabel.Text = "Send at least one adventurer into the dungeon first.";
 			return;
 		}
+
+		AudioManager.Instance.PlayMusic(dungeonMusic);
 	/*
 		DungeonManager.Instance.StartRun(testDungeon, activeParty);
 
@@ -144,6 +155,7 @@ public class MainGameUI : Control
 	}
 	
 	private void FinishRun() {
+		AudioManager.Instance.PlayMusic(shopMusic);
 		DungeonManager.Instance.EndRun();
 		sceneManager.GoToReceipt();
 	}
