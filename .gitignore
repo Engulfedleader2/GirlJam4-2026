@@ -15,3 +15,27 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# ================================
+# macOS
+# ================================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Finder metadata
+._*
+
+# ================================
+# Windows
+# ================================
+
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+# Windows folder metadata
+Desktop.ini
+# Recycle Bin
+$RECYCLE.BIN/
