@@ -60,7 +60,7 @@ public class DesignShopUI : Control
 
 					if (!DesignManager.Instance.IsUnlocked(item))
 					{
-						var button = new Button { Text = $"{item.ItemName} - {item.Price}g" };
+						var button = new Button { Text = $"{item.ItemName} - {DesignManager.Instance.GetPrice(item)}g" };
 						button.Connect("pressed", this, nameof(OnBuyDesignPressed), new Godot.Collections.Array { item });
 						designsList.AddChild(button);
 					}

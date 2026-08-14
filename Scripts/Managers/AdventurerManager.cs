@@ -4,17 +4,21 @@ using System.Collections.Generic;
 
 public class AdventurerManager : Node
 {
+	private const string ConfigPath = "res://Resources/Config/GameConfig.cfg";
+
 	public static AdventurerManager Instance { get; private set; }
 
 	private const int CatalogSize = 3;
 	private const int PartySize = 3;
 
-	// Base adventurer stats
-	private const int HireCost = 10;
-	private const int MinBaseHP = 8;
-	private const int MaxBaseHP = 14;
-	private const int MinBaseAttack = 2;
-	private const int MaxBaseAttack = 5;
+	// Base adventurer stats. Reads from GameConfig.cfg
+	private int hireCost;
+	private int minBaseHp;
+	private int maxBaseHp;
+	private int minBaseAttack;
+	private int maxBaseAttack;
+
+	public int HireCost => hireCost;
 
 	private readonly Random random = new Random();
 
@@ -33,6 +37,15 @@ public class AdventurerManager : Node
 	public override void _Ready()
 	{
 		Instance = this;
+
+		var config = new ConfigFile();
+		config.Load(ConfigPath);
+		hireCost = (int)config.GetValue("Adventurers", "hire_cost", 10);
+		minBaseHp = (int)config.GetValue("Adventurers", "min_base_hp", 8);
+		maxBaseHp = (int)config.GetValue("Adventurers", "max_base_hp", 14);
+		minBaseAttack = (int)config.GetValue("Adventurers", "min_base_attack", 2);
+		maxBaseAttack = (int)config.GetValue("Adventurers", "max_base_attack", 5);
+
 		RefreshCatalog();
 	}
 
@@ -48,8 +61,8 @@ public class AdventurerManager : Node
 
 	public Adventurer GenerateAdventurer()
 	{
-		int baseMaxHp = random.Next(MinBaseHP, MaxBaseHP + 1);
-		int baseAttack = random.Next(MinBaseAttack, MaxBaseAttack + 1);
+		int baseMaxHp = random.Next(minBaseHp, maxBaseHp + 1);
+		int baseAttack = random.Next(minBaseAttack, maxBaseAttack + 1);
 
 		// Name will probably be picked when hiring
 		// Need to add the skin tone and face stuff later
@@ -81,7 +94,7 @@ public class AdventurerManager : Node
 			return false;
 		}
 
-		if (!GameManager.Instance.SpendTreasure(HireCost))
+		if (!GameManager.Instance.SpendTreasure(hireCost))
 		{
 			return false;
 		}

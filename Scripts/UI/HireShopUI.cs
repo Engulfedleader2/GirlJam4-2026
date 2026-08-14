@@ -3,8 +3,6 @@ using System.Collections.Generic;
 
 public class HireShopUI : Control
 {
-	private const int HireCost = 10;
-
 	private SceneManager sceneManager;
 	private Label headerLabel;
 	private VBoxContainer catalogList;
@@ -41,7 +39,7 @@ public class HireShopUI : Control
 
 		for (int i = 0; i < catalog.Count; i++)
 		{
-			var button = new Button { Text = $"Hire for {HireCost}g" };
+			var button = new Button { Text = $"Hire for {AdventurerManager.Instance.HireCost}g" };
 			button.Connect("pressed", this, nameof(OnHirePressed), new Godot.Collections.Array { i });
 			catalogList.AddChild(button);
 		}

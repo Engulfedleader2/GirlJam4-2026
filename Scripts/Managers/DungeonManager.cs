@@ -4,10 +4,12 @@ using System.Collections.Generic;
 
 public class DungeonManager : Node
 {
+	private const string ConfigPath = "res://Resources/Config/GameConfig.cfg";
+	private const int MaxRounds = 100;
+
 	public static DungeonManager Instance { get; private set; }
 
-	private const int MaxRounds = 100;
-	private const int GoldPerFloor = 20;
+	private int goldPerFloor;
 
 	private readonly Random random = new Random();
 
@@ -28,6 +30,10 @@ public class DungeonManager : Node
 	public override void _Ready()
 	{
 		Instance = this;
+
+		var config = new ConfigFile();
+		config.Load(ConfigPath);
+		goldPerFloor = (int)config.GetValue("Dungeon", "gold_per_floor", 20);
 	}
 	
 	public void BeginRun()
@@ -197,7 +203,7 @@ public class DungeonManager : Node
 
 	private void GiveFloorReward()
 	{
-		GameManager.Instance.AddTreasure(GoldPerFloor);
+		GameManager.Instance.AddTreasure(goldPerFloor);
 	}
 	/*
 	public void EndRun()
