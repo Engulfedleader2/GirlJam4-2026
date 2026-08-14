@@ -1,7 +1,8 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Clothing/ClothingData.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Characters/PaperDoll/Feet/feetHealerGoth.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Characters/SpriteDoll/Feet/gothShoes.png" type="Texture" id=3]
 
 [resource]
 script = ExtResource( 1 )
@@ -12,3 +13,5 @@ Class = 3
 Sprite = ExtResource( 2 )
 StatBonus = 1
 Rarity = 0
+PixelSprite = ExtResource( 3 )
+Price = 15

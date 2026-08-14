@@ -15,7 +15,7 @@ public class SpriteDoll : Node2D, IOutfitView
 	public void Equip(ClothingData item)
 	{
 		if (item == null) return;
-		SetClothing(item.Slot, item.PixelFront);
+		SetClothing(item.Slot, item.PixelSprite);
 	}
 	
 	public void UnequipSlot(ClothingSlot slot)

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Enemies/goblin.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Enemy/EnemyData.cs" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+EnemyName = "ThreeGoblin"
+MaxHP = 8
+Attack = 3
+Defense = 7
+Sprite = ExtResource( 1 )
+Level = 3
+Gold = 7
+IsBoss = false

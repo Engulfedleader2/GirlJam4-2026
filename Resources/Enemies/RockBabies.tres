@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Enemies/L8-Baby_golem.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Enemy/EnemyData.cs" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+EnemyName = "Rock Babies"
+MaxHP = 10
+Attack = 5
+Defense = 9
+Sprite = ExtResource( 1 )
+Level = 5
+Gold = 9
+IsBoss = false

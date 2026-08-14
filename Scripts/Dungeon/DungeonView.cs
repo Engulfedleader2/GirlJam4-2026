@@ -10,7 +10,7 @@ public class DungeonView : Node2D
 	[Export] private float _lungeDistance =  40f;
 	[Export] private PackedScene _partyDoll;
 	[Export] private float _enemyEntranceTime = 0.8f;
-	[Export] private float _enemyEntranceDistance = 90f;
+	[Export] private float _enemyEntranceDistance = 140f;
 	//[Export] private Vector2 _enemyScale = new Vector2(0.5f, 0.5f);
 	
 	private ParallaxBackground _parallax;
@@ -122,6 +122,7 @@ public class DungeonView : Node2D
 		_enemy = new Sprite {Texture = sprite, Centered = true};
 		_partyRoot.AddChild(_enemy);
 		_enemy.Position = _enemySlot.Position + new Vector2(_enemyEntranceDistance, 0);
+		_enemy.Scale = new Vector2(2f,2f);
 	}
 	
 	private async Task WalkEnemyIn()
@@ -191,6 +192,7 @@ public class DungeonView : Node2D
 			var doll = (SpriteDoll)_partyDoll.Instance();
 			_partyRoot.AddChild(doll);
 			doll.Position = _adventurerSlots[i].Position;
+			doll.Scale = new Vector2(2f,2f);
 			DressDoll(doll, party[i]);
 			_party.Add(doll);
 		}

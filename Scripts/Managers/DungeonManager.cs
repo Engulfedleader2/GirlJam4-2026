@@ -22,7 +22,7 @@ public class DungeonManager : Node
 	public int GoldEarned => _runGold;
 	public RunResult LastRun { get; private set; }
 	
-	private const int MaxFloors = 2;
+	private const int MaxFloors = 10;
 	public bool PartyWiped {get; private set;}
 	public bool HasNextFloor => CurrentFloor < MaxFloors;
 	public override void _Ready()
