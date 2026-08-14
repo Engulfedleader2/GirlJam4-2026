@@ -27,6 +27,12 @@ public class AudioManager : Node
 			return;
 		}
 
+		// Keeps track playing if no new audio call is detected
+		if (musicPlayer.Stream == music && musicPlayer.Playing)
+		{
+			return;
+		}
+
 		musicPlayer.Stream = music;
 		musicPlayer.Play();
 	}
