@@ -81,6 +81,11 @@ animations = [ {
 "speed": 8.0
 } ]
 
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 906, 448, 118, 99 )
+
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
 atlas = ExtResource( 3 )
@@ -90,11 +95,6 @@ region = Rect2( 286, 356, 301, 92 )
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 801, 303, 81, 145 )
-
-[sub_resource type="AtlasTexture" id=12]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 906, 448, 118, 99 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -128,27 +128,33 @@ centered = false
 [node name="WallLayer" type="ParallaxLayer" parent="Background"]
 motion_mirroring = Vector2( 1024, 0 )
 
-[node name="BrokenWall" type="Sprite" parent="Background/WallLayer"]
-position = Vector2( 1, 319 )
-texture = SubResource( 10 )
-centered = false
-
-[node name="Column" type="Sprite" parent="Background/WallLayer"]
-position = Vector2( 397, 373 )
-texture = SubResource( 11 )
-
 [node name="SpiderWeb" type="Sprite" parent="Background/WallLayer"]
 position = Vector2( 450, 112 )
 texture = SubResource( 12 )
 
-[node name="BrokenWall2" type="Sprite" parent="Background/WallLayer"]
-position = Vector2( 512, 317 )
-texture = SubResource( 10 )
-centered = false
-
 [node name="SpiderWeb2" type="Sprite" parent="Background/WallLayer"]
 position = Vector2( 964, 112 )
 texture = SubResource( 12 )
+
+[node name="FrontParallax" type="ParallaxBackground" parent="."]
+layer = 1
+
+[node name="FrontLayer" type="ParallaxLayer" parent="FrontParallax"]
+motion_mirroring = Vector2( 512, 0 )
+
+[node name="BrokenWall" type="Sprite" parent="FrontParallax/FrontLayer"]
+position = Vector2( 1, 319 )
+texture = SubResource( 10 )
+centered = false
+
+[node name="Column" type="Sprite" parent="FrontParallax/FrontLayer"]
+position = Vector2( 397, 373 )
+texture = SubResource( 11 )
+
+[node name="BrokenWall2" type="Sprite" parent="FrontParallax/FrontLayer"]
+position = Vector2( 512, 317 )
+texture = SubResource( 10 )
+centered = false
 
 [node name="Environment" type="Node2D" parent="."]
 visible = false

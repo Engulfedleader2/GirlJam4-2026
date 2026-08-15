@@ -63,18 +63,19 @@ public class ClosetUI : Node
 
 		// Temporary: makes sure there's someone to dress when testing this
 		// scene on its own, before the Tailor Shop hiring flow exists.
+		/* Removing since hiring is set up
 		if (AdventurerManager.Instance.Roster.Count == 0 && AdventurerManager.Instance.Catalog.Count > 0)
 		{
 			Adventurer freeHire = AdventurerManager.Instance.Catalog[0];
 			AdventurerManager.Instance.Catalog.Remove(freeHire);
 			AdventurerManager.Instance.Roster.Add(freeHire);
 		}
-
+		*/
 		RefreshPartyButtons();
 
-		if (AdventurerManager.Instance.Roster.Count > 0)
+		if (AdventurerManager.Instance.ActiveParty.Count > 0)
 		{
-			SelectAdventurer(AdventurerManager.Instance.Roster[0]);
+			SelectAdventurer(AdventurerManager.Instance.ActiveParty[0]);
 		}
 
 		// Setup each clothing category.
@@ -114,7 +115,7 @@ public class ClosetUI : Node
 	// Shows up to 3 roster members as buttons; click one to dress them.
 	private void RefreshPartyButtons()
 	{
-		List<Adventurer> roster = AdventurerManager.Instance.Roster;
+		List<Adventurer> roster = AdventurerManager.Instance.ActiveParty;
 
 		for (int i = 0; i < partyButtons.Length; i++)
 		{
@@ -146,7 +147,7 @@ public class ClosetUI : Node
 
 	private void OnPartyMemberPressed(int rosterIndex)
 	{
-		List<Adventurer> roster = AdventurerManager.Instance.Roster;
+		List<Adventurer> roster = AdventurerManager.Instance.ActiveParty;
 
 		if (rosterIndex < roster.Count)
 		{
@@ -256,12 +257,14 @@ public class ClosetUI : Node
 			*/
 			
 		Adventurer adv = AdventurerManager.Instance.Selected;
+		ClothingClass resolvedClass =
+			OutfitManager.Instance.GetResolvedClass();
 		if (adv == null) 
 		{
-			statsLabel.Text = "No adventurer selected";
+			statsLabel.Text = "No adventurer hired or activated! ";
 			return;
 		}
-		statsLabel.Text = $"Name: {adv.Name}\n" + $"HP: {adv.CurrentHP}/{adv.MaxHP}\n" + $"ATK: {adv.Attack}";
+		statsLabel.Text = $"Name: {adv.Name}\n" + $"HP: {adv.CurrentHP}/{adv.MaxHP}\n" + $"ATK: {adv.Attack}\n" + $"Class: {resolvedClass}";
 	}
 	
 	private void OnVentureHover(bool hovering)
@@ -298,7 +301,7 @@ public class ClosetUI : Node
 	private void OnOutfitChanged() 
 	{
 		UpdateStatsLabel();
-		int index = AdventurerManager.Instance.Roster.IndexOf(_selected);
+		int index = AdventurerManager.Instance.ActiveParty.IndexOf(_selected);
 		if(index >= 0 && index < partyDolls.Length) 
 			DressDoll(partyDolls[index], _selected);
 	}

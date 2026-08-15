@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/UI/ClosetUI.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/Character/PaperDoll.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/UI/ClothingDropZone.cs" type="Script" id=3]
 [ext_resource path="res://Assets/UI/dressingRoomBGUI.png" type="Texture" id=4]
-[ext_resource path="res://Assets/UI/ventureForth-cropped.png" type="Texture" id=5]
+[ext_resource path="res://Assets/UI/ventureForth.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/Shaders/WhiteOutline.gdshader" type="Shader" id=6]
 [ext_resource path="res://Assets/Environment/page_divider_atlas.tres" type="Texture" id=7]
 
@@ -12,6 +12,11 @@
 shader = ExtResource( 6 )
 shader_param/line_color = Color( 1, 1, 1, 1 )
 shader_param/line_thickness = 0.0
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 755, 919, 384, 119 )
 
 [node name="ClosetUI" type="Control"]
 anchor_right = 1.0
@@ -304,7 +309,7 @@ margin_left = 404.0
 margin_top = 512.0
 margin_right = 606.0
 margin_bottom = 574.0
-texture_normal = ExtResource( 5 )
+texture_normal = SubResource( 3 )
 expand = true
 
 [connection signal="mouse_entered" from="VentureForthButton" to="." method="_on_VentureForthButton_mouse_entered"]

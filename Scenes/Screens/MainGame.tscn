@@ -226,10 +226,10 @@ centered = false
 
 [node name="FloorChoice" type="Control" parent="."]
 visible = false
-margin_left = 328.0
-margin_top = 106.0
-margin_right = 443.0
-margin_bottom = 155.0
+margin_left = 332.0
+margin_top = 70.0
+margin_right = 447.0
+margin_bottom = 119.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="FloorChoice"]
 margin_left = 91.0

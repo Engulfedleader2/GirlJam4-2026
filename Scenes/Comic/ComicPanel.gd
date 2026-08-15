@@ -9,6 +9,7 @@ var start = false
 
 func _ready() -> void:
 	$AnimationPlayer.play("Transistion_out")
+	
 
 func _process(delta: float) -> void:
 	if can_play == true:
@@ -48,4 +49,10 @@ func _start():
 	start = true
 
 func _startGame():
-	get_tree().change_scene("res://Scenes/Screens/MainGame.tscn")
+	var game_manager = get_node("/root/GameManager")
+	var scene_manager = get_node("/root/SceneManager")
+	
+	game_manager.StartGame()
+	scene_manager.GoToMainGame()
+	
+	#get_tree().change_scene("res://Scenes/Screens/MainGame.tscn")

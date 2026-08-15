@@ -101,6 +101,12 @@ public class AdventurerManager : Node
 
 		Catalog.Remove(candidate);
 		Roster.Add(candidate);
+		
+		//trying this out activating adventurer on hire if theres currently less than 3 in roster 
+		if(ActiveParty.Count < PartySize)
+		{
+			ActiveParty.Add(candidate);
+		}
 
 		return true;
 	}

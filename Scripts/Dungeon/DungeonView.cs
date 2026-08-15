@@ -17,6 +17,7 @@ public class DungeonView : Node2D
 	//[Export] private Vector2 _enemyScale = new Vector2(0.5f, 0.5f);
 	
 	private ParallaxBackground _parallax;
+	private ParallaxBackground _foregroundparallax;
 	private Node2D _partyRoot;
 	private Tween _tween;
 	private Position2D[] _adventurerSlots;
@@ -35,6 +36,7 @@ public class DungeonView : Node2D
 	public override void _Ready()
 	{
 		_parallax = GetNode<ParallaxBackground>("Background");
+		_foregroundparallax = GetNode<ParallaxBackground>("FrontParallax");
 		_tween = GetNode<Tween>("Tween");
 		_enemySlot = GetNode<Position2D>("Adventurers/Enemy");
 		_fightScene = GetNode<AnimatedSprite>("FightScene");
@@ -53,7 +55,10 @@ public class DungeonView : Node2D
 	{
 		if(_state == DungeonState.Walking)
 		{
-			_parallax.ScrollOffset += new Vector2(-_scrollSpeed * delta, 0);
+			//both parallax at the same speed
+			Vector2 offset = new Vector2(-_scrollSpeed * delta, 0);
+			_parallax.ScrollOffset += offset;
+			_foregroundparallax.ScrollOffset += offset;
 			_hopTime += delta;
 			for (int i = 0; i < _party.Count; i++) 
 			{
