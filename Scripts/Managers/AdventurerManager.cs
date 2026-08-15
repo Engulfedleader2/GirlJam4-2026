@@ -64,10 +64,10 @@ public class AdventurerManager : Node
 		int baseMaxHp = random.Next(minBaseHp, maxBaseHp + 1);
 		int baseAttack = random.Next(minBaseAttack, maxBaseAttack + 1);
 
-		// Name will probably be picked when hiring
 		// Need to add the skin tone and face stuff later
 		return new Adventurer
 		{
+			Name = Names.All[random.Next(Names.All.Length)],
 			Dream = Dreams.All[random.Next(Dreams.All.Length)],
 			Class = ClothingClass.None,
 			BaseMaxHP = baseMaxHp,
