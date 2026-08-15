@@ -22,25 +22,31 @@ texture = ExtResource( 7 )
 centered = false
 
 [node name="Day2" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 1 )
 centered = false
 
 [node name="Day3" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 8 )
 centered = false
 
 [node name="Day4" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 3 )
 centered = false
 
 [node name="Day5" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 4 )
 centered = false
 
 [node name="Day6" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 2 )
 centered = false
 
 [node name="Day7" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 5 )
 centered = false
