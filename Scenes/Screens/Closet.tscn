@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/UI/ClosetUI.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/Character/PaperDoll.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Assets/UI/dressingRoomBGUI.png" type="Texture" id=4]
 [ext_resource path="res://Assets/UI/ventureForth-cropped.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/Shaders/WhiteOutline.gdshader" type="Shader" id=6]
+[ext_resource path="res://Assets/Environment/page_divider_atlas.tres" type="Texture" id=7]
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 6 )
@@ -26,28 +27,44 @@ expand = true
 [node name="HBox" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 40.0
-margin_bottom = -37.0
+margin_left = 56.0
+margin_top = 79.0
+margin_right = -35.0
+margin_bottom = -41.0
 
 [node name="OutfitOptions" type="ScrollContainer" parent="HBox"]
-margin_right = 338.0
-margin_bottom = 523.0
+margin_right = 308.0
+margin_bottom = 480.0
+rect_min_size = Vector2( 300, 480 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Categories" type="VBoxContainer" parent="HBox/OutfitOptions"]
-margin_right = 338.0
-margin_bottom = 140.0
+margin_right = 296.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 250, 500 )
 size_flags_horizontal = 3
 
 [node name="HeadRow" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
-margin_right = 338.0
-margin_bottom = 20.0
+margin_right = 296.0
+margin_bottom = 50.0
 
 [node name="Header" type="Button" parent="HBox/OutfitOptions/Categories/HeadRow"]
-margin_right = 338.0
-margin_bottom = 20.0
-text = "Head"
+margin_right = 296.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 50 )
+icon = ExtResource( 7 )
+flat = true
+expand_icon = true
+
+[node name="Label" type="Label" parent="HBox/OutfitOptions/Categories/HeadRow/Header"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -7.0
+margin_bottom = 7.0
+custom_colors/font_color = Color( 0.839216, 0.580392, 0.0901961, 1 )
+text = "         Head"
 
 [node name="Items" type="GridContainer" parent="HBox/OutfitOptions/Categories/HeadRow"]
 visible = false
@@ -57,14 +74,26 @@ margin_bottom = 22.0
 columns = 3
 
 [node name="BodyRow" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
-margin_top = 24.0
-margin_right = 338.0
-margin_bottom = 44.0
+margin_top = 54.0
+margin_right = 296.0
+margin_bottom = 104.0
 
 [node name="Header" type="Button" parent="HBox/OutfitOptions/Categories/BodyRow"]
-margin_right = 338.0
-margin_bottom = 20.0
-text = "Body"
+margin_right = 296.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 50 )
+icon = ExtResource( 7 )
+flat = true
+expand_icon = true
+
+[node name="Label" type="Label" parent="HBox/OutfitOptions/Categories/BodyRow/Header"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -7.0
+margin_bottom = 7.0
+custom_colors/font_color = Color( 0.839216, 0.580392, 0.0901961, 1 )
+text = "         Body"
 
 [node name="Items" type="GridContainer" parent="HBox/OutfitOptions/Categories/BodyRow"]
 visible = false
@@ -74,14 +103,26 @@ margin_bottom = 22.0
 columns = 3
 
 [node name="LegsRow" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
-margin_top = 48.0
-margin_right = 338.0
-margin_bottom = 68.0
+margin_top = 108.0
+margin_right = 296.0
+margin_bottom = 158.0
 
 [node name="Header" type="Button" parent="HBox/OutfitOptions/Categories/LegsRow"]
-margin_right = 338.0
-margin_bottom = 20.0
-text = "Legs"
+margin_right = 296.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 50 )
+icon = ExtResource( 7 )
+flat = true
+expand_icon = true
+
+[node name="Label" type="Label" parent="HBox/OutfitOptions/Categories/LegsRow/Header"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -7.0
+margin_bottom = 7.0
+custom_colors/font_color = Color( 0.839216, 0.580392, 0.0901961, 1 )
+text = "         Legs"
 
 [node name="Items" type="GridContainer" parent="HBox/OutfitOptions/Categories/LegsRow"]
 visible = false
@@ -91,14 +132,26 @@ margin_bottom = 22.0
 columns = 3
 
 [node name="FeetRow" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
-margin_top = 72.0
-margin_right = 338.0
-margin_bottom = 92.0
+margin_top = 162.0
+margin_right = 296.0
+margin_bottom = 212.0
 
 [node name="Header" type="Button" parent="HBox/OutfitOptions/Categories/FeetRow"]
-margin_right = 338.0
-margin_bottom = 20.0
-text = "Feet"
+margin_right = 296.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 50 )
+icon = ExtResource( 7 )
+flat = true
+expand_icon = true
+
+[node name="Label" type="Label" parent="HBox/OutfitOptions/Categories/FeetRow/Header"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -7.0
+margin_bottom = 7.0
+custom_colors/font_color = Color( 0.839216, 0.580392, 0.0901961, 1 )
+text = "         Feet"
 
 [node name="Items" type="GridContainer" parent="HBox/OutfitOptions/Categories/FeetRow"]
 visible = false
@@ -108,14 +161,27 @@ margin_bottom = 22.0
 columns = 3
 
 [node name="HairRow" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
-margin_top = 96.0
-margin_right = 338.0
-margin_bottom = 116.0
+margin_top = 216.0
+margin_right = 296.0
+margin_bottom = 266.0
 
 [node name="Header" type="Button" parent="HBox/OutfitOptions/Categories/HairRow"]
-margin_right = 338.0
-margin_bottom = 20.0
-text = "Hair"
+margin_right = 296.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 50 )
+icon = ExtResource( 7 )
+flat = true
+expand_icon = true
+
+[node name="Label" type="Label" parent="HBox/OutfitOptions/Categories/HairRow/Header"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -7.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 100, 50 )
+custom_colors/font_color = Color( 0.839216, 0.580392, 0.0901961, 1 )
+text = "         Hair"
 
 [node name="Items" type="GridContainer" parent="HBox/OutfitOptions/Categories/HairRow"]
 visible = false
@@ -125,14 +191,26 @@ margin_bottom = 22.0
 columns = 3
 
 [node name="AccessoryRow" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
-margin_top = 120.0
-margin_right = 338.0
-margin_bottom = 140.0
+margin_top = 270.0
+margin_right = 296.0
+margin_bottom = 320.0
 
 [node name="Header" type="Button" parent="HBox/OutfitOptions/Categories/AccessoryRow"]
-margin_right = 338.0
-margin_bottom = 20.0
-text = "Accessory"
+margin_right = 296.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 50 )
+icon = ExtResource( 7 )
+flat = true
+expand_icon = true
+
+[node name="Label" type="Label" parent="HBox/OutfitOptions/Categories/AccessoryRow/Header"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -7.0
+margin_bottom = 7.0
+custom_colors/font_color = Color( 0.839216, 0.580392, 0.0901961, 1 )
+text = "         Accessory"
 
 [node name="Items" type="GridContainer" parent="HBox/OutfitOptions/Categories/AccessoryRow"]
 visible = false
@@ -141,49 +219,72 @@ margin_right = 338.0
 margin_bottom = 22.0
 columns = 3
 
+[node name="VBoxContainer" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
+margin_top = 324.0
+margin_right = 296.0
+margin_bottom = 324.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
+margin_top = 328.0
+margin_right = 296.0
+margin_bottom = 328.0
+
 [node name="StatsPanel" type="VBoxContainer" parent="HBox"]
-margin_left = 342.0
-margin_right = 681.0
-margin_bottom = 523.0
+margin_left = 312.0
+margin_right = 620.0
+margin_bottom = 480.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBox/StatsPanel"]
+margin_right = 308.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 25, 25 )
 
 [node name="PartyRow" type="HBoxContainer" parent="HBox/StatsPanel"]
-margin_top = 242.0
-margin_right = 339.0
-margin_bottom = 262.0
+margin_top = 29.0
+margin_right = 308.0
+margin_bottom = 93.0
 alignment = 1
 
 [node name="Member0" type="Button" parent="HBox/StatsPanel/PartyRow"]
-margin_left = 140.0
-margin_right = 157.0
-margin_bottom = 20.0
-text = "-"
+margin_left = 54.0
+margin_right = 118.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+flat = true
 
 [node name="Member1" type="Button" parent="HBox/StatsPanel/PartyRow"]
-margin_left = 161.0
-margin_right = 178.0
-margin_bottom = 20.0
-text = "-"
+margin_left = 122.0
+margin_right = 186.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+flat = true
 
 [node name="Member2" type="Button" parent="HBox/StatsPanel/PartyRow"]
-margin_left = 182.0
-margin_right = 199.0
-margin_bottom = 20.0
-text = "-"
+margin_left = 190.0
+margin_right = 254.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+flat = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBox/StatsPanel"]
+margin_top = 97.0
+margin_right = 308.0
+margin_bottom = 197.0
+rect_min_size = Vector2( 0, 100 )
 
 [node name="StatsLabel" type="Label" parent="HBox/StatsPanel"]
-margin_top = 266.0
-margin_right = 339.0
-margin_bottom = 280.0
+margin_top = 201.0
+margin_right = 308.0
+margin_bottom = 215.0
 text = "Stats"
 align = 1
 
 [node name="CharacterPreview" type="Control" parent="HBox"]
-margin_left = 685.0
-margin_right = 1024.0
-margin_bottom = 523.0
+margin_left = 624.0
+margin_right = 933.0
+margin_bottom = 480.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 3 )

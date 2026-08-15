@@ -8,6 +8,10 @@ public class ClosetUI : Node
 	private const string ClothingDataRoot = "res://Resources/Clothing";
 
 	private PackedScene iconScene;
+	
+	private PackedScene spriteDollScene;
+	private readonly SpriteDoll[] partyDolls = new SpriteDoll[3];
+	private Adventurer _selected;
 
 	private ClothingLayerController paperDoll;
 	private Label statsLabel;
@@ -22,7 +26,7 @@ public class ClosetUI : Node
 			GetNode<SceneManager>("/root/SceneManager"),
 			nameof(SceneManager.GoToMainGame)
 		);
-
+		
 		// Get the paper doll and stats UI.
 		paperDoll = GetNode<ClothingLayerController>(
 			"HBox/CharacterPreview/PaperDoll"
@@ -38,7 +42,15 @@ public class ClosetUI : Node
 			GetNode<Button>("HBox/StatsPanel/PartyRow/Member1"),
 			GetNode<Button>("HBox/StatsPanel/PartyRow/Member2")
 		};
-
+		spriteDollScene = GD.Load<PackedScene>("res://Scenes/Character/SpriteDoll.tscn");
+		for (int i = 0; i < partyButtons.Length; i++)
+		{
+			var doll = (SpriteDoll)spriteDollScene.Instance();
+			partyButtons[i].AddChild(doll);
+			partyButtons[i].RectClipContent = false;
+			partyDolls[i] = doll;
+			doll.Position = partyButtons[i].RectMinSize / 2;
+		}
 		// Set this doll as the one currently being dressed.
 		OutfitManager.Instance.SetActiveDoll(paperDoll);
 
@@ -46,7 +58,7 @@ public class ClosetUI : Node
 		OutfitManager.Instance.Connect(
 			nameof(OutfitManager.OutfitChanged),
 			this,
-			nameof(UpdateStatsLabel)
+			nameof(OnOutfitChanged)
 		);
 
 		// Temporary: makes sure there's someone to dress when testing this
@@ -116,14 +128,18 @@ public class ClosetUI : Node
 			if (i < roster.Count)
 			{
 				Adventurer adventurer = roster[i];
-				button.Text = string.IsNullOrEmpty(adventurer.Name) ? "Adventurer" : adventurer.Name;
+				button.Visible = true;
+				//button.Text = string.IsNullOrEmpty(adventurer.Name) ? "Adventurer" : adventurer.Name;
 				button.Disabled = false;
+				partyDolls[i].Visible = true;
+				DressDoll(partyDolls[i], adventurer);
 				button.Connect("pressed", this, nameof(OnPartyMemberPressed), new Godot.Collections.Array { i });
 			}
 			else
 			{
 				button.Text = "-";
 				button.Disabled = true;
+				button.Visible = false;
 			}
 		}
 	}
@@ -141,6 +157,7 @@ public class ClosetUI : Node
 	// Selects who's being dressed and loads their current outfit onto the doll.
 	private void SelectAdventurer(Adventurer adventurer)
 	{
+		_selected = adventurer;
 		AdventurerManager.Instance.SelectAdventurer(adventurer);
 		OutfitManager.Instance.LoadAdventurerOutfit(adventurer);
 	}
@@ -227,6 +244,7 @@ public class ClosetUI : Node
 	// Refresh the current outfit bonus and class.
 	private void UpdateStatsLabel()
 	{
+		/*
 		int totalBonus =
 			OutfitManager.Instance.GetTotalStatBonus();
 
@@ -235,12 +253,21 @@ public class ClosetUI : Node
 
 		statsLabel.Text =
 			$"Total Bonus: {totalBonus}\nClass: {resolvedClass}";
+			*/
+			
+		Adventurer adv = AdventurerManager.Instance.Selected;
+		if (adv == null) 
+		{
+			statsLabel.Text = "No adventurer selected";
+			return;
+		}
+		statsLabel.Text = $"Name: {adv.Name}\n" + $"HP: {adv.CurrentHP}/{adv.MaxHP}\n" + $"ATK: {adv.Attack}";
 	}
 	
 	private void OnVentureHover(bool hovering)
 	{
 		var mat = (ShaderMaterial)GetNode<TextureButton>("VentureForthButton").Material;
-		mat.SetShaderParam("line_thickness", hovering ? 3.0f : 0.0f);
+		mat.SetShaderParam("line_thickness", hovering ? 4.0f : 0.0f);
 	}
 	
 	private void _on_VentureForthButton_mouse_entered()
@@ -258,5 +285,32 @@ public class ClosetUI : Node
 	{
 		GameManager.Instance.PendingVentureForth = true;
 		GetNode<SceneManager>("/root/SceneManager").GoToMainGame();
+	}
+	
+	//sprite doll methods
+	private void BuildDollStrip()
+	{
+		var strip = GetNode<Container>("HBox/StatsPanel/PartyRow");
+		
+		
+	}
+	
+	private void OnOutfitChanged() 
+	{
+		UpdateStatsLabel();
+		int index = AdventurerManager.Instance.Roster.IndexOf(_selected);
+		if(index >= 0 && index < partyDolls.Length) 
+			DressDoll(partyDolls[index], _selected);
+	}
+	
+	private void DressDoll(SpriteDoll doll, Adventurer adv) 
+	{
+		foreach (ClothingSlot slot in System.Enum.GetValues(typeof(ClothingSlot)))
+		{
+			if (adv.EquippedItems.TryGetValue(slot, out ClothingData item) && item != null)
+				doll.Equip(item);
+			else
+				doll.UnequipSlot(slot);
+		}
 	}
 }
