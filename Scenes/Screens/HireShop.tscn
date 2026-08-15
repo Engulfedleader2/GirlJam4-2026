@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/UI/HireShopUI.cs" type="Script" id=1]
-[ext_resource path="res://Assets/Environment/MainSceneBG.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Environment/MainSceneBG_BigTV.png" type="Texture" id=2]
+[ext_resource path="res://AssetDump/Main Scene/paperDollBase.png" type="Texture" id=3]
 
 [node name="HireShop" type="Control"]
 anchor_right = 1.0
@@ -15,11 +16,21 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1032.0
+margin_bottom = 609.0
+color = Color( 0, 0, 0, 0.552941 )
+
+[node name="Book" type="Sprite" parent="."]
+scale = Vector2( 0.54, 0.54 )
+texture = ExtResource( 3 )
+centered = false
+
 [node name="VBox" type="VBoxContainer" parent="."]
-margin_left = 40.0
-margin_top = 40.0
-margin_right = 460.0
-margin_bottom = 400.0
+margin_left = 116.0
+margin_top = 49.0
+margin_right = 536.0
+margin_bottom = 409.0
 
 [node name="HeaderLabel" type="Label" parent="VBox"]
 margin_right = 420.0
@@ -27,7 +38,8 @@ margin_bottom = 14.0
 text = "Mail Order Heroes - Treasure: 0"
 
 [node name="CatalogList" type="VBoxContainer" parent="VBox"]
-margin_top = 18.0
+margin_left = 20.0
+margin_top = 128.0
 margin_right = 420.0
 margin_bottom = 18.0
 
