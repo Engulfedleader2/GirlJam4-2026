@@ -12,6 +12,8 @@ public class MainGameUI : Control
 	private Label headerLabel;
 	private Label resultLabel;
 	private Control floorChoice;
+	
+	private bool _runActive;
 
 	public override void _Ready()
 	{
@@ -84,7 +86,16 @@ public class MainGameUI : Control
 		GetNode<Button>("FloorChoice/VBoxContainer/DelveButton").Connect("pressed", this, nameof(OnDelvePressed));
 		_dungeonView.Connect(nameof(DungeonView.PlaybackFinished), this, nameof(OnFloorFinished));
 	}
-
+	
+	private void SetMenusEnabled(bool enabled)
+	{
+		//add buttons that shouldnt be clickable during dungeon run
+		GetNode<TextureButton>("CurtainButton").Disabled = !enabled;
+		GetNode<TextureButton>("ClipboardButton").Disabled = !enabled;
+		GetNode<TextureButton>("TagButton").Disabled = !enabled;
+		
+		
+	}
 	private void Refresh()
 	{
 		headerLabel.Text = $"Day {GameManager.Instance.CurrentDay} - Treasure: {GameManager.Instance.Treasure}";
@@ -129,6 +140,8 @@ public class MainGameUI : Control
 			DungeonManager.Instance.AdvanceFloor();
 		}
 	*/
+		_runActive = true;
+		SetMenusEnabled(false);
 	
 		DungeonManager.Instance.BeginRun();
 		_dungeonView.StartPlayback(activeParty, DungeonManager.Instance.BuildCurrentFloor(activeParty));
@@ -159,6 +172,8 @@ public class MainGameUI : Control
 	}
 	
 	private void FinishRun() {
+		_runActive = false;
+		SetMenusEnabled(true);
 		AudioManager.Instance.PlayMusic(shopMusic);
 		DungeonManager.Instance.EndRun();
 		sceneManager.GoToReceipt();
