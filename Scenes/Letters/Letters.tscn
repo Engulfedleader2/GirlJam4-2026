@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/Letters/Letter_Day2.PNG" type="Texture" id=1]
+[ext_resource path="res://Assets/Letters/Letter_Day6.PNG" type="Texture" id=2]
+[ext_resource path="res://Assets/Letters/Letter_Day4.PNG" type="Texture" id=3]
+[ext_resource path="res://Assets/Letters/Letter_Day5.PNG" type="Texture" id=4]
+[ext_resource path="res://Assets/Letters/Letter_Day7.PNG" type="Texture" id=5]
+[ext_resource path="res://Scenes/Letters/Letters.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Letters/Letter_Day1.PNG" type="Texture" id=7]
+[ext_resource path="res://Assets/Letters/Letter_Day3.PNG" type="Texture" id=8]
+
+[node name="Letters" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1027.0
+margin_bottom = 602.0
+color = Color( 0, 0, 0, 0.313726 )
+
+[node name="Day1" type="Sprite" parent="."]
+texture = ExtResource( 7 )
+centered = false
+
+[node name="Day2" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Day3" type="Sprite" parent="."]
+texture = ExtResource( 8 )
+centered = false
+
+[node name="Day4" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Day5" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Day6" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Day7" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+centered = false
