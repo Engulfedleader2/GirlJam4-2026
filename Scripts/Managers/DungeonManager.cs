@@ -23,6 +23,9 @@ public class DungeonManager : Node
 	private int _runGold;
 	public int GoldEarned => _runGold;
 	public RunResult LastRun { get; private set; }
+
+	// Which enemy actually killed each adventurer this run, for accurate death messages.
+	private readonly Dictionary<Adventurer, EnemyData> deathCauses = new Dictionary<Adventurer, EnemyData>();
 	
 	private const int MaxFloors = 10;
 	public bool PartyWiped {get; private set;}
@@ -41,6 +44,7 @@ public class DungeonManager : Node
 		_runGold = 0;
 		CurrentFloor = 1;
 		PartyWiped = false;
+		deathCauses.Clear();
 	}
 	
 	public void AdvanceToNextFloor() => CurrentFloor++;
@@ -100,12 +104,22 @@ public class DungeonManager : Node
 			foreach (Adventurer a in party)
 				if (a.IsAlive) enemy.TakeDamage(a.Attack);
 			var survivors = party.FindAll(a => a.IsAlive);
-			if (enemy.IsAlive && survivors.Count > 0)
+			// Survivors go attack go BRRR first
+			if (survivors.Count > 0)
 				survivors[rng.Next(survivors.Count)].TakeDamage(enemy.Attack);
 			
 			rounds++;
 		}
-		if(!enemy.IsAlive) 
+
+		foreach (Adventurer adventuree in party)
+		{
+			if (!adventuree.IsAlive && !deathCauses.ContainsKey(adventuree))
+			{
+				deathCauses[adventuree] = data;
+			}
+		}
+
+		if(!enemy.IsAlive)
 			_runGold += data.Gold;
 		return !party.Exists(a => a.IsAlive);
 	}
@@ -249,7 +263,9 @@ public class DungeonManager : Node
 				survivors ++;
 			}
 			else {
-				result.AdventurerOutcomes.Add($"{name} did not return.");
+				string cause = DeathMessages.Descriptions[random.Next(DeathMessages.Descriptions.Length)];
+				string activity = BuildActivity(a);
+				result.AdventurerOutcomes.Add($"{name}: {cause} while {activity}.");
 				AdventurerManager.Instance.HandleDeadAdventurer(a);
 				fallen++;
 			}
@@ -264,5 +280,16 @@ public class DungeonManager : Node
 	private bool HasSurvivors()
 	{
 		return Party.Exists(adventurer => adventurer.IsAlive);
+	}
+
+	// Half the time, name the actual enemy that killed them; otherwise a generic activity.
+	private string BuildActivity(Adventurer adventurer)
+	{
+		if (deathCauses.TryGetValue(adventurer, out EnemyData killer) && random.Next(2) == 0)
+		{
+			return $"fleeing {killer.EnemyName}";
+		}
+
+		return DeathMessages.While[random.Next(DeathMessages.While.Length)];
 	}
 }

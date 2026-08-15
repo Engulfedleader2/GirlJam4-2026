@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Clothing/ClothingData.cs" type="Script" id=1]
+[ext_resource path="res://Assets/Characters/PaperDoll/Legs/legsTankSM.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+Id = "legs_tank_sm"
+ItemName = "SM Legs"
+Slot = 2
+Class = 1
+Sprite = ExtResource( 2 )
+StatBonus = 1
+Rarity = 0
+Price = 15

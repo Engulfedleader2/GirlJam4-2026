@@ -57,6 +57,7 @@ public class GameManager : Node
 		CurrentDay++;
 		CurrentPhase = GamePhase.Dressing;
 
+		AdventurerManager.Instance.RefreshCatalog();
 	}
 	public void SetGamePhases(GamePhase phase)
 	{
