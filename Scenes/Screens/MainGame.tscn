@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scripts/UI/MainGameUI.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Environment/MainSceneBG_BigTV.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Assets/Environment/CurtainBgs_.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Environment/ClipboardBgs_.png" type="Texture" id=8]
 [ext_resource path="res://Scripts/Transistion/AnimationPlayer_script.gd" type="Script" id=9]
+[ext_resource path="res://Assets/UI/CallThemBack.png" type="Texture" id=10]
+[ext_resource path="res://Assets/UI/DelveDeeper.png" type="Texture" id=11]
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 6 )
@@ -29,6 +31,16 @@ region = Rect2( 854, 840, 197, 138 )
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 579, 372, 92, 153 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 758, 917, 383, 118 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 757, 916, 384, 124 )
 
 [sub_resource type="Shader" id=9]
 code = "shader_type canvas_item;
@@ -224,29 +236,41 @@ scale = Vector2( 0.533333, 0.533333 )
 texture = ExtResource( 4 )
 centered = false
 
-[node name="FloorChoice" type="Control" parent="."]
-visible = false
-margin_left = 332.0
-margin_top = 70.0
-margin_right = 447.0
-margin_bottom = 119.0
+[node name="FloorChoice" type="Control" parent="Control"]
+margin_left = -2.0
+margin_top = 4.0
+margin_right = 207.0
+margin_bottom = 154.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="FloorChoice"]
-margin_left = 91.0
-margin_top = 32.0
-margin_right = 193.0
-margin_bottom = 76.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/FloorChoice"]
+margin_right = 200.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 200, 200 )
 
-[node name="ReturnButton" type="Button" parent="FloorChoice/VBoxContainer"]
-margin_right = 102.0
-margin_bottom = 20.0
-text = "RETURN"
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/FloorChoice/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 0, 25 )
 
-[node name="DelveButton" type="Button" parent="FloorChoice/VBoxContainer"]
-margin_top = 24.0
-margin_right = 102.0
-margin_bottom = 44.0
-text = "DELVE DEEPER"
+[node name="ReturnButton" type="Button" parent="Control/FloorChoice/VBoxContainer"]
+margin_top = 29.0
+margin_right = 200.0
+margin_bottom = 79.0
+rect_min_size = Vector2( 100, 50 )
+icon = SubResource( 14 )
+flat = true
+icon_align = 1
+expand_icon = true
+
+[node name="DelveButton" type="Button" parent="Control/FloorChoice/VBoxContainer"]
+margin_top = 83.0
+margin_right = 200.0
+margin_bottom = 133.0
+rect_min_size = Vector2( 150, 50 )
+icon = SubResource( 15 )
+flat = true
+icon_align = 1
+expand_icon = true
 
 [node name="TV" type="TextureRect" parent="."]
 visible = false

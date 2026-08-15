@@ -80,10 +80,10 @@ public class MainGameUI : Control
 		texture.Flags = 0;
 		GetNode<TextureRect>("Control/TVScreen").Texture = texture;
 		
-		floorChoice = GetNode<Control>("FloorChoice");
+		floorChoice = GetNode<Control>("Control/FloorChoice");
 		floorChoice.Visible = false;
-		GetNode<Button>("FloorChoice/VBoxContainer/ReturnButton").Connect("pressed", this, nameof(OnReturnPressed));
-		GetNode<Button>("FloorChoice/VBoxContainer/DelveButton").Connect("pressed", this, nameof(OnDelvePressed));
+		GetNode<Button>("Control/FloorChoice/VBoxContainer/ReturnButton").Connect("pressed", this, nameof(OnReturnPressed));
+		GetNode<Button>("Control/FloorChoice/VBoxContainer/DelveButton").Connect("pressed", this, nameof(OnDelvePressed));
 		_dungeonView.Connect(nameof(DungeonView.PlaybackFinished), this, nameof(OnFloorFinished));
 	}
 	
