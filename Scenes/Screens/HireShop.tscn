@@ -19,7 +19,7 @@ stretch_mode = 6
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1032.0
 margin_bottom = 609.0
-color = Color( 0, 0, 0, 0.552941 )
+color = Color( 0, 0, 0, 0.67451 )
 
 [node name="Book" type="Sprite" parent="."]
 scale = Vector2( 0.54, 0.54 )
@@ -38,8 +38,7 @@ margin_bottom = 14.0
 text = "Mail Order Heroes - Treasure: 0"
 
 [node name="CatalogList" type="VBoxContainer" parent="VBox"]
-margin_left = 20.0
-margin_top = 128.0
+margin_top = 18.0
 margin_right = 420.0
 margin_bottom = 18.0
 

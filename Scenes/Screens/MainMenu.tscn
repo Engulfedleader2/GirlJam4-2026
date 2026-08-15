@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/UI/MainMenu.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/Screens/ParallaxBackground_script.gd" type="Script" id=2]
@@ -87,6 +87,8 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0.0, 1.05 ]
 }
+
+[sub_resource type="StyleBoxEmpty" id=15]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource( 1 )
@@ -201,6 +203,7 @@ margin_left = 390.0
 margin_top = 455.0
 margin_right = 618.0
 margin_bottom = 530.0
+custom_styles/focus = SubResource( 15 )
 flat = true
 script = ExtResource( 6 )
 
