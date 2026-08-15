@@ -9,9 +9,9 @@ public class ReceiptUI : Control
 	public override void _Ready()
 	{
 		sceneManager = GetNode<SceneManager>("/root/SceneManager");
-		recapLabel = GetNode<Label>("RecapLabel");
+		recapLabel = GetNode<Label>("HBoxContainer/VBoxContainer/RecapLabel");
 
-		GetNode<Button>("ContinueButton").Connect(
+		GetNode<Button>("HBoxContainer/VBoxContainer/ContinueButton").Connect(
 			"pressed", this, nameof(OnContinuePressed)
 		);
 		recapLabel.AddColorOverride("font_color", new Color(0.1f, 0.1f, 0.1f));
