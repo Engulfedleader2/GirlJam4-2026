@@ -1,9 +1,10 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Assets/Dungeon/Lanterns.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Dungeon/Column.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Dungeon/Broken wall.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Dungeon/Layer 1.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Shaders/WhiteOutline.gdshader" type="Shader" id=5]
 [ext_resource path="res://Scripts/Dungeon/DungeonView.cs" type="Script" id=10]
 [ext_resource path="res://Assets/Dust/Dust_86416.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Dust/Dust_86415.png" type="Texture" id=13]
@@ -31,6 +32,11 @@
 [ext_resource path="res://Assets/Dust/Dust_86411.png" type="Texture" id=35]
 [ext_resource path="res://Scenes/Character/SpriteDoll.tscn" type="PackedScene" id=36]
 [ext_resource path="res://Assets/Dungeon/Background.png" type="Texture" id=37]
+
+[sub_resource type="ShaderMaterial" id=13]
+shader = ExtResource( 5 )
+shader_param/line_color = Color( 1, 1, 1, 1 )
+shader_param/line_thickness = 4.0
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
@@ -101,6 +107,7 @@ animations = [ {
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 10 )
 _partyDoll = ExtResource( 36 )
+_outlineMaterial = SubResource( 13 )
 
 [node name="Background" type="ParallaxBackground" parent="."]
 
@@ -122,7 +129,7 @@ centered = false
 motion_mirroring = Vector2( 1024, 0 )
 
 [node name="BrokenWall" type="Sprite" parent="Background/WallLayer"]
-position = Vector2( 2, 354 )
+position = Vector2( 1, 319 )
 texture = SubResource( 10 )
 centered = false
 
@@ -135,7 +142,7 @@ position = Vector2( 450, 112 )
 texture = SubResource( 12 )
 
 [node name="BrokenWall2" type="Sprite" parent="Background/WallLayer"]
-position = Vector2( 516, 355 )
+position = Vector2( 512, 317 )
 texture = SubResource( 10 )
 centered = false
 
@@ -149,16 +156,16 @@ visible = false
 [node name="Adventurers" type="Node2D" parent="."]
 
 [node name="Adven1" type="Position2D" parent="Adventurers"]
-position = Vector2( 40, 330 )
+position = Vector2( 50, 330 )
 
 [node name="Adven2" type="Position2D" parent="Adventurers"]
-position = Vector2( 100, 330 )
+position = Vector2( 110, 330 )
 
 [node name="Adven3" type="Position2D" parent="Adventurers"]
-position = Vector2( 160, 330 )
+position = Vector2( 170, 330 )
 
 [node name="Enemy" type="Position2D" parent="Adventurers"]
-position = Vector2( 400, 120 )
+position = Vector2( 400, 200 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

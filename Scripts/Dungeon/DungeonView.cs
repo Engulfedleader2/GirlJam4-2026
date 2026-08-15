@@ -11,6 +11,9 @@ public class DungeonView : Node2D
 	[Export] private PackedScene _partyDoll;
 	[Export] private float _enemyEntranceTime = 0.8f;
 	[Export] private float _enemyEntranceDistance = 140f;
+	[Export] private float _hopSpeed = 8f;
+	[Export] private float _hopHeight = 15f;
+	[Export] private ShaderMaterial _outlineMaterial; 
 	//[Export] private Vector2 _enemyScale = new Vector2(0.5f, 0.5f);
 	
 	private ParallaxBackground _parallax;
@@ -19,6 +22,7 @@ public class DungeonView : Node2D
 	private Position2D[] _adventurerSlots;
 	private Position2D _enemySlot;
 	private AnimatedSprite _fightScene;
+	private float _hopTime;
 	
 	private enum DungeonState {Walking, Fighting, Idle}
 	private DungeonState _state = DungeonState.Idle;
@@ -48,7 +52,17 @@ public class DungeonView : Node2D
 	public override void _Process(float delta)
 	{
 		if(_state == DungeonState.Walking)
+		{
 			_parallax.ScrollOffset += new Vector2(-_scrollSpeed * delta, 0);
+			_hopTime += delta;
+			for (int i = 0; i < _party.Count; i++) 
+			{
+				if(!_party[i].Visible) continue;
+				Vector2 home = _adventurerSlots[i].Position;
+				float hop = Mathf.Sin(_hopTime  * _hopSpeed + i) * _hopHeight;
+				_party[i].Position = new Vector2(home.x, home.y + hop);
+			}
+		}
 	}
 	
 	private void ClearParty()
@@ -119,7 +133,7 @@ public class DungeonView : Node2D
 	}
 	private void SpawnEnemy(Texture sprite)
 	{
-		_enemy = new Sprite {Texture = sprite, Centered = true};
+		_enemy = new Sprite {Texture = sprite, Centered = true, Material = _outlineMaterial};
 		_partyRoot.AddChild(_enemy);
 		_enemy.Position = _enemySlot.Position + new Vector2(_enemyEntranceDistance, 0);
 		_enemy.Scale = new Vector2(2f,2f);
@@ -193,6 +207,7 @@ public class DungeonView : Node2D
 			_partyRoot.AddChild(doll);
 			doll.Position = _adventurerSlots[i].Position;
 			doll.Scale = new Vector2(2f,2f);
+			doll.GetNode<Sprite>("Body").Material = _outlineMaterial;
 			DressDoll(doll, party[i]);
 			_party.Add(doll);
 		}
@@ -207,6 +222,13 @@ public class DungeonView : Node2D
 	
 	private void SetState(DungeonState next) {
 		_state = next;
+		
+		if (next != DungeonState.Walking) {
+			for (int i = 0; i < _party.Count; i++) {
+				if (_party[i].Visible)
+					_party[i].Position = _adventurerSlots[i].Position;
+			}
+		}
 		bool walking = next == DungeonState.Walking;
 		foreach (SpriteDoll doll in _party)
 			if (doll.Visible)
