@@ -46,3 +46,6 @@ func _pause():
 
 func _start():
 	start = true
+
+func _startGame():
+	get_tree().change_scene("res://Scenes/Screens/MainGame.tscn")

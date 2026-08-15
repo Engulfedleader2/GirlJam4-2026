@@ -176,6 +176,7 @@ tracks/13/keys = {
 
 [sub_resource type="Animation" id=11]
 resource_name = "Transistion_in"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Circle2:material:shader_param/circle_size")
 tracks/0/interp = 1
@@ -235,6 +236,20 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_startGame"
+} ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -841,7 +856,7 @@ tracks/6/keys = {
 "values": [ Vector2( 756, 1217 ), Vector2( 254, 1219 ) ]
 }
 
-[sub_resource type="Shader" id=9]
+[sub_resource type="Shader" id=12]
 code = "shader_type canvas_item;
 render_mode unshaded;
 
@@ -856,7 +871,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id=10]
-shader = SubResource( 9 )
+shader = SubResource( 12 )
 shader_param/circle_size = 1.05
 shader_param/screen_width = 1955.0
 shader_param/screen_height = 1158.0
@@ -928,6 +943,7 @@ margin_left = -20.0
 margin_top = -111.0
 margin_right = 830.0
 margin_bottom = 394.0
+mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 
 [node name="Circle2" type="ColorRect" parent="."]
@@ -937,4 +953,5 @@ margin_left = -7.0
 margin_top = -44.0
 margin_right = 1948.0
 margin_bottom = 1114.0
+mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
