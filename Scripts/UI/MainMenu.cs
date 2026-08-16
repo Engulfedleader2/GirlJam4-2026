@@ -14,6 +14,8 @@ public class MainMenu : Node2D
 		gameManager = GetNode<GameManager>("/root/GameManager");
 		sceneManager = GetNode<SceneManager>("/root/SceneManager");
 
+		AudioManager.Instance.PlayMusic(GD.Load<AudioStream>("res://Assets/Audio/Music/SLORP.mp3"));
+
 		playButton = GetNode<Button>(
 			"UI/CenterContainer/VBoxContainer/PlayButton"
 		);
