@@ -31,7 +31,12 @@ public class DesignManager : Node
 		LoadAllClothing();
 		RefreshStock();
 	}
-
+	
+	public void Reset()
+	{
+		unlockedIds.Clear();
+		RefreshStock();
+	}
 	private void LoadAllClothing()
 	{
 		allClothing.Clear();

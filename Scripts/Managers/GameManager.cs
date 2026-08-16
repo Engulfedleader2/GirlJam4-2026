@@ -76,6 +76,9 @@ public class GameManager : Node
 		IsGameOver = false;
 		Reason = GameOverReason.None;
 		ActivateTransition();
+		
+		AdventurerManager.Instance.Reset();
+		DesignManager.Instance.Reset();
 	}
 
 	public void AdvanceDay()

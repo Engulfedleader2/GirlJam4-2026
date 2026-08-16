@@ -1,6 +1,6 @@
 using Godot;
 
-public class LoseScreenUI : Node2D
+public class LoseScreenUI : Control
 {
 	private SceneManager sceneManager;
 

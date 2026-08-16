@@ -85,6 +85,16 @@ public class AdventurerManager : Node
 			Selected = adventurer;
 		}
 	}
+	//need to handle game over new games
+	public void Reset() 
+	{
+		Catalog.Clear();
+		Roster.Clear();
+		ActiveParty.Clear();
+		Selected = null;
+		
+		RefreshCatalog();
+	}
 
 	public bool HireAdventurer(Adventurer candidate)
 	{
@@ -150,4 +160,5 @@ public class AdventurerManager : Node
 			Selected = null;
 		}
 	}
+	
 }

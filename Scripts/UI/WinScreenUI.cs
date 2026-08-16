@@ -1,6 +1,6 @@
 using Godot;
 
-public class WinScreenUI : Node2D
+public class WinScreenUI : Control
 {
 	private SceneManager sceneManager;
 
