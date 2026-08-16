@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Scripts/UI/MainGameUI.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Environment/MainSceneBG_BigTV.png" type="Texture" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://Assets/UI_Widget/Day6.PNG" type="Texture" id=21]
 [ext_resource path="res://Assets/UI_Widget/Day3.PNG" type="Texture" id=22]
 [ext_resource path="res://Assets/Font/LeckerliOne-Regular.ttf" type="DynamicFontData" id=23]
+[ext_resource path="res://Scenes/Letters/Letters.tscn" type="PackedScene" id=24]
 
 [sub_resource type="DynamicFont" id=19]
 size = 30
@@ -430,3 +431,6 @@ anims/RESET = SubResource( 11 )
 anims/Transistion_in = SubResource( 12 )
 anims/Transistion_out = SubResource( 13 )
 script = ExtResource( 9 )
+
+[node name="Letters" parent="." instance=ExtResource( 24 )]
+visible = false

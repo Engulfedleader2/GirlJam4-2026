@@ -2,6 +2,7 @@ extends Node2D
 
 
 var index = 1
+signal tutorial_finished
 
 
 func _ready():
@@ -12,6 +13,7 @@ func _ready():
 		hide()
 		$Button.disabled = true
 		set_process(false)
+		call_deferred("emit_signal", "tutorial_finished")
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -41,6 +43,7 @@ func _process(_delta):
 		$Button.disabled = true
 		get_node("/root/GameManager").MarkTutorialSeen()
 		set_process(false)
+		emit_signal("tutorial_finished")
 
 func _input(event):
 	if event.is_action_pressed("next"):
