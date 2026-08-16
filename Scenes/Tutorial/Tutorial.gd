@@ -3,6 +3,13 @@ extends Node2D
 
 var index = 1
 
+
+func _ready():
+	if get_node("/root/GameManager").HasSeenTutorial():
+		hide()
+		$Button.disabled = true
+		set_process(false)
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if index <= 0:
@@ -29,6 +36,8 @@ func _process(_delta):
 		index = 10
 		$".".hide()
 		$Button.disabled = true
+		get_node("/root/GameManager").MarkTutorialSeen()
+		set_process(false)
 
 func _input(event):
 	if event.is_action_pressed("next"):
@@ -36,8 +45,8 @@ func _input(event):
 	if event. is_action_pressed("previous"):
 		index -= 1
 
-func _on_Button_pressed():
-	index += 1
+#func _on_Button_pressed():
+#	index += 1
 
 
 func page1():

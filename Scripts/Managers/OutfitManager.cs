@@ -34,10 +34,22 @@ public class OutfitManager : Node
 			return;
 		}
 
-		activeDoll.EquipItem(item);
 
 		Adventurer adventurer = AdventurerManager.Instance.Selected;
-
+		
+		
+		foreach (Adventurer temp in AdventurerManager.Instance.Roster)
+		{
+			if(temp == adventurer) continue;
+			if (temp.EquippedItems.TryGetValue(item.Slot, out ClothingData worn) && worn == item)
+			{
+				temp.EquippedItems.Remove(item.Slot);
+				ApplyOutfitToAdventurer(temp);
+			}
+		}
+		
+		activeDoll.EquipItem(item);
+		
 		if (adventurer != null)
 		{
 			adventurer.EquippedItems[item.Slot] = item;
@@ -64,6 +76,25 @@ public class OutfitManager : Node
 			ApplyOutfitToAdventurer(adventurer);
 		}
 
+		EmitSignal(nameof(OutfitChanged));
+	}
+	
+	public void UnequipAll()
+	{
+		if (activeDoll == null)
+		{
+			return;
+		}
+		Adventurer adventurer = AdventurerManager.Instance.Selected;
+		
+		if(adventurer == null) return;
+		
+		foreach (ClothingSlot slot in System.Enum.GetValues(typeof(ClothingSlot)))
+		{
+			activeDoll.UnequipSlot(slot);
+			adventurer.EquippedItems.Remove(slot);
+		}
+		ApplyOutfitToAdventurer(adventurer);
 		EmitSignal(nameof(OutfitChanged));
 	}
 

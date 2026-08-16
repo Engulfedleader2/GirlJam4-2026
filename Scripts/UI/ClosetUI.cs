@@ -301,9 +301,15 @@ public class ClosetUI : Node
 	private void OnOutfitChanged() 
 	{
 		UpdateStatsLabel();
+		/*
 		int index = AdventurerManager.Instance.ActiveParty.IndexOf(_selected);
 		if(index >= 0 && index < partyDolls.Length) 
 			DressDoll(partyDolls[index], _selected);
+		*/
+		List<Adventurer> party = AdventurerManager.Instance.ActiveParty;
+		for(int i = 0; i < partyDolls.Length; i++)
+			if(partyDolls[i].Visible && i < party.Count)
+				DressDoll(partyDolls[i], party[i]);
 	}
 	
 	private void DressDoll(SpriteDoll doll, Adventurer adv) 
@@ -315,5 +321,9 @@ public class ClosetUI : Node
 			else
 				doll.UnequipSlot(slot);
 		}
+	}
+	private void _on_UnequipButton_pressed()
+	{
+		OutfitManager.Instance.UnequipAll();
 	}
 }

@@ -5,6 +5,7 @@ public class GameManager : Node
 {
 	private const string ConfigPath = "res://Resources/Config/GameConfig.cfg";
 	private bool _transition;
+	private bool _tutorialSeen;
 	public static GameManager Instance {get; private set; }
 
 	public enum GamePhase
@@ -25,6 +26,13 @@ public class GameManager : Node
 	public int CurrentDay { get; private set; }
 	public int Treasure { get; private set; }
 	public bool PendingVentureForth { get; set;}
+	public bool HasSeenTutorial() {
+		return _tutorialSeen;
+	}
+	public void MarkTutorialSeen()
+	{
+		_tutorialSeen = true;
+	}
 	public override void _Ready()
 	{
 		Instance = this;
