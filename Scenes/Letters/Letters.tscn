@@ -5,11 +5,13 @@
 [ext_resource path="res://Assets/Letters/Letter_Day4.PNG" type="Texture" id=3]
 [ext_resource path="res://Assets/Letters/Letter_Day5.PNG" type="Texture" id=4]
 [ext_resource path="res://Assets/Letters/Letter_Day7.PNG" type="Texture" id=5]
-[ext_resource path="res://Scenes/Letters/Letters.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/Letters/LettersUI.cs" type="Script" id=6]
 [ext_resource path="res://Assets/Letters/Letter_Day1.PNG" type="Texture" id=7]
 [ext_resource path="res://Assets/Letters/Letter_Day3.PNG" type="Texture" id=8]
 
-[node name="Letters" type="Node2D"]
+[node name="Letters" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 6 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -50,3 +52,21 @@ centered = false
 visible = false
 texture = ExtResource( 5 )
 centered = false
+
+[node name="PrevButton" type="Button" parent="."]
+margin_left = 365.0
+margin_top = 453.0
+margin_right = 377.0
+margin_bottom = 473.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "<"
+flat = true
+
+[node name="NextButton" type="Button" parent="."]
+margin_left = 608.0
+margin_top = 453.0
+margin_right = 620.0
+margin_bottom = 473.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = ">"
+flat = true

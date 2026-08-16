@@ -15,6 +15,7 @@ public class MainGameUI : Control
 	private Label treasureLabel;
 	private Control floorChoice;
 	private TextureRect calendarDay;
+	private LettersUI lettersUI;
 	private bool _runActive;
 
 	public override void _Ready()
@@ -29,6 +30,8 @@ public class MainGameUI : Control
 		//headerLabel = GetNode<Label>("VBox/HeaderLabel");
 		resultLabel = GetNode<Label>("VBox/ResultLabel");
 		treasureLabel = GetNode<Label>("VBoxContainer/Gold/MarginContainer/TreasureLabel");
+		lettersUI = GetNode<LettersUI>("Letters");
+		
 		SetupDungeonViewport();
 		GetNode<Button>("VBox/ButtonRow/DressPartyButton").Connect(
 			"pressed", this, nameof(OnDressPartyPressed)
@@ -57,12 +60,16 @@ public class MainGameUI : Control
 		GetNode<TextureButton>("GreenBookButton").Connect(
 			"pressed", this, nameof(OnDesignsPressed)
 		);
-
+		GetNode<Button>("VBoxContainer/HBoxContainer/Envelope").Connect(
+			"pressed", this, nameof(OnEnvelopePressed)
+		);
+		
 		WireOutlineHover(GetNode<TextureButton>("TagButton"));
 		WireOutlineHover(GetNode<TextureButton>("CurtainButton"));
 		WireOutlineHover(GetNode<TextureButton>("ClipboardButton"));
 		WireOutlineHover(GetNode<TextureButton>("GreenBookButton"));
-
+		
+		GetNode<Node>("Tutorial").Connect("tutorial_finished", this, nameof(OnTutorialFinished));
 		if (GameManager.Instance.PendingVentureForth)
 		{
 			GameManager.Instance.PendingVentureForth = false;
@@ -218,5 +225,18 @@ public class MainGameUI : Control
 		var item = (CanvasItem)obj;
 		if (item.Material is ShaderMaterial mat)
 			mat.SetShaderParam("line_thickness", hovering ? 4f : 0f);
+	}
+	
+	private void OnEnvelopePressed()
+	{
+		lettersUI.ShowArchive(GameManager.Instance.CurrentDay);
+	}
+	
+	private void OnTutorialFinished()
+	{
+		if (GameManager.Instance.ConsumePendingLetter())
+		{
+			lettersUI.ShowDay(GameManager.Instance.CurrentDay);
+		}
 	}
 }

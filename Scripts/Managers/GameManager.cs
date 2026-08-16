@@ -6,6 +6,7 @@ public class GameManager : Node
 	private const string ConfigPath = "res://Resources/Config/GameConfig.cfg";
 	private bool _transition;
 	private bool _tutorialSeen;
+	private bool _pendingLetter;
 	public static GameManager Instance {get; private set; }
 
 	public enum GamePhase
@@ -80,7 +81,7 @@ public class GameManager : Node
 		IsGameOver = false;
 		Reason = GameOverReason.None;
 		ActivateTransition();
-		
+		_pendingLetter = true;
 		AdventurerManager.Instance.Reset();
 		DesignManager.Instance.Reset();
 	}
@@ -90,11 +91,19 @@ public class GameManager : Node
 		CurrentDay++;
 		CurrentPhase = GamePhase.Dressing;
 		ActivateTransition();
-
+		_pendingLetter = true;
+		
 		AdventurerManager.Instance.RefreshCatalog();
 		DesignManager.Instance.RefreshStock();
 
 		CheckGameOverConditions();
+	}
+	
+	public bool ConsumePendingLetter()
+	{
+		bool temp = _pendingLetter;
+		_pendingLetter = false;
+		return temp;
 	}
 
 	public void CheckGameOverConditions()
