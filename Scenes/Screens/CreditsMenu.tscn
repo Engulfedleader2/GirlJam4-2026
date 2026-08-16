@@ -1,6 +1,16 @@
-[gd_scene format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Credit/CreditsMenu.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Meet the Team/Meet the Team.png" type="Texture" id=2]
+[ext_resource path="res://Assets/UI/Back_Button_V2.PNG" type="Texture" id=3]
 
 [node name="CreditsMenu" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1032.0
+margin_bottom = 612.0
+color = Color( 0.733333, 0.301961, 0.407843, 1 )
 
 [node name="UI" type="Control" parent="."]
 anchor_right = 1.0
@@ -11,7 +21,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="CreditsLabel" type="Label" parent="UI/CenterContainer"]
-margin_right = 118.0
-margin_bottom = 14.0
+visible = false
+margin_left = -59.0
+margin_top = -7.0
+margin_right = 59.0
+margin_bottom = 7.0
 text = "This is the credits."
 align = 1
+
+[node name="Credit" type="Sprite" parent="."]
+position = Vector2( 110, 8 )
+scale = Vector2( 0.457822, 0.457822 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="BackButton" type="Button" parent="."]
+margin_right = 60.0
+margin_bottom = 20.0
+rect_scale = Vector2( 0.5, 0.5 )
+icon = ExtResource( 3 )
+flat = true
+
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
