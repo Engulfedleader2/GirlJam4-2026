@@ -273,12 +273,12 @@ public class DungeonManager : Node
 		
 		GameManager.Instance.AddTreasure(_runGold);
 		GameManager.Instance.CheckGameOverConditions();
-
+		/*
 		if (wiped)
 		{
 			GameManager.Instance.TriggerGameOver(GameManager.GameOverReason.PartyWiped);
 		}
-
+		*/
 		LastRun = result;
 		return wiped
 			? $"The party fell. Earned {_runGold}g."
