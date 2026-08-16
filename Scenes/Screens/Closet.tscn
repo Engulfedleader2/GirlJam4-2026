@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/UI/ClosetUI.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/Character/PaperDoll.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/UI/ventureForth.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/Shaders/WhiteOutline.gdshader" type="Shader" id=6]
 [ext_resource path="res://Assets/Environment/page_divider_atlas.tres" type="Texture" id=7]
+[ext_resource path="res://Assets/UI/Back_Button_V2.PNG" type="Texture" id=8]
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 6 )
@@ -301,7 +302,9 @@ scale = Vector2( 0.15, 0.15 )
 [node name="BackButton" type="Button" parent="."]
 margin_right = 60.0
 margin_bottom = 20.0
-text = "Back"
+rect_scale = Vector2( 0.5, 0.5 )
+icon = ExtResource( 8 )
+flat = true
 
 [node name="VentureForthButton" type="TextureButton" parent="."]
 material = SubResource( 2 )

@@ -300,6 +300,8 @@ margin_right = 1516.0
 margin_bottom = 1089.0
 texture = ExtResource( 4 )
 
+[node name="Tutorial" parent="." instance=ExtResource( 12 )]
+
 [node name="Circle2" type="ColorRect" parent="."]
 material = SubResource( 10 )
 margin_left = -1.0

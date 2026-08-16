@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/UI/HireShopUI.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Environment/MainSceneBG_BigTV.png" type="Texture" id=2]
@@ -15,11 +15,21 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1032.0
+margin_bottom = 609.0
+color = Color( 0, 0, 0, 0.67451 )
+
+[node name="Book" type="Sprite" parent="."]
+scale = Vector2( 0.54, 0.54 )
+texture = ExtResource( 3 )
+centered = false
+
 [node name="VBox" type="VBoxContainer" parent="."]
-margin_left = 40.0
-margin_top = 40.0
-margin_right = 460.0
-margin_bottom = 400.0
+margin_left = 116.0
+margin_top = 49.0
+margin_right = 536.0
+margin_bottom = 409.0
 
 [node name="HeaderLabel" type="Label" parent="VBox"]
 margin_right = 420.0
@@ -34,6 +44,8 @@ margin_bottom = 18.0
 [node name="BackButton" type="Button" parent="."]
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 68.0
-margin_bottom = 28.0
-text = "Back"
+margin_right = 128.0
+margin_bottom = 79.0
+rect_scale = Vector2( 0.5, 0.5 )
+icon = ExtResource( 4 )
+flat = true
