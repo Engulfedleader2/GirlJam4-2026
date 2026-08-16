@@ -117,12 +117,9 @@ public class MainGameUI : Control
 		//headerLabel.Text = $"Day {GameManager.Instance.CurrentDay} - Treasure: {GameManager.Instance.Treasure}";
 		treasureLabel.Text = $"{GameManager.Instance.Treasure}";
 		var currentDay = GameManager.Instance.CurrentDay;
-		var previousDay = currentDay - 1;
-		if(previousDay > 0)
-		{
-			GetNode<TextureRect>($"VBoxContainer/HBoxContainer/Day{previousDay}").Visible = false;
+		for(int day = 1; day <= 7; day++) {
+			GetNode<TextureRect>($"VBoxContainer/HBoxContainer/Day{day}").Visible = day == currentDay;
 		}
-		GetNode<TextureRect>($"VBoxContainer/HBoxContainer/Day{currentDay}").Visible = true;
 		
 	}
 
