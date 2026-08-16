@@ -11,8 +11,9 @@ public class MainGameUI : Control
 
 	private Label headerLabel;
 	private Label resultLabel;
+	private Label treasureLabel;
 	private Control floorChoice;
-	
+	private TextureRect calendarDay;
 	private bool _runActive;
 
 	public override void _Ready()
@@ -20,13 +21,13 @@ public class MainGameUI : Control
 		testDungeon = GD.Load<DungeonData>("res://Resources/Dungeons/BaseDungeon.tres");
 		shopMusic = GD.Load<AudioStream>("res://Assets/Audio/Music/jauntyShop.mp3");
 		dungeonMusic = GD.Load<AudioStream>("res://Assets/Audio/Music/dungeonSynth.mp3");
-
+		
 		sceneManager = GetNode<SceneManager>("/root/SceneManager");
 
-		headerLabel = GetNode<Label>("VBox/HeaderLabel");
-		resultLabel = GetNode<Label>("VBox/ResultLabel");
+		//headerLabel = GetNode<Label>("VBox/HeaderLabel");
+		//resultLabel = GetNode<Label>("VBox/ResultLabel");
+		treasureLabel = GetNode<Label>("VBoxContainer/Gold/MarginContainer/TreasureLabel");
 		SetupDungeonViewport();
-		
 		GetNode<Button>("VBox/ButtonRow/DressPartyButton").Connect(
 			"pressed", this, nameof(OnDressPartyPressed)
 		);
@@ -104,7 +105,16 @@ public class MainGameUI : Control
 	}
 	private void Refresh()
 	{
-		headerLabel.Text = $"Day {GameManager.Instance.CurrentDay} - Treasure: {GameManager.Instance.Treasure}";
+		//headerLabel.Text = $"Day {GameManager.Instance.CurrentDay} - Treasure: {GameManager.Instance.Treasure}";
+		treasureLabel.Text = $"{GameManager.Instance.Treasure}";
+		var currentDay = GameManager.Instance.CurrentDay;
+		var previousDay = currentDay - 1;
+		if(previousDay > 0)
+		{
+			GetNode<TextureRect>($"VBoxContainer/HBoxContainer/Day{previousDay}").Visible = false;
+		}
+		GetNode<TextureRect>($"VBoxContainer/HBoxContainer/Day{currentDay}").Visible = true;
+		
 	}
 
 	private void OnDressPartyPressed()

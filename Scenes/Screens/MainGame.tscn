@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Scripts/UI/MainGameUI.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Environment/MainSceneBG_BigTV.png" type="Texture" id=2]
@@ -13,6 +13,25 @@
 [ext_resource path="res://Assets/UI/DelveDeeper.png" type="Texture" id=11]
 [ext_resource path="res://Assets/Environment/Bgsbookgreen.png" type="Texture" id=12]
 [ext_resource path="res://Scenes/Tutorial/Tutorial.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Assets/UI_Widget/Day1.PNG" type="Texture" id=14]
+[ext_resource path="res://Assets/UI_Widget/Letter_Icon.PNG" type="Texture" id=15]
+[ext_resource path="res://Resources/UI/GoldUITheme.tres" type="Theme" id=16]
+[ext_resource path="res://Assets/UI_Widget/Day4.PNG" type="Texture" id=17]
+[ext_resource path="res://Assets/UI_Widget/Day7.PNG" type="Texture" id=18]
+[ext_resource path="res://Assets/UI_Widget/Day2.PNG" type="Texture" id=19]
+[ext_resource path="res://Assets/UI_Widget/Day5.PNG" type="Texture" id=20]
+[ext_resource path="res://Assets/UI_Widget/Day6.PNG" type="Texture" id=21]
+[ext_resource path="res://Assets/UI_Widget/Day3.PNG" type="Texture" id=22]
+[ext_resource path="res://Assets/Font/LeckerliOne-Regular.ttf" type="DynamicFontData" id=23]
+
+[sub_resource type="DynamicFont" id=19]
+size = 30
+font_data = ExtResource( 23 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 111, 119, 80, 41 )
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 6 )
@@ -139,7 +158,101 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
 
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 231.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 150, 150 )
+rect_scale = Vector2( 0.55, 0.55 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_right = 231.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 0, 25 )
+
+[node name="Gold" type="PanelContainer" parent="VBoxContainer"]
+margin_top = 29.0
+margin_right = 231.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 100, 50 )
+theme = ExtResource( 16 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Gold"]
+margin_left = 60.0
+margin_top = 10.0
+margin_right = 221.0
+margin_bottom = 51.0
+
+[node name="TreasureLabel" type="Label" parent="VBoxContainer/Gold/MarginContainer"]
+margin_right = 118.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 90, 40 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 19 )
+text = "TESTING"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 94.0
+margin_right = 231.0
+margin_bottom = 194.0
+
+[node name="Day1" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 100.0
+texture = ExtResource( 14 )
+
+[node name="Day2" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+visible = false
+margin_left = 104.0
+margin_right = 204.0
+margin_bottom = 100.0
+texture = ExtResource( 19 )
+
+[node name="Day3" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+visible = false
+margin_left = 104.0
+margin_right = 104.0
+margin_bottom = 100.0
+texture = ExtResource( 22 )
+
+[node name="Day4" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+visible = false
+margin_right = 100.0
+margin_bottom = 100.0
+texture = ExtResource( 17 )
+
+[node name="Day5" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+visible = false
+margin_left = 104.0
+margin_right = 104.0
+margin_bottom = 100.0
+texture = ExtResource( 20 )
+
+[node name="Day6" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+visible = false
+margin_left = 104.0
+margin_right = 104.0
+margin_bottom = 100.0
+texture = ExtResource( 21 )
+
+[node name="Day7" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+visible = false
+margin_left = 104.0
+margin_right = 104.0
+margin_bottom = 100.0
+texture = ExtResource( 18 )
+
+[node name="Envelope" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 104.0
+margin_right = 196.0
+margin_bottom = 100.0
+icon = SubResource( 18 )
+flat = true
+
 [node name="VBox" type="VBoxContainer" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
