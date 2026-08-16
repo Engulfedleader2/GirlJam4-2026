@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/UI/ClosetUI.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/Character/PaperDoll.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scripts/Shaders/WhiteOutline.gdshader" type="Shader" id=6]
 [ext_resource path="res://Assets/Environment/page_divider_atlas.tres" type="Texture" id=7]
 [ext_resource path="res://Assets/UI/Back_Button_V2.PNG" type="Texture" id=8]
+[ext_resource path="res://Assets/UI/Unequip.png" type="Texture" id=9]
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 6 )
@@ -18,6 +19,11 @@ shader_param/line_thickness = 0.0
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 755, 919, 384, 119 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 1369, 276, 106, 102 )
 
 [node name="ClosetUI" type="Control"]
 anchor_right = 1.0
@@ -167,6 +173,7 @@ margin_bottom = 22.0
 columns = 3
 
 [node name="HairRow" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
+visible = false
 margin_top = 216.0
 margin_right = 296.0
 margin_bottom = 266.0
@@ -197,9 +204,10 @@ margin_bottom = 22.0
 columns = 3
 
 [node name="AccessoryRow" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
-margin_top = 270.0
+visible = false
+margin_top = 216.0
 margin_right = 296.0
-margin_bottom = 320.0
+margin_bottom = 266.0
 
 [node name="Header" type="Button" parent="HBox/OutfitOptions/Categories/AccessoryRow"]
 margin_right = 296.0
@@ -226,14 +234,14 @@ margin_bottom = 22.0
 columns = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
-margin_top = 324.0
+margin_top = 216.0
 margin_right = 296.0
-margin_bottom = 324.0
+margin_bottom = 216.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
-margin_top = 328.0
+margin_top = 220.0
 margin_right = 296.0
-margin_bottom = 328.0
+margin_bottom = 220.0
 
 [node name="StatsPanel" type="VBoxContainer" parent="HBox"]
 margin_left = 312.0
@@ -315,6 +323,16 @@ margin_bottom = 574.0
 texture_normal = SubResource( 3 )
 expand = true
 
+[node name="UnequipButton" type="Button" parent="."]
+margin_left = 714.0
+margin_top = 486.0
+margin_right = 832.0
+margin_bottom = 594.0
+rect_scale = Vector2( 0.55, 0.55 )
+icon = SubResource( 4 )
+flat = true
+
 [connection signal="mouse_entered" from="VentureForthButton" to="." method="_on_VentureForthButton_mouse_entered"]
 [connection signal="mouse_exited" from="VentureForthButton" to="." method="_on_VentureForthButton_mouse_exited"]
 [connection signal="pressed" from="VentureForthButton" to="." method="_on_VentureForthButton_pressed"]
+[connection signal="pressed" from="UnequipButton" to="." method="_on_UnequipButton_pressed"]
