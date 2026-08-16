@@ -59,4 +59,9 @@ our scripts
   - [x] Pause Menu + Script
   - [x] Credits Menu + Script
   - [ ] Main Game + Script
+     
+
+special note to self for building
+<img width="1802" height="1372" alt="image" src="https://github.com/user-attachments/assets/22c6ed4b-7a56-4b84-9cfb-dc2264abaf10" />
+
       
