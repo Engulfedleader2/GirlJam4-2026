@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scripts/UI/MainGameUI.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Environment/MainSceneBG_BigTV.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Scripts/Transistion/AnimationPlayer_script.gd" type="Script" id=9]
 [ext_resource path="res://Assets/UI/CallThemBack.png" type="Texture" id=10]
 [ext_resource path="res://Assets/UI/DelveDeeper.png" type="Texture" id=11]
+[ext_resource path="res://Scenes/Tutorial/Tutorial.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 6 )
@@ -279,6 +280,8 @@ margin_top = 9.0
 margin_right = 1516.0
 margin_bottom = 1089.0
 texture = ExtResource( 4 )
+
+[node name="Tutorial" parent="." instance=ExtResource( 12 )]
 
 [node name="Circle2" type="ColorRect" parent="."]
 material = SubResource( 10 )
