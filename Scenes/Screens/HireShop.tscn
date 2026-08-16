@@ -28,11 +28,12 @@ texture = ExtResource( 3 )
 centered = false
 
 [node name="VBox" type="VBoxContainer" parent="."]
-margin_left = 121.0
-margin_top = 142.0
-margin_right = 323.0
-margin_bottom = 417.0
+margin_left = 116.0
+margin_top = 159.0
+margin_right = 318.0
+margin_bottom = 434.0
 rect_min_size = Vector2( 200, 275 )
+rect_rotation = -9.3
 
 [node name="HeaderLabel" type="Label" parent="VBox"]
 margin_right = 202.0

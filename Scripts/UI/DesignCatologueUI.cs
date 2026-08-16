@@ -31,8 +31,7 @@ public class DesignCatologueUI : Control
 		{
 			GD.Load<AudioStream>("res://Assets/Audio/Music/ShopMusic/Layer 1 (Shop).mp3"),
 			GD.Load<AudioStream>("res://Assets/Audio/Music/ShopMusic/Layer 2 (Shop).mp3"),
-			GD.Load<AudioStream>("res://Assets/Audio/Music/ShopMusic/Layer 3 (Shop).mp3"),
-			GD.Load<AudioStream>("res://Assets/Audio/Music/ShopMusic/Layer 4 (Shop).mp3")
+			GD.Load<AudioStream>("res://Assets/Audio/Music/ShopMusic/Layer 3 (Shop).mp3")
 		});
 
 		Refresh();
