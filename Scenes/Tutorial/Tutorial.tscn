@@ -79,6 +79,7 @@ texture = ExtResource( 9 )
 centered = false
 
 [node name="Button" type="Button" parent="."]
+visible = false
 margin_right = 1028.0
 margin_bottom = 596.0
 custom_styles/focus = SubResource( 1 )
