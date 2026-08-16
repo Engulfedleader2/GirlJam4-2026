@@ -20,7 +20,6 @@ public class SceneManager : Node
 	private const string WinScreenScenePath = "res://Scenes/Screens/WinScreen.tscn";
 	private const string LoseScreenScenePath = "res://Scenes/Screens/LoseScreen.tscn";
 
-
 	public void ChangeScene(string scenePath)
 	{
 		if (string.IsNullOrEmpty(scenePath))

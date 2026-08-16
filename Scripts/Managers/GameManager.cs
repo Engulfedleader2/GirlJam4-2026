@@ -52,7 +52,6 @@ public class GameManager : Node
 	public override void _Ready()
 	{
 		Instance = this;
-
 		var config = new ConfigFile();
 		config.Load(ConfigPath);
 		startingTreasure = (int)config.GetValue("Game", "starting_treasure", 30);
@@ -112,7 +111,7 @@ public class GameManager : Node
 		{
 			TriggerGameOver(GameOverReason.Won);
 		}
-		else if (Treasure <= 0 && AdventurerManager.Instance.Roster.Count == 0)
+		else if (Treasure < AdventurerManager.Instance.HireCost && AdventurerManager.Instance.Roster.Count == 0 && CurrentDay > 0)
 		{
 			TriggerGameOver(GameOverReason.Bankrupt);
 		}

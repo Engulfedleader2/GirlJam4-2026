@@ -46,8 +46,8 @@ margin_bottom = -41.0
 
 [node name="OutfitOptions" type="ScrollContainer" parent="HBox"]
 margin_right = 308.0
-margin_bottom = 480.0
-rect_min_size = Vector2( 300, 480 )
+margin_bottom = 450.0
+rect_min_size = Vector2( 300, 450 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 

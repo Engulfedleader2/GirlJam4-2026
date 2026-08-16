@@ -151,6 +151,16 @@ public class DesignCatologueUI : Control
 		return tile;
 	}
 
+	private void GoToGameOverScreen()
+	{
+		if(GameManager.Instance.Reason == GameManager.GameOverReason.Won)
+		{
+			sceneManager.GoToWinScreen();
+		}
+		else {
+			sceneManager.GoToLoseScreen();
+		}
+	}
 	private void OnBuyDesignPressed(ClothingIcon icon)
 	{
 		bool bought = DesignManager.Instance.BuyDesign(icon.Item);
@@ -180,6 +190,12 @@ public class DesignCatologueUI : Control
 	private void OnBackPressed()
 	{
 		AudioManager.Instance.PlayRandomSFX(backSFX);
+		GameManager.Instance.CheckGameOverConditions();
+		if(GameManager.Instance.IsGameOver)
+		{
+			GoToGameOverScreen();
+			return;
+		}
 		sceneManager.GoToMainGame();
 	}
 }
