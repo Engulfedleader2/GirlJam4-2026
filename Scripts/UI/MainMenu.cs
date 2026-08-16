@@ -57,7 +57,6 @@ public class MainMenu : Node2D
 
 	private void OnPlayPressed()
 	{
-		AudioManager.Instance.PlaySFX(startGameSFX);
 		gameManager.StartGame();
 		sceneManager.GoToMainGame();
 	}
