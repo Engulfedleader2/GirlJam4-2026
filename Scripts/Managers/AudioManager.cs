@@ -9,6 +9,7 @@ public class AudioManager : Node
 
 	private AudioStreamPlayer musicPlayer;
 	private AudioStreamPlayer sfxPlayer;
+	private readonly Random random = new Random();
 
 	// One AudioStreamPlayer per active music layer
 	private readonly List<AudioStreamPlayer> layerPlayers = new List<AudioStreamPlayer>();
@@ -101,7 +102,18 @@ public class AudioManager : Node
 
 		sfxPlayer.Stream = sfx;
 		sfxPlayer.Play();
-		
+
+	}
+
+	// Picks one clip at random from a set of variants (e.g. Click_01-04) and plays it.
+	public void PlayRandomSFX(AudioStream[] options)
+	{
+		if (options == null || options.Length == 0)
+		{
+			return;
+		}
+
+		PlaySFX(options[random.Next(options.Length)]);
 	}
 
 	public void SetMusicVolume(float volumeDb)

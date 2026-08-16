@@ -5,6 +5,7 @@ public class MainGameUI : Control
 	private DungeonData testDungeon;
 	private AudioStream shopMusic;
 	private AudioStream dungeonMusic;
+	private AudioStream tvOnSFX;
 
 	private SceneManager sceneManager;
 	private DungeonView _dungeonView;
@@ -21,11 +22,12 @@ public class MainGameUI : Control
 		testDungeon = GD.Load<DungeonData>("res://Resources/Dungeons/BaseDungeon.tres");
 		shopMusic = GD.Load<AudioStream>("res://Assets/Audio/Music/jauntyShop.mp3");
 		dungeonMusic = GD.Load<AudioStream>("res://Assets/Audio/Music/dungeonSynth.mp3");
-		
+		tvOnSFX = GD.Load<AudioStream>("res://Assets/Audio/SFX/MENU/SFX_MENU_TV Static AND Turn On.wav");
+
 		sceneManager = GetNode<SceneManager>("/root/SceneManager");
 
 		//headerLabel = GetNode<Label>("VBox/HeaderLabel");
-		//resultLabel = GetNode<Label>("VBox/ResultLabel");
+		resultLabel = GetNode<Label>("VBox/ResultLabel");
 		treasureLabel = GetNode<Label>("VBoxContainer/Gold/MarginContainer/TreasureLabel");
 		SetupDungeonViewport();
 		GetNode<Button>("VBox/ButtonRow/DressPartyButton").Connect(
@@ -148,6 +150,7 @@ public class MainGameUI : Control
 		}
 
 		AudioManager.Instance.PlayMusic(dungeonMusic);
+		AudioManager.Instance.PlaySFX(tvOnSFX);
 	/*
 		DungeonManager.Instance.StartRun(testDungeon, activeParty);
 

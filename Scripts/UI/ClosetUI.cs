@@ -17,16 +17,41 @@ public class ClosetUI : Node
 	private Label statsLabel;
 	private Button[] partyButtons;
 
+	private SceneManager sceneManager;
+	private AudioStream[] closetEquipSFX;
+	private AudioStream[] adventurerSelectSFX;
+
 	public override void _Ready()
 	{
 		iconScene = GD.Load<PackedScene>("res://Scenes/UI/ClothingIcon.tscn");
+		sceneManager = GetNode<SceneManager>("/root/SceneManager");
+
+		closetEquipSFX = new[]
+		{
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/MENU/SFX_MENU_Closet Equip_01.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/MENU/SFX_MENU_Closet Equip_02.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/MENU/SFX_MENU_Closet Equip_03.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/MENU/SFX_MENU_Closet Equip_04.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/MENU/SFX_MENU_Closet Equip_05.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/MENU/SFX_MENU_Closet Equip_06.wav")
+		};
+
+		adventurerSelectSFX = new[]
+		{
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/ADV/SFX_ADV_Grunt_Female_01.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/ADV/SFX_ADV_Grunt_Female_02.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/ADV/SFX_ADV_Grunt_Male_01.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/ADV/SFX_ADV_Grunt_Male_02.wav")
+		};
+
+		AudioManager.Instance.PlaySFX(GD.Load<AudioStream>("res://Assets/Audio/SFX/MENU/SFX_MENU_Closet Open.wav"));
 
 		GetNode<Button>("BackButton").Connect(
 			"pressed",
-			GetNode<SceneManager>("/root/SceneManager"),
-			nameof(SceneManager.GoToMainGame)
+			this,
+			nameof(OnBackPressed)
 		);
-		
+
 		// Get the paper doll and stats UI.
 		paperDoll = GetNode<ClothingLayerController>(
 			"HBox/CharacterPreview/PaperDoll"
@@ -147,8 +172,15 @@ public class ClosetUI : Node
 
 		if (rosterIndex < roster.Count)
 		{
+			AudioManager.Instance.PlayRandomSFX(adventurerSelectSFX);
 			SelectAdventurer(roster[rosterIndex]);
 		}
+	}
+
+	private void OnBackPressed()
+	{
+		AudioManager.Instance.PlaySFX(GD.Load<AudioStream>("res://Assets/Audio/SFX/MENU/SFX_MENU_Closet Close.wav"));
+		sceneManager.GoToMainGame();
 	}
 
 	// Selects who's being dressed and loads their current outfit onto the doll.
@@ -236,6 +268,7 @@ public class ClosetUI : Node
 	private void OnItemPressed(ClothingIcon icon)
 	{
 		OutfitManager.Instance.EquipItem(icon.Item);
+		AudioManager.Instance.PlayRandomSFX(closetEquipSFX);
 	}
 
 	// Refresh the current outfit bonus and class.
@@ -321,5 +354,6 @@ public class ClosetUI : Node
 	private void _on_UnequipButton_pressed()
 	{
 		OutfitManager.Instance.UnequipAll();
+		AudioManager.Instance.PlayRandomSFX(closetEquipSFX);
 	}
 }
