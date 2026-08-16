@@ -60,6 +60,7 @@ public class GameManager : Node
 		ActivateTransition();
 
 		AdventurerManager.Instance.RefreshCatalog();
+		DesignManager.Instance.RefreshStock();
 	}
 	public void SetGamePhases(GamePhase phase)
 	{
