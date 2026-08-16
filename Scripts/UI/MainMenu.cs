@@ -9,13 +9,12 @@ public class MainMenu : Node2D
 	private Button settingsButton;
 	private Button quitButton;
 	private TextureButton settingsIcon;
-	private AudioStream startGameSFX;
 
 	public override void _Ready()
 	{
 		gameManager = GetNode<GameManager>("/root/GameManager");
 		sceneManager = GetNode<SceneManager>("/root/SceneManager");
-		startGameSFX = GD.Load<AudioStream>("res://Assets/Audio/SFX/SFX_UI_Start_Game.wav");
+
 		AudioManager.Instance.PlayMusic(GD.Load<AudioStream>("res://Assets/Audio/Music/SLORP.mp3"));
 		playButton = GetNode<Button>(
 			"UI/CenterContainer/VBoxContainer/PlayButton"
