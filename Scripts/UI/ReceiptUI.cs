@@ -60,7 +60,32 @@ public class ReceiptUI : Control
 
 	private void OnContinuePressed()
 	{
+		if (GameManager.Instance.IsGameOver)
+		{
+			GoToGameOverScreen();
+			return;
+		}
+
 		GameManager.Instance.AdvanceDay();
+
+		if (GameManager.Instance.IsGameOver)
+		{
+			GoToGameOverScreen();
+			return;
+		}
+
 		sceneManager.GoToMainGame();
+	}
+
+	private void GoToGameOverScreen()
+	{
+		if (GameManager.Instance.Reason == GameManager.GameOverReason.Won)
+		{
+			sceneManager.GoToWinScreen();
+		}
+		else
+		{
+			sceneManager.GoToLoseScreen();
+		}
 	}
 }

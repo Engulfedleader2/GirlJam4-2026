@@ -10,12 +10,14 @@ public class DesignCatologueUI : Control
 	private GridContainer stockGrid;
 
 	private PackedScene iconScene;
+	private Texture refreshIcon;
 	private string statusMessage = "";
 
 	public override void _Ready()
 	{
 		sceneManager = GetNode<SceneManager>("/root/SceneManager");
 		iconScene = GD.Load<PackedScene>("res://Scenes/UI/ClothingIcon.tscn");
+		refreshIcon = GD.Load<Texture>("res://Assets/UI/UI/refresh.png");
 
 		headerLabel = GetNode<Label>("VBox/HeaderLabel");
 		stockGrid = GetNode<GridContainer>("VBox/StockGrid");
@@ -95,13 +97,25 @@ public class DesignCatologueUI : Control
 
 		var button = new Button
 		{
-			Text = $"Refresh\n({DesignManager.Instance.RefreshCost}g)",
-			RectMinSize = TileSize,
-			ClipText = true
+			RectMinSize = new Vector2(84, 84),
+			SizeFlagsHorizontal = (int)Control.SizeFlags.ShrinkCenter,
+			Icon = refreshIcon,
+			Flat = true,
+			ExpandIcon = true,
+			IconAlign = Button.TextAlign.Center
 		};
-		button.AddColorOverride("font_color", new Color(0.1f, 0.1f, 0.1f));
 		button.Connect("pressed", this, nameof(OnRefreshPressed));
 		tile.AddChild(button);
+
+		var label = new Label
+		{
+			Text = $"Refresh\n{DesignManager.Instance.RefreshCost}g",
+			Align = Label.AlignEnum.Center,
+			Autowrap = true,
+			RectMinSize = new Vector2(104, 0)
+		};
+		label.AddColorOverride("font_color", new Color(0.1f, 0.1f, 0.1f));
+		tile.AddChild(label);
 
 		return tile;
 	}

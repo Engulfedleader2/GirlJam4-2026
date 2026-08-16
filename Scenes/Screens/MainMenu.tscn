@@ -184,10 +184,10 @@ margin_bottom = 210.0
 rect_min_size = Vector2( 220, 48 )
 text = "Quit"
 
-[node name="Setting_Icon" type="Sprite" parent="."]
-scale = Vector2( 0.557407, 0.557407 )
-texture = ExtResource( 7 )
-centered = false
+[node name="Setting_Icon" type="TextureButton" parent="."]
+rect_scale = Vector2( 0.557407, 0.557407 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 7 )
 
 [node name="Circle2" type="ColorRect" parent="."]
 material = SubResource( 10 )
