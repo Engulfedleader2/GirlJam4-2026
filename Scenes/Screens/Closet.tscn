@@ -52,17 +52,17 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Categories" type="VBoxContainer" parent="HBox/OutfitOptions"]
-margin_right = 296.0
-margin_bottom = 500.0
-rect_min_size = Vector2( 250, 500 )
+margin_right = 308.0
+margin_bottom = 450.0
+rect_min_size = Vector2( 250, 450 )
 size_flags_horizontal = 3
 
 [node name="HeadRow" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
-margin_right = 296.0
+margin_right = 308.0
 margin_bottom = 50.0
 
 [node name="Header" type="Button" parent="HBox/OutfitOptions/Categories/HeadRow"]
-margin_right = 296.0
+margin_right = 308.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 100, 50 )
 icon = ExtResource( 7 )
@@ -87,11 +87,11 @@ columns = 3
 
 [node name="BodyRow" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
 margin_top = 54.0
-margin_right = 296.0
+margin_right = 308.0
 margin_bottom = 104.0
 
 [node name="Header" type="Button" parent="HBox/OutfitOptions/Categories/BodyRow"]
-margin_right = 296.0
+margin_right = 308.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 100, 50 )
 icon = ExtResource( 7 )
@@ -116,11 +116,11 @@ columns = 3
 
 [node name="LegsRow" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
 margin_top = 108.0
-margin_right = 296.0
+margin_right = 308.0
 margin_bottom = 158.0
 
 [node name="Header" type="Button" parent="HBox/OutfitOptions/Categories/LegsRow"]
-margin_right = 296.0
+margin_right = 308.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 100, 50 )
 icon = ExtResource( 7 )
@@ -145,11 +145,11 @@ columns = 3
 
 [node name="FeetRow" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
 margin_top = 162.0
-margin_right = 296.0
+margin_right = 308.0
 margin_bottom = 212.0
 
 [node name="Header" type="Button" parent="HBox/OutfitOptions/Categories/FeetRow"]
-margin_right = 296.0
+margin_right = 308.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 100, 50 )
 icon = ExtResource( 7 )
@@ -172,75 +172,14 @@ margin_right = 338.0
 margin_bottom = 22.0
 columns = 3
 
-[node name="HairRow" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
-visible = false
-margin_top = 216.0
-margin_right = 296.0
-margin_bottom = 266.0
-
-[node name="Header" type="Button" parent="HBox/OutfitOptions/Categories/HairRow"]
-margin_right = 296.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 100, 50 )
-icon = ExtResource( 7 )
-flat = true
-expand_icon = true
-
-[node name="Label" type="Label" parent="HBox/OutfitOptions/Categories/HairRow/Header"]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = -7.0
-margin_bottom = 7.0
-rect_min_size = Vector2( 100, 50 )
-custom_colors/font_color = Color( 0.839216, 0.580392, 0.0901961, 1 )
-text = "         Hair"
-
-[node name="Items" type="GridContainer" parent="HBox/OutfitOptions/Categories/HairRow"]
-visible = false
-margin_top = 22.0
-margin_right = 338.0
-margin_bottom = 22.0
-columns = 3
-
-[node name="AccessoryRow" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
-visible = false
-margin_top = 216.0
-margin_right = 296.0
-margin_bottom = 266.0
-
-[node name="Header" type="Button" parent="HBox/OutfitOptions/Categories/AccessoryRow"]
-margin_right = 296.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 100, 50 )
-icon = ExtResource( 7 )
-flat = true
-expand_icon = true
-
-[node name="Label" type="Label" parent="HBox/OutfitOptions/Categories/AccessoryRow/Header"]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = -7.0
-margin_bottom = 7.0
-custom_colors/font_color = Color( 0.839216, 0.580392, 0.0901961, 1 )
-text = "         Accessory"
-
-[node name="Items" type="GridContainer" parent="HBox/OutfitOptions/Categories/AccessoryRow"]
-visible = false
-margin_top = 22.0
-margin_right = 338.0
-margin_bottom = 22.0
-columns = 3
-
 [node name="VBoxContainer" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
 margin_top = 216.0
-margin_right = 296.0
+margin_right = 308.0
 margin_bottom = 216.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBox/OutfitOptions/Categories"]
 margin_top = 220.0
-margin_right = 296.0
+margin_right = 308.0
 margin_bottom = 220.0
 
 [node name="StatsPanel" type="VBoxContainer" parent="HBox"]
