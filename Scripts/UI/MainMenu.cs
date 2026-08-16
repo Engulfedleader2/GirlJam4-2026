@@ -8,6 +8,7 @@ public class MainMenu : Node2D
 	private Button playButton;
 	private Button settingsButton;
 	private Button quitButton;
+	private TextureButton settingsIcon;
 
 	public override void _Ready()
 	{
@@ -28,6 +29,8 @@ public class MainMenu : Node2D
 			"UI/CenterContainer/VBoxContainer/QuitButton"
 		);
 
+		settingsIcon = GetNode<TextureButton>("Setting_Icon");
+
 		playButton.Connect(
 			"pressed",
 			this,
@@ -44,6 +47,12 @@ public class MainMenu : Node2D
 			"pressed",
 			this,
 			nameof(OnQuitPressed)
+		);
+
+		settingsIcon.Connect(
+			"pressed",
+			this,
+			nameof(OnSettingsPressed)
 		);
 	}
 

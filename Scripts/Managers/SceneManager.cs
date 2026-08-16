@@ -17,6 +17,8 @@ public class SceneManager : Node
 	private const string HeroSelectionScenePath = "res://Scenes/Screens/HeroSelection.tscn";
 	private const string HireShopScenePath = "res://Scenes/Screens/HireShop.tscn";
 	private const string DesignCatologueScenePath = "res://Scenes/Screens/DesignCatologue.tscn";
+	private const string WinScreenScenePath = "res://Scenes/Screens/WinScreen.tscn";
+	private const string LoseScreenScenePath = "res://Scenes/Screens/LoseScreen.tscn";
 
 
 	public void ChangeScene(string scenePath)
@@ -93,6 +95,16 @@ public class SceneManager : Node
 	public void GoToDesignCatologue()
 	{
 		ChangeScene(DesignCatologueScenePath);
+	}
+
+	public void GoToWinScreen()
+	{
+		ChangeScene(WinScreenScenePath);
+	}
+
+	public void GoToLoseScreen()
+	{
+		ChangeScene(LoseScreenScenePath);
 	}
 
 	public void QuitGame()
