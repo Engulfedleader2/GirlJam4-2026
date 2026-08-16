@@ -50,10 +50,15 @@ public class MainGameUI : Control
 		GetNode<TextureButton>("TagButton").Connect(
 			"pressed", this, nameof(OnHireShopPressed)
 		);
-		
+
+		GetNode<TextureButton>("GreenBookButton").Connect(
+			"pressed", this, nameof(OnDesignsPressed)
+		);
+
 		WireOutlineHover(GetNode<TextureButton>("TagButton"));
 		WireOutlineHover(GetNode<TextureButton>("CurtainButton"));
 		WireOutlineHover(GetNode<TextureButton>("ClipboardButton"));
+		WireOutlineHover(GetNode<TextureButton>("GreenBookButton"));
 
 		if (GameManager.Instance.PendingVentureForth)
 		{
@@ -93,6 +98,7 @@ public class MainGameUI : Control
 		GetNode<TextureButton>("CurtainButton").Disabled = !enabled;
 		GetNode<TextureButton>("ClipboardButton").Disabled = !enabled;
 		GetNode<TextureButton>("TagButton").Disabled = !enabled;
+		GetNode<TextureButton>("GreenBookButton").Disabled = !enabled;
 		
 		
 	}
@@ -108,7 +114,7 @@ public class MainGameUI : Control
 
 	private void OnDesignsPressed()
 	{
-		sceneManager.GoToDesignShop();
+		sceneManager.GoToDesignCatologue();
 	}
 
 	private void OnHeroSelectionPressed()

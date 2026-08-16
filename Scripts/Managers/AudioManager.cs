@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public class AudioManager : Node
 {
@@ -7,6 +9,10 @@ public class AudioManager : Node
 
 	private AudioStreamPlayer musicPlayer;
 	private AudioStreamPlayer sfxPlayer;
+
+	// One AudioStreamPlayer per active music layer
+	private readonly List<AudioStreamPlayer> layerPlayers = new List<AudioStreamPlayer>();
+	private AudioStream[] currentLayers;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -33,12 +39,57 @@ public class AudioManager : Node
 			return;
 		}
 
+		StopLayeredMusic();
+
 		musicPlayer.Stream = music;
 		musicPlayer.Play();
 	}
 	public void StopMusic()
 	{
 		musicPlayer.Stop();
+	}
+
+	// Plays every layer at once.
+	public void PlayLayeredMusic(AudioStream[] layers)
+	{
+		if (layers == null || layers.Length == 0)
+		{
+			return;
+		}
+
+		if (currentLayers != null && currentLayers.SequenceEqual(layers) && layerPlayers.Count > 0 && layerPlayers[0].Playing)
+		{
+			return;
+		}
+
+		musicPlayer.Stop();
+		StopLayeredMusic();
+
+		currentLayers = layers;
+
+		foreach (AudioStream layer in layers)
+		{
+			var player = new AudioStreamPlayer { Name = "MusicLayer", Stream = layer };
+			AddChild(player);
+			layerPlayers.Add(player);
+		}
+
+		// All layers started together in the same frame so they stay in sync.
+		foreach (AudioStreamPlayer player in layerPlayers)
+		{
+			player.Play();
+		}
+	}
+
+	public void StopLayeredMusic()
+	{
+		foreach (AudioStreamPlayer player in layerPlayers)
+		{
+			player.QueueFree();
+		}
+
+		layerPlayers.Clear();
+		currentLayers = null;
 	}
 
 	public void PlaySFX(AudioStream sfx)
@@ -55,6 +106,11 @@ public class AudioManager : Node
 	public void SetMusicVolume(float volumeDb)
 	{
 		musicPlayer.VolumeDb = volumeDb;
+
+		foreach (AudioStreamPlayer player in layerPlayers)
+		{
+			player.VolumeDb = volumeDb;
+		}
 	}
 
 	public void SetSFXVolume(float volumeDb)

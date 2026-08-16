@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Scripts/UI/MainGameUI.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Environment/MainSceneBG_BigTV.png" type="Texture" id=2]
@@ -11,7 +11,7 @@
 [ext_resource path="res://Scripts/Transistion/AnimationPlayer_script.gd" type="Script" id=9]
 [ext_resource path="res://Assets/UI/CallThemBack.png" type="Texture" id=10]
 [ext_resource path="res://Assets/UI/DelveDeeper.png" type="Texture" id=11]
-[ext_resource path="res://Scenes/Tutorial/Tutorial.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Assets/Environment/Bgsbookgreen.png" type="Texture" id=12]
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 6 )
@@ -32,6 +32,11 @@ region = Rect2( 854, 840, 197, 138 )
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 579, 372, 92, 153 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 12 )
+region = Rect2( 488, 398, 102, 152 )
 
 [sub_resource type="AtlasTexture" id=14]
 flags = 4
@@ -210,6 +215,20 @@ margin_bottom = 71.4
 rect_scale = Vector2( 0.55, 0.55 )
 mouse_default_cursor_shape = 2
 texture_normal = SubResource( 3 )
+
+[node name="GreenBookButton" type="TextureButton" parent="."]
+material = SubResource( 2 )
+anchor_left = 0.254
+anchor_top = 0.368
+anchor_right = 0.307
+anchor_bottom = 0.509
+margin_left = -3.0
+margin_top = 2.0
+margin_right = 44.7
+margin_bottom = 69.0
+rect_scale = Vector2( 0.55, 0.55 )
+mouse_default_cursor_shape = 2
+texture_normal = SubResource( 16 )
 
 [node name="Control" type="Control" parent="."]
 margin_left = 377.0
