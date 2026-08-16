@@ -30,11 +30,21 @@ public class DungeonView : Node2D
 	private readonly List<SpriteDoll> _party = new List<SpriteDoll>();
 	private Sprite _enemy;
 	private Queue<DungeonEvent> _events;
-	
+	private AudioStream[] _monsterGruntSFX;
+
 	[Signal] public delegate void PlaybackFinished();
-	
+
 	public override void _Ready()
 	{
+		_monsterGruntSFX = new[]
+		{
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/MON/SFX_MON_Big Grunt_01.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/MON/SFX_MON_Big Grunt_02.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/MON/SFX_MON_Big Grunt_03.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/MON/SFX_MON_Little Grunt_01.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/MON/SFX_MON_Little Grunt_02.wav")
+		};
+
 		_parallax = GetNode<ParallaxBackground>("Background");
 		_foregroundparallax = GetNode<ParallaxBackground>("FrontParallax");
 		_tween = GetNode<Tween>("Tween");
@@ -142,6 +152,8 @@ public class DungeonView : Node2D
 		_partyRoot.AddChild(_enemy);
 		_enemy.Position = _enemySlot.Position + new Vector2(_enemyEntranceDistance, 0);
 		_enemy.Scale = new Vector2(2f,2f);
+
+		AudioManager.Instance.PlayRandomSFX(_monsterGruntSFX);
 	}
 	
 	private async Task WalkEnemyIn()

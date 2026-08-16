@@ -33,6 +33,8 @@ public class GameManager : Node
 	private int debtGoal;
 	private int dayLimit;
 
+	private AudioStream coinEarnSFX;
+
 	public GamePhase CurrentPhase { get; private set; }
 	public int CurrentDay { get; private set; }
 	public int Treasure { get; private set; }
@@ -55,6 +57,8 @@ public class GameManager : Node
 		startingTreasure = (int)config.GetValue("Game", "starting_treasure", 30);
 		debtGoal = (int)config.GetValue("Game", "debt_goal", 500);
 		dayLimit = (int)config.GetValue("Game", "day_limit", 10);
+
+		coinEarnSFX = GD.Load<AudioStream>("res://Assets/Audio/SFX/UI/SFX_UI_Coin_Earn.wav");
 
 		Texture cursorSource = GD.Load<Texture>("res://Assets/UI/Cursor.png");
 		Image cursorImage = cursorSource.GetData();
@@ -127,6 +131,11 @@ public class GameManager : Node
 	public void AddTreasure(int amount)
 	{
 		Treasure += amount;
+
+		if (amount > 0)
+		{
+			AudioManager.Instance.PlaySFX(coinEarnSFX);
+		}
 	}
 
 	// Returns false (and spends nothing) if there isn't enough treasure.

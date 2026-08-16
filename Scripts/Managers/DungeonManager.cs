@@ -12,6 +12,7 @@ public class DungeonManager : Node
 	private int goldPerFloor;
 
 	private readonly Random random = new Random();
+	private AudioStream[] winSFX;
 
 	public DungeonData CurrentDungeon { get; private set; }
 	public List<Adventurer> Party { get; private set; } = new List<Adventurer>();
@@ -37,6 +38,13 @@ public class DungeonManager : Node
 		var config = new ConfigFile();
 		config.Load(ConfigPath);
 		goldPerFloor = (int)config.GetValue("Dungeon", "gold_per_floor", 20);
+
+		winSFX = new[]
+		{
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/ADV/SFX_ADV_Win_Female_01.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/ADV/SFX_ADV_Win_Male_01.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/ADV/SFX_ADV_Win_Male_02.wav")
+		};
 	}
 	
 	public void BeginRun()
@@ -279,6 +287,12 @@ public class DungeonManager : Node
 			GameManager.Instance.TriggerGameOver(GameManager.GameOverReason.PartyWiped);
 		}
 		*/
+
+		if (!wiped)
+		{
+			AudioManager.Instance.PlayRandomSFX(winSFX);
+		}
+
 		LastRun = result;
 		return wiped
 			? $"The party fell. Earned {_runGold}g."

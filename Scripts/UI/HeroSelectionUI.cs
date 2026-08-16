@@ -12,6 +12,11 @@ public class HeroSelectionUI : Control
 
 	private int pageIndex;
 
+	private AudioStream[] clipboardOpenSFX;
+	private AudioStream[] adventurerSelectSFX;
+	private AudioStream[] clickSFX;
+	private AudioStream[] backSFX;
+
 	public override void _Ready()
 	{
 		sceneManager = GetNode<SceneManager>("/root/SceneManager");
@@ -37,8 +42,39 @@ public class HeroSelectionUI : Control
 		nextPageButton.Connect("pressed", this, nameof(OnNextPagePressed));
 
 		GetNode<Button>("BackButton").Connect(
-			"pressed", sceneManager, nameof(SceneManager.GoToMainGame)
+			"pressed", this, nameof(OnBackPressed)
 		);
+
+		clipboardOpenSFX = new[]
+		{
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/MENU/SFX_MENU_Clipboard Open_01.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/MENU/SFX_MENU_Clipboard Open_02.wav")
+		};
+
+		adventurerSelectSFX = new[]
+		{
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/ADV/SFX_ADV_Grunt_Female_01.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/ADV/SFX_ADV_Grunt_Female_02.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/ADV/SFX_ADV_Grunt_Male_01.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/ADV/SFX_ADV_Grunt_Male_02.wav")
+		};
+
+		clickSFX = new[]
+		{
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/UI/SFX_UI_Click_01.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/UI/SFX_UI_Click_02.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/UI/SFX_UI_Click_03.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/UI/SFX_UI_Click_04.wav")
+		};
+
+		backSFX = new[]
+		{
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/UI/SFX_UI_Back_01.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/UI/SFX_UI_Back_02.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/UI/SFX_UI_Back_03.wav")
+		};
+
+		AudioManager.Instance.PlayRandomSFX(clipboardOpenSFX);
 
 		Refresh();
 	}
@@ -81,6 +117,7 @@ public class HeroSelectionUI : Control
 		if (rosterIndex < roster.Count)
 		{
 			AdventurerManager.Instance.SetActive(roster[rosterIndex], pressed);
+			AudioManager.Instance.PlayRandomSFX(adventurerSelectSFX);
 		}
 
 		Refresh();
@@ -88,13 +125,21 @@ public class HeroSelectionUI : Control
 
 	private void OnPrevPagePressed()
 	{
+		AudioManager.Instance.PlayRandomSFX(clickSFX);
 		pageIndex--;
 		Refresh();
 	}
 
 	private void OnNextPagePressed()
 	{
+		AudioManager.Instance.PlayRandomSFX(clickSFX);
 		pageIndex++;
 		Refresh();
+	}
+
+	private void OnBackPressed()
+	{
+		AudioManager.Instance.PlayRandomSFX(backSFX);
+		sceneManager.GoToMainGame();
 	}
 }

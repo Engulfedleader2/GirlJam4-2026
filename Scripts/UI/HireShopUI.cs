@@ -8,6 +8,10 @@ public class HireShopUI : Control
 	private VBoxContainer catalogList;
 	private PackedScene heroCardScene;
 
+	private AudioStream[] catalogOpenSFX;
+	private AudioStream[] backSFX;
+	private AudioStream[] hireSFX;
+
 	public override void _Ready()
 	{
 		sceneManager = GetNode<SceneManager>("/root/SceneManager");
@@ -15,18 +19,41 @@ public class HireShopUI : Control
 		headerLabel = GetNode<Label>("VBox/HeaderLabel");
 		catalogList = GetNode<VBoxContainer>("VBox/CatalogList");
 		catalogList.AddConstantOverride("separation", 5);
-		
+
 		heroCardScene = GD.Load<PackedScene>("res://Scenes/UI/HeroCard.tscn");
 		GetNode<Button>("BackButton").Connect(
 			"pressed", this, nameof(OnBackPressed)
 		);
-		
+
 		AudioManager.Instance.PlayLayeredMusic(new[]
 		{
 			GD.Load<AudioStream>("res://Assets/Audio/Music/ShopMusic/Layer 1 (Shop).mp3"),
 			GD.Load<AudioStream>("res://Assets/Audio/Music/ShopMusic/Layer 2 (Shop).mp3")
 		});
-		
+
+		catalogOpenSFX = new[]
+		{
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/MENU/SFX_MENU_Catalogue Open_01.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/MENU/SFX_MENU_Catalogue Open_02.wav")
+		};
+
+		backSFX = new[]
+		{
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/UI/SFX_UI_Back_01.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/UI/SFX_UI_Back_02.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/UI/SFX_UI_Back_03.wav")
+		};
+
+		hireSFX = new[]
+		{
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/ADV/SFX_ADV_Hire_Female_01.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/ADV/SFX_ADV_Hire_Female_02.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/ADV/SFX_ADV_Hire_Male_01.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/ADV/SFX_ADV_Hire_Male_02.wav")
+		};
+
+		AudioManager.Instance.PlayRandomSFX(catalogOpenSFX);
+
 		Refresh();
 	}
 
@@ -66,14 +93,18 @@ public class HireShopUI : Control
 
 		if (catalogIndex < catalog.Count)
 		{
-			AdventurerManager.Instance.HireAdventurer(catalog[catalogIndex]);
+			if (AdventurerManager.Instance.HireAdventurer(catalog[catalogIndex]))
+			{
+				AudioManager.Instance.PlayRandomSFX(hireSFX);
+			}
 		}
 
 		Refresh();
 	}
-	
+
 	private void OnBackPressed()
 	{
+		AudioManager.Instance.PlayRandomSFX(backSFX);
 		sceneManager.GoToMainGame();
 	}
 }

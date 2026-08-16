@@ -5,11 +5,20 @@ public class ReceiptUI : Control
 {
 	private SceneManager sceneManager;
 	private Label recapLabel;
+	private AudioStream[] clickSFX;
 
 	public override void _Ready()
 	{
 		sceneManager = GetNode<SceneManager>("/root/SceneManager");
 		recapLabel = GetNode<Label>("HBoxContainer/VBoxContainer/RecapLabel");
+
+		clickSFX = new[]
+		{
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/UI/SFX_UI_Click_01.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/UI/SFX_UI_Click_02.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/UI/SFX_UI_Click_03.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/UI/SFX_UI_Click_04.wav")
+		};
 
 		GetNode<Button>("HBoxContainer/VBoxContainer/ContinueButton").Connect(
 			"pressed", this, nameof(OnContinuePressed)
@@ -60,6 +69,8 @@ public class ReceiptUI : Control
 
 	private void OnContinuePressed()
 	{
+		AudioManager.Instance.PlayRandomSFX(clickSFX);
+
 		if (GameManager.Instance.IsGameOver)
 		{
 			GoToGameOverScreen();

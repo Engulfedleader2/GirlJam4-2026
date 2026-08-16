@@ -13,6 +13,11 @@ public class DesignCatologueUI : Control
 	private Texture refreshIcon;
 	private string statusMessage = "";
 
+	private AudioStream[] catalogOpenSFX;
+	private AudioStream[] catalogFlipSFX;
+	private AudioStream[] catalogPurchaseSFX;
+	private AudioStream[] backSFX;
+
 	public override void _Ready()
 	{
 		sceneManager = GetNode<SceneManager>("/root/SceneManager");
@@ -33,6 +38,33 @@ public class DesignCatologueUI : Control
 			GD.Load<AudioStream>("res://Assets/Audio/Music/ShopMusic/Layer 2 (Shop).mp3"),
 			GD.Load<AudioStream>("res://Assets/Audio/Music/ShopMusic/Layer 3 (Shop).mp3")
 		});
+
+		catalogOpenSFX = new[]
+		{
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/MENU/SFX_MENU_Catalogue Open_01.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/MENU/SFX_MENU_Catalogue Open_02.wav")
+		};
+
+		catalogFlipSFX = new[]
+		{
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/MENU/SFX_MENU_Catalogue Flip_01.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/MENU/SFX_MENU_Catalogue Flip_02.wav")
+		};
+
+		catalogPurchaseSFX = new[]
+		{
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/MENU/SFX_MENU_Catalogue Purchase_01.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/MENU/SFX_MENU_Catalogue Purchase_02.wav")
+		};
+
+		backSFX = new[]
+		{
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/UI/SFX_UI_Back_01.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/UI/SFX_UI_Back_02.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/UI/SFX_UI_Back_03.wav")
+		};
+
+		AudioManager.Instance.PlayRandomSFX(catalogOpenSFX);
 
 		Refresh();
 	}
@@ -121,22 +153,33 @@ public class DesignCatologueUI : Control
 
 	private void OnBuyDesignPressed(ClothingIcon icon)
 	{
-		statusMessage = DesignManager.Instance.BuyDesign(icon.Item)
-			? ""
-			: " (can't afford that)";
+		bool bought = DesignManager.Instance.BuyDesign(icon.Item);
+		statusMessage = bought ? "" : " (can't afford that)";
+
+		if (bought)
+		{
+			AudioManager.Instance.PlayRandomSFX(catalogPurchaseSFX);
+		}
+
 		Refresh();
 	}
 
 	private void OnRefreshPressed()
 	{
-		statusMessage = DesignManager.Instance.RefreshStockPaid()
-			? ""
-			: " (can't afford refresh)";
+		bool refreshed = DesignManager.Instance.RefreshStockPaid();
+		statusMessage = refreshed ? "" : " (can't afford refresh)";
+
+		if (refreshed)
+		{
+			AudioManager.Instance.PlayRandomSFX(catalogFlipSFX);
+		}
+
 		Refresh();
 	}
 
 	private void OnBackPressed()
 	{
+		AudioManager.Instance.PlayRandomSFX(backSFX);
 		sceneManager.GoToMainGame();
 	}
 }

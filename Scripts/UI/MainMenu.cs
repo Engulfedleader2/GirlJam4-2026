@@ -9,6 +9,7 @@ public class MainMenu : Node2D
 	private Button settingsButton;
 	private Button quitButton;
 	private TextureButton settingsIcon;
+	private AudioStream[] clickSFX;
 
 	public override void _Ready()
 	{
@@ -16,6 +17,14 @@ public class MainMenu : Node2D
 		sceneManager = GetNode<SceneManager>("/root/SceneManager");
 
 		AudioManager.Instance.PlayMusic(GD.Load<AudioStream>("res://Assets/Audio/Music/SLORP.mp3"));
+		clickSFX = new[]
+		{
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/UI/SFX_UI_Click_01.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/UI/SFX_UI_Click_02.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/UI/SFX_UI_Click_03.wav"),
+			GD.Load<AudioStream>("res://Assets/Audio/SFX/UI/SFX_UI_Click_04.wav")
+		};
+
 		playButton = GetNode<Button>(
 			"UI/CenterContainer/VBoxContainer/PlayButton"
 		);
@@ -63,11 +72,13 @@ public class MainMenu : Node2D
 
 	private void OnSettingsPressed()
 	{
+		AudioManager.Instance.PlayRandomSFX(clickSFX);
 		sceneManager.GoToSettingsMenu();
 	}
 
 	private void OnQuitPressed()
 	{
+		AudioManager.Instance.PlayRandomSFX(clickSFX);
 		sceneManager.QuitGame();
 	}
 }
