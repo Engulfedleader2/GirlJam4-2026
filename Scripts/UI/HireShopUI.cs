@@ -21,6 +21,12 @@ public class HireShopUI : Control
 			"pressed", this, nameof(OnBackPressed)
 		);
 		
+		AudioManager.Instance.PlayLayeredMusic(new[]
+		{
+			GD.Load<AudioStream>("res://Assets/Audio/Music/ShopMusic/Layer 1 (Shop).mp3"),
+			GD.Load<AudioStream>("res://Assets/Audio/Music/ShopMusic/Layer 2 (Shop).mp3")
+		});
+		
 		Refresh();
 	}
 

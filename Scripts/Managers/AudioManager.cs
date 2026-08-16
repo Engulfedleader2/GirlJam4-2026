@@ -101,6 +101,7 @@ public class AudioManager : Node
 
 		sfxPlayer.Stream = sfx;
 		sfxPlayer.Play();
+		
 	}
 
 	public void SetMusicVolume(float volumeDb)

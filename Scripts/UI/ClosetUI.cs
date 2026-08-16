@@ -98,17 +98,13 @@ public class ClosetUI : Node
 			"HBox/OutfitOptions/Categories/FeetRow",
 			ClothingSlot.Feet
 		);
-
-		SetupRow(
-			"HBox/OutfitOptions/Categories/HairRow",
-			ClothingSlot.Hair
-		);
-
-		SetupRow(
-			"HBox/OutfitOptions/Categories/AccessoryRow",
-			ClothingSlot.Accessory
-		);
-
+		AudioManager.Instance.PlayLayeredMusic(new[]
+		{
+			GD.Load<AudioStream>("res://Assets/Audio/Music/ShopMusic/Layer 1 (Shop).mp3"),
+			GD.Load<AudioStream>("res://Assets/Audio/Music/ShopMusic/Layer 2 (Shop).mp3"),
+			GD.Load<AudioStream>("res://Assets/Audio/Music/ShopMusic/Layer 3 (Shop).mp3"),
+			GD.Load<AudioStream>("res://Assets/Audio/Music/ShopMusic/Layer 4 (Shop).mp3")
+		});
 		UpdateStatsLabel();
 	}
 
