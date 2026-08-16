@@ -45,7 +45,6 @@ public class AdventurerManager : Node
 		maxBaseHp = (int)config.GetValue("Adventurers", "max_base_hp", 14);
 		minBaseAttack = (int)config.GetValue("Adventurers", "min_base_attack", 2);
 		maxBaseAttack = (int)config.GetValue("Adventurers", "max_base_attack", 5);
-
 		RefreshCatalog();
 	}
 
@@ -74,7 +73,7 @@ public class AdventurerManager : Node
 			BaseAttack = baseAttack,
 			MaxHP = baseMaxHp,
 			CurrentHP = baseMaxHp,
-			Attack = baseAttack
+			Attack = baseAttack,
 		};
 	}
 

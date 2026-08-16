@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Characters/hero.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Adventurer/HeroCard.cs" type="Script" id=2]
+
+[node name="HeroCard" type="Button"]
+rect_min_size = Vector2( 125, 96 )
+size_flags_horizontal = 4
+flat = true
+script = ExtResource( 2 )
+
+[node name="Row" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 6.0
+custom_constants/separation = 12
+
+[node name="Portrait" type="VBoxContainer" parent="Row"]
+margin_right = 64.0
+margin_bottom = 90.0
+
+[node name="PortraitBox" type="TextureRect" parent="Row/Portrait"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 5
+
+[node name="PriceLabel" type="Label" parent="Row/Portrait"]
+margin_top = 68.0
+margin_right = 64.0
+margin_bottom = 82.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0g"
+
+[node name="Info" type="VBoxContainer" parent="Row"]
+margin_left = 76.0
+margin_right = 147.0
+margin_bottom = 90.0
+
+[node name="NameLabel" type="Label" parent="Row/Info"]
+margin_right = 71.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="StatsLabel" type="Label" parent="Row/Info"]
+margin_top = 18.0
+margin_right = 71.0
+margin_bottom = 32.0
+size_flags_horizontal = 4
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Adventurer"
+
+[node name="DreamLabel" type="Label" parent="Row/Info"]
+margin_top = 36.0
+margin_right = 71.0
+margin_bottom = 50.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Dream"
+autowrap = true

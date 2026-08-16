@@ -28,19 +28,21 @@ texture = ExtResource( 3 )
 centered = false
 
 [node name="VBox" type="VBoxContainer" parent="."]
-margin_left = 116.0
-margin_top = 49.0
-margin_right = 536.0
-margin_bottom = 409.0
+margin_left = 121.0
+margin_top = 142.0
+margin_right = 323.0
+margin_bottom = 417.0
+rect_min_size = Vector2( 200, 275 )
 
 [node name="HeaderLabel" type="Label" parent="VBox"]
-margin_right = 420.0
+margin_right = 202.0
 margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Mail Order Heroes - Treasure: 0"
 
 [node name="CatalogList" type="VBoxContainer" parent="VBox"]
 margin_top = 18.0
-margin_right = 420.0
+margin_right = 202.0
 margin_bottom = 18.0
 
 [node name="BackButton" type="Button" parent="."]

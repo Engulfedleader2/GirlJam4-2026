@@ -6,6 +6,7 @@ public class HireShopUI : Control
 	private SceneManager sceneManager;
 	private Label headerLabel;
 	private VBoxContainer catalogList;
+	private PackedScene heroCardScene;
 
 	public override void _Ready()
 	{
@@ -13,11 +14,13 @@ public class HireShopUI : Control
 
 		headerLabel = GetNode<Label>("VBox/HeaderLabel");
 		catalogList = GetNode<VBoxContainer>("VBox/CatalogList");
-
+		catalogList.AddConstantOverride("separation", 5);
+		
+		heroCardScene = GD.Load<PackedScene>("res://Scenes/UI/HeroCard.tscn");
 		GetNode<Button>("BackButton").Connect(
 			"pressed", this, nameof(OnBackPressed)
 		);
-
+		
 		Refresh();
 	}
 
@@ -39,12 +42,18 @@ public class HireShopUI : Control
 
 		for (int i = 0; i < catalog.Count; i++)
 		{
+			/*
 			var button = new Button { Text = $"Hire for {AdventurerManager.Instance.HireCost}g" };
 			button.Connect("pressed", this, nameof(OnHirePressed), new Godot.Collections.Array { i });
 			catalogList.AddChild(button);
+			*/
+			var card = (HeroCard)heroCardScene.Instance();
+			catalogList.AddChild(card);
+			card.SetupCard(catalog[i], AdventurerManager.Instance.HireCost);
+			card.Connect("pressed", this, nameof(OnHirePressed), new Godot.Collections.Array { i });
 		}
 	}
-
+	
 	private void OnHirePressed(int catalogIndex)
 	{
 		List<Adventurer> catalog = AdventurerManager.Instance.Catalog;
@@ -56,7 +65,7 @@ public class HireShopUI : Control
 
 		Refresh();
 	}
-
+	
 	private void OnBackPressed()
 	{
 		sceneManager.GoToMainGame();
